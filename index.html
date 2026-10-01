@@ -1570,6 +1570,7 @@ function createNextFamily(){
 ========================================= */
 
 function backupData(){
+async function backupData(){
 
     const backup = {
 
@@ -1606,12 +1607,6 @@ function backupData(){
         );
 
 
-    const url =
-        URL.createObjectURL(
-            blob
-        );
-
-
     const date =
         new Date();
 
@@ -1628,6 +1623,71 @@ function backupData(){
             date.getDate()
         ).padStart(2,"0") +
         ".json";
+
+
+    const file =
+        new File(
+            [blob],
+            filename,
+            {
+                type:
+                    "application/json"
+            }
+        );
+
+
+    /* iPhone Share Sheet */
+
+    if(
+        navigator.share &&
+        navigator.canShare &&
+        navigator.canShare({
+            files:[file]
+        })
+    ){
+
+        try{
+
+            await navigator.share({
+
+                files:[file],
+
+                title:
+                    "পরিবার হিসাব Backup",
+
+                text:
+                    "পরিবার হিসাবের Backup ফাইল"
+
+            });
+
+            return;
+
+        }
+        catch(error){
+
+            /* User cancelled Share Sheet */
+
+            if(
+                error &&
+                error.name ===
+                "AbortError"
+            ){
+
+                return;
+
+            }
+
+        }
+
+    }
+
+
+    /* Fallback */
+
+    const url =
+        URL.createObjectURL(
+            blob
+        );
 
 
     const link =
@@ -1668,8 +1728,7 @@ function backupData(){
     );
 
 }
-
-
+    
 /* =========================================
    RESTORE BUTTON
 ========================================= */
