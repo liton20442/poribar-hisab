@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
+
 <meta charset="UTF-8">
 
 <meta name="viewport"
@@ -11,15 +12,19 @@
 
 <title>পরিবার হিসাব</title>
 
-<!-- PWA -->
 <link rel="manifest" href="./manifest.json">
 
 <meta name="theme-color" content="#2563eb">
 
-<!-- iPhone / iOS -->
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="apple-mobile-web-app-title" content="পরিবার হিসাব">
+<meta name="apple-mobile-web-app-capable"
+      content="yes">
+
+<meta name="apple-mobile-web-app-status-bar-style"
+      content="default">
+
+<meta name="apple-mobile-web-app-title"
+      content="পরিবার হিসাব">
+
 
 <style>
 
@@ -33,6 +38,7 @@ body{
   margin:0;
   padding:0;
   min-height:100%;
+
   font-family:
     -apple-system,
     BlinkMacSystemFont,
@@ -49,12 +55,20 @@ body{
   padding-bottom:env(safe-area-inset-bottom);
 }
 
+
 /* =========================
    HEADER
 ========================= */
 
 .header{
-  background:linear-gradient(135deg,#2563eb,#1d4ed8);
+
+  background:
+    linear-gradient(
+      135deg,
+      #2563eb,
+      #1d4ed8
+    );
+
   color:#fff;
 
   padding:
@@ -63,23 +77,28 @@ body{
     18px;
 
   box-shadow:
-    0 4px 18px rgba(37,99,235,.22);
+    0 4px 18px
+    rgba(37,99,235,.22);
 }
 
 .header-top{
+
   display:flex;
   align-items:center;
   justify-content:space-between;
+
   gap:12px;
 }
 
 .logo{
+
   width:50px;
   height:50px;
 
   border-radius:15px;
 
-  background:rgba(255,255,255,.18);
+  background:
+    rgba(255,255,255,.18);
 
   display:flex;
   align-items:center;
@@ -95,18 +114,21 @@ body{
 }
 
 .title{
+
   font-size:28px;
   font-weight:800;
   line-height:1.15;
 }
 
 .subtitle{
+
   font-size:15px;
   margin-top:5px;
   opacity:.9;
 }
 
 .clear-btn{
+
   border:
     1px solid
     rgba(255,255,255,.35);
@@ -124,23 +146,31 @@ body{
   font-weight:700;
 }
 
+
 /* =========================
    MAIN
 ========================= */
 
 .container{
+
   max-width:900px;
+
   margin:auto;
+
   padding:16px;
 }
+
 
 /* =========================
    SUMMARY
 ========================= */
 
 .summary{
+
   display:grid;
-  grid-template-columns:1fr 1fr;
+
+  grid-template-columns:
+    1fr 1fr;
 
   gap:12px;
 
@@ -148,6 +178,7 @@ body{
 }
 
 .summary-card{
+
   background:#fff;
 
   border-radius:17px;
@@ -157,13 +188,17 @@ body{
   text-align:center;
 
   box-shadow:
-    0 5px 18px rgba(15,23,42,.07);
+    0 5px 18px
+    rgba(15,23,42,.07);
 
-  border:1px solid #e5eaf2;
+  border:
+    1px solid #e5eaf2;
 }
 
 .summary-number{
+
   font-size:30px;
+
   font-weight:800;
 
   color:#2563eb;
@@ -172,7 +207,9 @@ body{
 }
 
 .summary-label{
+
   font-size:15px;
+
   font-weight:700;
 
   color:#596579;
@@ -180,24 +217,29 @@ body{
   margin-top:7px;
 }
 
+
 /* =========================
    TABLE CARD
 ========================= */
 
 .table-card{
+
   background:#fff;
 
   border-radius:18px;
 
   box-shadow:
-    0 5px 20px rgba(15,23,42,.08);
+    0 5px 20px
+    rgba(15,23,42,.08);
 
   overflow:hidden;
 
-  border:1px solid #e5eaf2;
+  border:
+    1px solid #e5eaf2;
 }
 
 .table-head{
+
   display:flex;
 
   align-items:center;
@@ -213,15 +255,19 @@ body{
 }
 
 .table-title{
+
   font-size:20px;
+
   font-weight:800;
 }
+
 
 /* =========================
    ENTER HINT
 ========================= */
 
 .enter-hint{
+
   display:flex;
 
   align-items:center;
@@ -241,12 +287,14 @@ body{
   font-weight:800;
 
   box-shadow:
-    0 4px 12px rgba(37,99,235,.25);
+    0 4px 12px
+    rgba(37,99,235,.25);
 
   animation:pulse 1.8s infinite;
 }
 
 .enter-key{
+
   background:#fff;
 
   color:#2563eb;
@@ -272,6 +320,7 @@ body{
 
 }
 
+
 /* =========================
    TABLE
 ========================= */
@@ -281,6 +330,7 @@ body{
 }
 
 table{
+
   width:100%;
 
   border-collapse:collapse;
@@ -289,6 +339,7 @@ table{
 }
 
 th{
+
   background:#f1f5ff;
 
   color:#1e3a8a;
@@ -304,6 +355,7 @@ th{
 }
 
 td{
+
   padding:10px;
 
   border-bottom:
@@ -316,11 +368,13 @@ td:first-child{
   text-align:left;
 }
 
+
 /* =========================
    INPUT
 ========================= */
 
 input{
+
   width:100%;
 
   height:46px;
@@ -339,9 +393,12 @@ input{
   color:#172033;
 
   outline:none;
+
+  -webkit-appearance:none;
 }
 
 input:focus{
+
   border:
     2px solid #2563eb;
 
@@ -352,11 +409,13 @@ input::placeholder{
   color:#9aa6b5;
 }
 
+
 /* =========================
    DELETE BUTTON
 ========================= */
 
 .delete-btn{
+
   min-width:70px;
 
   height:40px;
@@ -374,11 +433,13 @@ input::placeholder{
   font-weight:800;
 }
 
+
 /* =========================
    FOOTER
 ========================= */
 
 .footer{
+
   text-align:center;
 
   color:#7b8798;
@@ -387,6 +448,7 @@ input::placeholder{
 
   padding:18px 0 8px;
 }
+
 
 /* =========================
    MOBILE
@@ -447,8 +509,9 @@ input::placeholder{
 
 }
 
+
 /* =========================
-   STANDALONE APP MODE
+   PWA MODE
 ========================= */
 
 @media(display-mode:standalone){
@@ -461,14 +524,12 @@ input::placeholder{
 }
 
 </style>
+
 </head>
 
 
 <body>
 
-<!-- =========================
-     HEADER
-========================= -->
 
 <header class="header">
 
@@ -477,6 +538,7 @@ input::placeholder{
     <div class="logo">
       🏠
     </div>
+
 
     <div class="title-wrap">
 
@@ -489,6 +551,7 @@ input::placeholder{
       </div>
 
     </div>
+
 
     <button
       class="clear-btn"
@@ -503,9 +566,6 @@ input::placeholder{
 </header>
 
 
-<!-- =========================
-     MAIN
-========================= -->
 
 <main class="container">
 
@@ -551,7 +611,7 @@ input::placeholder{
 
 
 
-  <!-- TABLE -->
+  <!-- FAMILY TABLE -->
 
   <section class="table-card">
 
@@ -618,11 +678,13 @@ input::placeholder{
     ডাটা এই ফোনেই স্বয়ংক্রিয়ভাবে সংরক্ষিত থাকবে
   </div>
 
+
 </main>
 
 
 
 <script>
+
 
 /* =========================
    STORAGE
@@ -630,6 +692,7 @@ input::placeholder{
 
 const STORAGE_KEY =
   "poribarHisabSimpleV1";
+
 
 let families = [];
 
@@ -646,26 +709,39 @@ function loadData(){
 
     const saved =
       JSON.parse(
-        localStorage.getItem(STORAGE_KEY) || "[]"
+        localStorage.getItem(
+          STORAGE_KEY
+        ) || "[]"
       );
+
 
     if(Array.isArray(saved)){
 
       families =
         saved
+
         .filter(
-          x =>
-            x &&
-            String(x.name || "").trim() !== ""
+          item =>
+            item &&
+            String(
+              item.name || ""
+            ).trim() !== ""
         )
-        .map(x => ({
+
+        .map(item => ({
 
           name:
-            String(x.name || "").trim(),
+            String(
+              item.name || ""
+            ).trim(),
 
           members:
-            String(x.members || "")
-            .replace(/\D/g,"")
+            String(
+              item.members || ""
+            ).replace(
+              /\D/g,
+              ""
+            )
 
         }));
 
@@ -673,7 +749,7 @@ function loadData(){
 
   }
 
-  catch(e){
+  catch(error){
 
     families = [];
 
@@ -683,14 +759,16 @@ function loadData(){
 
 
 /* =========================
-   SAVE DATA
+   SAVE
 ========================= */
 
 function saveData(){
 
   localStorage.setItem(
     STORAGE_KEY,
-    JSON.stringify(families)
+    JSON.stringify(
+      families
+    )
   );
 
 }
@@ -703,7 +781,9 @@ function saveData(){
 function updateSummary(){
 
   document
-    .getElementById("familyTotal")
+    .getElementById(
+      "familyTotal"
+    )
     .textContent =
       families.length;
 
@@ -711,22 +791,30 @@ function updateSummary(){
   let total = 0;
 
 
-  families.forEach(x => {
+  families.forEach(
+    family => {
 
-    const n =
-      parseInt(x.members,10);
+      const number =
+        parseInt(
+          family.members,
+          10
+        );
 
-    if(!isNaN(n)){
 
-      total += n;
+      if(!isNaN(number)){
+
+        total += number;
+
+      }
 
     }
-
-  });
+  );
 
 
   document
-    .getElementById("memberTotal")
+    .getElementById(
+      "memberTotal"
+    )
     .textContent =
       total;
 
@@ -734,7 +822,7 @@ function updateSummary(){
 
 
 /* =========================
-   CREATE EXISTING INPUT
+   EXISTING INPUT
 ========================= */
 
 function makeInput(
@@ -744,8 +832,22 @@ function makeInput(
 ){
 
   const input =
-    document.createElement("input");
+    document.createElement(
+      "input"
+    );
 
+
+  /*
+    গুরুত্বপূর্ণ:
+    type="text"
+
+    এখানে inputMode="numeric"
+    ব্যবহার করছি না।
+
+    কারণ iPhone-এর numeric
+    keyboard-এ Enter/Return
+    থাকে না।
+  */
 
   input.type = "text";
 
@@ -753,22 +855,22 @@ function makeInput(
     value || "";
 
 
-  /* MEMBER */
+  input.autocomplete =
+    "off";
+
+
+  /* =====================
+     MEMBER
+  ===================== */
 
   if(type === "member"){
 
-    input.inputMode =
-      "numeric";
-
-    input.pattern =
-      "[0-9]*";
-
-    input.autocomplete =
-      "off";
-
-
     input.oninput =
       function(){
+
+        /*
+          শুধু ০-৯ থাকবে
+        */
 
         this.value =
           this.value.replace(
@@ -776,8 +878,10 @@ function makeInput(
             ""
           );
 
+
         families[index].members =
           this.value;
+
 
         saveData();
 
@@ -787,16 +891,21 @@ function makeInput(
 
 
     input.onkeydown =
-      function(e){
+      function(event){
 
-        if(e.key === "Enter"){
+        if(
+          event.key === "Enter" ||
+          event.keyCode === 13
+        ){
 
-          e.preventDefault();
+          event.preventDefault();
 
 
-          if(
-            this.value.trim() === ""
-          ){
+          const number =
+            this.value.trim();
+
+
+          if(number === ""){
 
             return;
 
@@ -804,12 +913,19 @@ function makeInput(
 
 
           families[index].members =
-            this.value.trim();
+            number;
 
 
           saveData();
 
+
           render();
+
+
+          /*
+            নতুন খালি
+            পরিবারের ঘরে যাব
+          */
 
           focusNewName();
 
@@ -820,13 +936,11 @@ function makeInput(
   }
 
 
-  /* FAMILY NAME */
+  /* =====================
+     FAMILY NAME
+  ===================== */
 
   else{
-
-    input.autocomplete =
-      "off";
-
 
     input.oninput =
       function(){
@@ -834,24 +948,28 @@ function makeInput(
         families[index].name =
           this.value;
 
+
         saveData();
 
       };
 
 
     input.onkeydown =
-      function(e){
+      function(event){
 
-        if(e.key === "Enter"){
+        if(
+          event.key === "Enter" ||
+          event.keyCode === 13
+        ){
 
-          e.preventDefault();
+          event.preventDefault();
 
 
           const name =
             this.value.trim();
 
 
-          if(!name){
+          if(name === ""){
 
             return;
 
@@ -864,20 +982,34 @@ function makeInput(
 
           saveData();
 
+
           render();
 
 
-          const member =
-            document.querySelector(
-              '[data-new-member="1"]'
-            );
+          /*
+            সদস্য ঘরে Focus
+          */
+
+          setTimeout(
+            function(){
+
+              const member =
+                document.querySelector(
+                  '[data-member-row="' +
+                  index +
+                  '"]'
+                );
 
 
-          if(member){
+              if(member){
 
-            member.focus();
+                member.focus();
 
-          }
+              }
+
+            },
+            50
+          );
 
         }
 
@@ -906,19 +1038,25 @@ function render(){
   body.innerHTML = "";
 
 
-  /* EXISTING FAMILY ROWS */
+  /* =====================
+     SAVED ROWS
+  ===================== */
 
   families.forEach(
     (family,index) => {
 
       const tr =
-        document.createElement("tr");
+        document.createElement(
+          "tr"
+        );
 
 
-      /* NAME */
+      /* FAMILY NAME */
 
       const nameTd =
-        document.createElement("td");
+        document.createElement(
+          "td"
+        );
 
 
       nameTd.appendChild(
@@ -933,7 +1071,9 @@ function render(){
       /* MEMBER */
 
       const memberTd =
-        document.createElement("td");
+        document.createElement(
+          "td"
+        );
 
 
       const memberInput =
@@ -946,7 +1086,7 @@ function render(){
 
       memberInput.setAttribute(
         "data-member-row",
-        "1"
+        index
       );
 
 
@@ -955,33 +1095,36 @@ function render(){
       );
 
 
-      /* ACTION */
+      /* DELETE */
 
       const actionTd =
-        document.createElement("td");
+        document.createElement(
+          "td"
+        );
 
 
-      const btn =
+      const deleteButton =
         document.createElement(
           "button"
         );
 
 
-      btn.className =
+      deleteButton.className =
         "delete-btn";
 
 
-      btn.textContent =
+      deleteButton.textContent =
         "মুছুন";
 
 
-      btn.onclick =
+      deleteButton.onclick =
         function(){
 
           families.splice(
             index,
             1
           );
+
 
           saveData();
 
@@ -992,7 +1135,9 @@ function render(){
         };
 
 
-      actionTd.appendChild(btn);
+      actionTd.appendChild(
+        deleteButton
+      );
 
 
       tr.append(
@@ -1008,38 +1153,47 @@ function render(){
   );
 
 
-  /* =========================
+  /* =====================
      NEW BLANK ROW
-  ========================= */
+  ===================== */
 
-  const tr =
-    document.createElement("tr");
-
-
-  /* NEW NAME */
-
-  const nameTd =
-    document.createElement("td");
+  const newRow =
+    document.createElement(
+      "tr"
+    );
 
 
-  const nameInput =
-    document.createElement("input");
+  /* NEW FAMILY NAME */
+
+  const newNameTd =
+    document.createElement(
+      "td"
+    );
 
 
-  nameInput.type =
+  const newNameInput =
+    document.createElement(
+      "input"
+    );
+
+
+  newNameInput.type =
     "text";
 
-  nameInput.placeholder =
+
+  newNameInput.placeholder =
     "পরিবারের নাম লিখুন";
 
-  nameInput.autocomplete =
+
+  newNameInput.autocomplete =
     "off";
 
-  nameInput.value =
+
+  newNameInput.value =
     newFamilyName;
 
 
-  nameInput.oninput =
+  newNameInput.oninput =
     function(){
 
       newFamilyName =
@@ -1048,19 +1202,22 @@ function render(){
     };
 
 
-  nameInput.onkeydown =
-    function(e){
+  newNameInput.onkeydown =
+    function(event){
 
-      if(e.key === "Enter"){
+      if(
+        event.key === "Enter" ||
+        event.keyCode === 13
+      ){
 
-        e.preventDefault();
+        event.preventDefault();
 
 
         const name =
           this.value.trim();
 
 
-        if(!name){
+        if(name === ""){
 
           return;
 
@@ -1068,8 +1225,7 @@ function render(){
 
 
         /*
-          নতুন পরিবার সরাসরি
-          তালিকায় যোগ হবে
+          নতুন পরিবার যোগ
         */
 
         families.push({
@@ -1087,11 +1243,12 @@ function render(){
 
         saveData();
 
+
         render();
 
 
         /*
-          নতুন যোগ হওয়া
+          নতুন পরিবারের
           সদস্য ঘরে Focus
         */
 
@@ -1100,12 +1257,14 @@ function render(){
 
             const inputs =
               document.querySelectorAll(
-                '[data-member-row="1"]'
+                '[data-member-row]'
               );
 
 
             const last =
-              inputs[inputs.length - 1];
+              inputs[
+                inputs.length - 1
+              ];
 
 
             if(last){
@@ -1123,41 +1282,56 @@ function render(){
     };
 
 
-  nameTd.appendChild(
-    nameInput
+  newNameTd.appendChild(
+    newNameInput
   );
 
 
-  /* NEW MEMBER */
+  /* =====================
+     NEW MEMBER
+  ===================== */
 
-  const memberTd =
-    document.createElement("td");
+  const newMemberTd =
+    document.createElement(
+      "td"
+    );
 
 
-  const memberInput =
-    document.createElement("input");
+  const newMemberInput =
+    document.createElement(
+      "input"
+    );
 
 
-  memberInput.type =
+  /*
+    এখানে type=text রাখা হয়েছে।
+
+    ফলে iPhone-এর সাধারণ
+    keyboard-এ Return/Enter
+    থাকবে।
+
+    কিন্তু oninput-এর মাধ্যমে
+    শুধু সংখ্যা গ্রহণ করা হবে।
+  */
+
+  newMemberInput.type =
     "text";
 
-  memberInput.placeholder =
+
+  newMemberInput.placeholder =
     "সংখ্যা";
 
-  memberInput.inputMode =
-    "numeric";
 
-  memberInput.pattern =
-    "[0-9]*";
-
-  memberInput.setAttribute(
-    "data-new-member",
-    "1"
-  );
+  newMemberInput.autocomplete =
+    "off";
 
 
-  memberInput.oninput =
+  newMemberInput.oninput =
     function(){
+
+      /*
+        শুধু ০-৯
+      */
 
       this.value =
         this.value.replace(
@@ -1168,19 +1342,22 @@ function render(){
     };
 
 
-  memberInput.onkeydown =
-    function(e){
+  newMemberInput.onkeydown =
+    function(event){
 
-      if(e.key === "Enter"){
+      if(
+        event.key === "Enter" ||
+        event.keyCode === 13
+      ){
 
-        e.preventDefault();
+        event.preventDefault();
 
 
-        const n =
+        const number =
           this.value.trim();
 
 
-        if(n === ""){
+        if(number === ""){
 
           return;
 
@@ -1188,12 +1365,12 @@ function render(){
 
 
         /*
-          শেষ পরিবারটির
+          শেষ পরিবারের
           সদস্য সংখ্যা বসানো
         */
 
         if(
-          families.length &&
+          families.length > 0 &&
           families[
             families.length - 1
           ].members === ""
@@ -1201,7 +1378,8 @@ function render(){
 
           families[
             families.length - 1
-          ].members = n;
+          ].members =
+            number;
 
 
           saveData();
@@ -1214,6 +1392,11 @@ function render(){
           render();
 
 
+          /*
+            আবার নতুন
+            পরিবারের নামের ঘরে যাব
+          */
+
           focusNewName();
 
         }
@@ -1223,44 +1406,52 @@ function render(){
     };
 
 
-  memberTd.appendChild(
-    memberInput
+  newMemberTd.appendChild(
+    newMemberInput
   );
 
 
   /* NEW ACTION */
 
-  const actionTd =
-    document.createElement("td");
+  const newActionTd =
+    document.createElement(
+      "td"
+    );
 
 
   const dash =
-    document.createElement("span");
+    document.createElement(
+      "span"
+    );
 
 
   dash.textContent =
     "—";
 
+
   dash.style.color =
     "#94a3b8";
+
 
   dash.style.fontSize =
     "18px";
 
 
-  actionTd.appendChild(
+  newActionTd.appendChild(
     dash
   );
 
 
-  tr.append(
-    nameTd,
-    memberTd,
-    actionTd
+  newRow.append(
+    newNameTd,
+    newMemberTd,
+    newActionTd
   );
 
 
-  body.appendChild(tr);
+  body.appendChild(
+    newRow
+  );
 
 
   updateSummary();
@@ -1269,7 +1460,7 @@ function render(){
 
 
 /* =========================
-   FOCUS NEW NAME
+   FOCUS NEW FAMILY
 ========================= */
 
 function focusNewName(){
@@ -1284,7 +1475,9 @@ function focusNewName(){
 
 
       const lastRow =
-        rows[rows.length - 1];
+        rows[
+          rows.length - 1
+        ];
 
 
       if(lastRow){
@@ -1304,7 +1497,7 @@ function focusNewName(){
       }
 
     },
-    50
+    80
   );
 
 }
@@ -1316,7 +1509,9 @@ function focusNewName(){
 
 function clearAll(){
 
-  if(families.length === 0){
+  if(
+    families.length === 0
+  ){
 
     return;
 
@@ -1346,7 +1541,7 @@ function clearAll(){
 
 
 /* =========================
-   START
+   START APP
 ========================= */
 
 loadData();
@@ -1387,6 +1582,7 @@ if(
 }
 
 </script>
+
 
 </body>
 </html>
