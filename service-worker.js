@@ -1,6 +1,6 @@
-const CACHE_NAME = "poribar-hisab-final-v1";
+const CACHE_NAME = "poribar-hisab-final-v2";
 
-const FILES = [
+const APP_FILES = [
     "./",
     "./index.html",
     "./manifest.json",
@@ -13,12 +13,8 @@ self.addEventListener("install", event => {
     event.waitUntil(
 
         caches.open(CACHE_NAME)
-            .then(cache =>
-                cache.addAll(FILES)
-            )
-            .then(() =>
-                self.skipWaiting()
-            )
+            .then(cache => cache.addAll(APP_FILES))
+            .then(() => self.skipWaiting())
 
     );
 
@@ -30,8 +26,10 @@ self.addEventListener("activate", event => {
     event.waitUntil(
 
         caches.keys()
-            .then(keys =>
-                Promise.all(
+            .then(keys => {
+
+                return Promise.all(
+
                     keys
                         .filter(
                             key =>
@@ -41,11 +39,11 @@ self.addEventListener("activate", event => {
                             key =>
                                 caches.delete(key)
                         )
-                )
-            )
-            .then(() =>
-                self.clients.claim()
-            )
+
+                );
+
+            })
+            .then(() => self.clients.claim())
 
     );
 
@@ -63,6 +61,10 @@ self.addEventListener("fetch", event => {
     }
 
 
+    /*
+      HTML হলে আগে নতুন version নেওয়া হবে।
+    */
+
     if(
         event.request.mode === "navigate"
     ){
@@ -75,22 +77,28 @@ self.addEventListener("fetch", event => {
                     const copy =
                         response.clone();
 
+
                     caches.open(CACHE_NAME)
-                        .then(cache =>
+                        .then(cache => {
+
                             cache.put(
                                 "./index.html",
                                 copy
-                            )
-                        );
+                            );
+
+                        });
+
 
                     return response;
 
                 })
-                .catch(() =>
-                    caches.match(
+                .catch(() => {
+
+                    return caches.match(
                         "./index.html"
-                    )
-                )
+                    );
+
+                })
 
         );
 
@@ -98,6 +106,10 @@ self.addEventListener("fetch", event => {
 
     }
 
+
+    /*
+      অন্যান্য file
+    */
 
     event.respondWith(
 
@@ -111,7 +123,34 @@ self.addEventListener("fetch", event => {
                 }
 
 
-                return fetch(event.request);
+                return fetch(event.request)
+                    .then(response => {
+
+                        if(
+                            response &&
+                            response.status === 200
+                        ){
+
+                            const copy =
+                                response.clone();
+
+
+                            caches.open(CACHE_NAME)
+                                .then(cache => {
+
+                                    cache.put(
+                                        event.request,
+                                        copy
+                                    );
+
+                                });
+
+                        }
+
+
+                        return response;
+
+                    });
 
             })
 
