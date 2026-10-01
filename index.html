@@ -1,61 +1,1269 @@
-const CACHE_NAME = "poribar-hisab-final-v1";
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
 
-const FILES = [
-    "./",
-    "./index.html",
-    "./manifest.json",
-    "./service-worker.js"
-];
+<meta name="viewport"
+      content="width=device-width,
+               initial-scale=1.0,
+               maximum-scale=1.0,
+               user-scalable=no,
+               viewport-fit=cover">
+
+<meta name="theme-color" content="#2563eb">
+
+<meta name="apple-mobile-web-app-capable"
+      content="yes">
+
+<meta name="apple-mobile-web-app-status-bar-style"
+      content="default">
+
+<meta name="apple-mobile-web-app-title"
+      content="পরিবার হিসাব">
+
+<link rel="manifest" href="./manifest.json">
+
+<title>পরিবার হিসাব</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+    -webkit-tap-highlight-color:transparent;
+}
+
+html,body{
+    margin:0;
+    padding:0;
+    min-height:100%;
+    background:#f3f6fb;
+    color:#172033;
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        "Noto Sans Bengali",
+        Arial,
+        sans-serif;
+}
+
+body{
+    padding:
+        env(safe-area-inset-top)
+        10px
+        env(safe-area-inset-bottom)
+        10px;
+}
+
+.app{
+    width:100%;
+    max-width:900px;
+    margin:auto;
+    padding:10px 0 30px;
+}
 
 
-self.addEventListener("install", event => {
+/* HEADER */
 
-    event.waitUntil(
+.header{
+    background:linear-gradient(
+        135deg,
+        #2563eb,
+        #1d4ed8
+    );
+    color:white;
+    border-radius:20px;
+    padding:22px 18px;
+    margin-bottom:14px;
+    box-shadow:
+        0 8px 24px rgba(37,99,235,.20);
+}
 
-        caches.open(CACHE_NAME)
-            .then(cache =>
-                cache.addAll(FILES)
-            )
-            .then(() =>
-                self.skipWaiting()
-            )
+.header-title{
+    font-size:29px;
+    font-weight:800;
+}
 
+.header-subtitle{
+    font-size:16px;
+    margin-top:6px;
+    opacity:.92;
+}
+
+
+/* SUMMARY */
+
+.summary{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+    margin-bottom:14px;
+}
+
+.summary-card{
+    background:white;
+    border:1px solid #e5eaf2;
+    border-radius:17px;
+    padding:15px 10px;
+    text-align:center;
+    box-shadow:0 3px 12px rgba(0,0,0,.06);
+}
+
+.summary-label{
+    font-size:16px;
+    font-weight:600;
+    color:#64748b;
+}
+
+.summary-number{
+    font-size:30px;
+    font-weight:800;
+    color:#1d4ed8;
+    margin-top:3px;
+}
+
+
+/* BUTTONS */
+
+.controls{
+    background:white;
+    border:1px solid #e5eaf2;
+    border-radius:18px;
+    padding:14px;
+    margin-bottom:14px;
+    box-shadow:0 3px 12px rgba(0,0,0,.06);
+}
+
+.control-title{
+    font-size:19px;
+    font-weight:800;
+    margin-bottom:10px;
+}
+
+.button-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+}
+
+.btn{
+    border:0;
+    min-height:52px;
+    border-radius:13px;
+    font-size:17px;
+    font-weight:800;
+}
+
+.backup-btn{
+    background:#0f766e;
+    color:white;
+}
+
+.restore-btn{
+    background:#7c3aed;
+    color:white;
+}
+
+.clear-btn{
+    width:100%;
+    margin-top:10px;
+    background:#fee2e2;
+    color:#b91c1c;
+}
+
+
+/* LIST */
+
+.list-card{
+    background:white;
+    border:1px solid #e5eaf2;
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:0 3px 12px rgba(0,0,0,.06);
+}
+
+.list-header{
+    padding:16px 14px;
+    border-bottom:1px solid #e5eaf2;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
+}
+
+.list-title{
+    font-size:22px;
+    font-weight:800;
+}
+
+.enter-badge{
+    background:#dbeafe;
+    color:#1d4ed8;
+    border:1px solid #93c5fd;
+    border-radius:999px;
+    padding:7px 12px;
+    font-size:14px;
+    font-weight:800;
+    white-space:nowrap;
+}
+
+
+/* TABLE */
+
+.table-wrap{
+    width:100%;
+    overflow-x:auto;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    table-layout:fixed;
+}
+
+th{
+    background:#eff6ff;
+    color:#1e3a8a;
+    font-size:16px;
+    font-weight:800;
+    padding:12px 7px;
+    border-bottom:1px solid #dbeafe;
+}
+
+td{
+    padding:7px;
+    border-bottom:1px solid #e5e7eb;
+}
+
+th:nth-child(1){
+    width:48%;
+}
+
+th:nth-child(2){
+    width:25%;
+}
+
+th:nth-child(3){
+    width:27%;
+}
+
+
+/* INPUT */
+
+.family-input,
+.member-input{
+    display:block;
+    width:100%;
+    height:52px;
+
+    border:2px solid #d7deea;
+    border-radius:11px;
+
+    background:#ffffff;
+
+    padding:8px 10px;
+
+    font-size:19px;
+    color:#111827;
+
+    outline:none;
+
+    -webkit-appearance:none;
+    appearance:none;
+
+    opacity:1;
+}
+
+.family-input:focus,
+.member-input:focus{
+    border-color:#2563eb;
+    box-shadow:
+        0 0 0 3px
+        rgba(37,99,235,.12);
+}
+
+.member-input{
+    text-align:center;
+    font-weight:700;
+}
+
+
+/* DELETE */
+
+.delete-btn{
+    width:100%;
+    min-height:48px;
+    border:0;
+    border-radius:11px;
+    background:#fee2e2;
+    color:#b91c1c;
+    font-size:15px;
+    font-weight:800;
+}
+
+.finish-btn{
+    width:100%;
+    min-height:48px;
+    border:0;
+    border-radius:11px;
+    background:#dcfce7;
+    color:#166534;
+    font-size:15px;
+    font-weight:800;
+}
+
+
+/* NEW ROW */
+
+.new-row td{
+    background:#f8fafc;
+}
+
+.new-row .family-input,
+.new-row .member-input{
+    border-color:#93c5fd;
+    background:#f8fbff;
+}
+
+
+/* FOOTER */
+
+.footer{
+    text-align:center;
+    color:#64748b;
+    font-size:14px;
+    padding:18px 5px;
+}
+
+
+/* HIDDEN FILE */
+
+#restoreFile{
+    display:none;
+}
+
+
+@media(max-width:480px){
+
+    .header-title{
+        font-size:26px;
+    }
+
+    .header-subtitle{
+        font-size:15px;
+    }
+
+    .list-header{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .family-input,
+    .member-input{
+        font-size:18px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+<div class="app">
+
+
+    <!-- HEADER -->
+
+    <div class="header">
+
+        <div class="header-title">
+            পরিবার হিসাব
+        </div>
+
+        <div class="header-subtitle">
+            পরিবার ও সদস্য সংখ্যা সংরক্ষণের সহজ অ্যাপ
+        </div>
+
+    </div>
+
+
+    <!-- SUMMARY -->
+
+    <div class="summary">
+
+        <div class="summary-card">
+
+            <div class="summary-label">
+                মোট পরিবার সংখ্যা
+            </div>
+
+            <div
+                id="totalFamilies"
+                class="summary-number"
+            >
+                0
+            </div>
+
+        </div>
+
+
+        <div class="summary-card">
+
+            <div class="summary-label">
+                মোট সদস্য সংখ্যা
+            </div>
+
+            <div
+                id="totalMembers"
+                class="summary-number"
+            >
+                0
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- BACKUP -->
+
+    <div class="controls">
+
+        <div class="control-title">
+            ডাটা সংরক্ষণ
+        </div>
+
+        <div class="button-row">
+
+            <button
+                id="backupBtn"
+                class="btn backup-btn"
+                type="button"
+            >
+                💾 ব্যাকআপ
+            </button>
+
+            <button
+                id="restoreBtn"
+                class="btn restore-btn"
+                type="button"
+            >
+                ♻️ রিস্টোর
+            </button>
+
+        </div>
+
+
+        <button
+            id="clearBtn"
+            class="btn clear-btn"
+            type="button"
+        >
+            🗑️ সব মুছুন
+        </button>
+
+
+        <input
+            id="restoreFile"
+            type="file"
+            accept=".json,application/json"
+        >
+
+    </div>
+
+
+    <!-- FAMILY LIST -->
+
+    <div class="list-card">
+
+        <div class="list-header">
+
+            <div class="list-title">
+                পরিবারের তালিকা
+            </div>
+
+            <div class="enter-badge">
+                ↵ Enter চাপুন
+            </div>
+
+        </div>
+
+
+        <div class="table-wrap">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            পরিবারের নাম
+                        </th>
+
+                        <th>
+                            সদস্য সংখ্যা
+                        </th>
+
+                        <th>
+                            কাজ
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody
+                    id="familyTableBody"
+                ></tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer">
+        তথ্য এই ফোনের ব্রাউজারে সংরক্ষিত থাকবে।
+    </div>
+
+
+</div>
+
+
+<script>
+
+
+/* =====================================================
+   DATA
+   ===================================================== */
+
+const STORAGE_KEY =
+    "poribarHisabFinalV1";
+
+let families = [];
+
+
+/* =====================================================
+   ELEMENTS
+   ===================================================== */
+
+const tableBody =
+    document.getElementById(
+        "familyTableBody"
     );
 
-});
-
-
-self.addEventListener("activate", event => {
-
-    event.waitUntil(
-
-        caches.keys()
-            .then(keys =>
-                Promise.all(
-                    keys
-                        .filter(
-                            key =>
-                                key !== CACHE_NAME
-                        )
-                        .map(
-                            key =>
-                                caches.delete(key)
-                        )
-                )
-            )
-            .then(() =>
-                self.clients.claim()
-            )
-
+const totalFamilies =
+    document.getElementById(
+        "totalFamilies"
     );
 
-});
+const totalMembers =
+    document.getElementById(
+        "totalMembers"
+    );
+
+const backupBtn =
+    document.getElementById(
+        "backupBtn"
+    );
+
+const restoreBtn =
+    document.getElementById(
+        "restoreBtn"
+    );
+
+const restoreFile =
+    document.getElementById(
+        "restoreFile"
+    );
+
+const clearBtn =
+    document.getElementById(
+        "clearBtn"
+    );
 
 
-self.addEventListener("fetch", event => {
+/* =====================================================
+   BANGLA NUMBER → ENGLISH NUMBER
+   ===================================================== */
+
+function convertNumbers(value){
+
+    const bangla =
+        "০১২৩৪৫৬৭৮৯";
+
+    const english =
+        "0123456789";
+
+    let result = "";
+
+    value = String(value || "");
+
+
+    for(let i=0;i<value.length;i++){
+
+        const char =
+            value.charAt(i);
+
+        const position =
+            bangla.indexOf(char);
+
+
+        if(position >= 0){
+
+            result +=
+                english.charAt(position);
+
+        }else if(
+            english.includes(char)
+        ){
+
+            result += char;
+
+        }
+
+    }
+
+
+    return result;
+
+}
+
+
+/* =====================================================
+   LOAD
+   ===================================================== */
+
+function loadData(){
+
+    try{
+
+        const saved =
+            localStorage.getItem(
+                STORAGE_KEY
+            );
+
+
+        if(!saved){
+
+            families = [];
+
+            return;
+
+        }
+
+
+        const data =
+            JSON.parse(saved);
+
+
+        if(!Array.isArray(data)){
+
+            families = [];
+
+            return;
+
+        }
+
+
+        families =
+            data.map(item => ({
+
+                name:
+                    String(
+                        item.name || ""
+                    ),
+
+                members:
+                    convertNumbers(
+                        item.members || ""
+                    )
+
+            }))
+            .filter(item =>
+                item.name.trim() !== ""
+            );
+
+
+    }catch(error){
+
+        console.log(error);
+
+        families = [];
+
+    }
+
+}
+
+
+/* =====================================================
+   SAVE
+   ===================================================== */
+
+function saveData(){
+
+    localStorage.setItem(
+        STORAGE_KEY,
+        JSON.stringify(families)
+    );
+
+}
+
+
+/* =====================================================
+   SUMMARY
+   ===================================================== */
+
+function updateSummary(){
+
+    let memberTotal = 0;
+
+
+    families.forEach(item => {
+
+        const number =
+            parseInt(
+                convertNumbers(
+                    item.members
+                ),
+                10
+            );
+
+
+        if(!isNaN(number)){
+
+            memberTotal += number;
+
+        }
+
+    });
+
+
+    totalFamilies.textContent =
+        families.length
+            .toLocaleString("bn-BD");
+
+
+    totalMembers.textContent =
+        memberTotal
+            .toLocaleString("bn-BD");
+
+}
+
+
+/* =====================================================
+   FOCUS
+   ===================================================== */
+
+function focusInput(input){
+
+    if(!input) return;
+
+
+    setTimeout(() => {
+
+        input.focus();
+
+        try{
+
+            input.setSelectionRange(
+                input.value.length,
+                input.value.length
+            );
+
+        }catch(error){}
+
+    },30);
+
+}
+
+
+/* =====================================================
+   CREATE INPUT
+   ===================================================== */
+
+function makeInput(
+    className,
+    value,
+    placeholder
+){
+
+    const input =
+        document.createElement(
+            "input"
+        );
+
+
+    /*
+      খুব গুরুত্বপূর্ণ:
+      number নয়।
+      text রাখা হয়েছে যাতে
+      iPhone Return কাজ করে।
+    */
+
+    input.type = "text";
+
+    input.className =
+        className;
+
+    input.value =
+        value || "";
+
+    input.placeholder =
+        placeholder;
+
+    input.autocomplete =
+        "off";
+
+    input.spellcheck =
+        false;
+
+    input.enterKeyHint =
+        className ===
+        "family-input"
+            ? "next"
+            : "done";
+
+
+    return input;
+
+}
+
+
+/* =====================================================
+   RENDER
+   ===================================================== */
+
+function render(){
+
+    tableBody.innerHTML = "";
+
+
+    families.forEach(
+        (family,index) => {
+
+
+            const tr =
+                document.createElement(
+                    "tr"
+                );
+
+
+            /* FAMILY */
+
+            const familyTd =
+                document.createElement(
+                    "td"
+                );
+
+
+            const familyInput =
+                makeInput(
+                    "family-input",
+                    family.name,
+                    "পরিবারের নাম"
+                );
+
+
+            familyInput.addEventListener(
+                "input",
+                function(){
+
+                    families[index].name =
+                        this.value;
+
+                    saveData();
+
+                }
+            );
+
+
+            familyInput.addEventListener(
+                "keydown",
+                function(event){
+
+                    if(
+                        event.key ===
+                        "Enter"
+                    ){
+
+                        event.preventDefault();
+
+
+                        const member =
+                            tr.querySelector(
+                                ".member-input"
+                            );
+
+
+                        focusInput(member);
+
+                    }
+
+                }
+            );
+
+
+            familyTd.appendChild(
+                familyInput
+            );
+
+
+            /* MEMBER */
+
+            const memberTd =
+                document.createElement(
+                    "td"
+                );
+
+
+            const memberInput =
+                makeInput(
+                    "member-input",
+                    family.members,
+                    "সংখ্যা"
+                );
+
+
+            /*
+              এখানে input event-এ
+              value মুছে দেওয়া হচ্ছে না।
+            */
+
+            memberInput.addEventListener(
+                "input",
+                function(){
+
+                    /*
+                      যা টাইপ করবেন
+                      সেটাই আপাতত থাকবে।
+                    */
+
+                    families[index].members =
+                        this.value;
+
+                    saveData();
+
+                }
+            );
+
+
+            memberInput.addEventListener(
+                "keydown",
+                function(event){
+
+                    if(
+                        event.key ===
+                        "Enter"
+                    ){
+
+                        event.preventDefault();
+
+
+                        const clean =
+                            convertNumbers(
+                                this.value
+                            );
+
+
+                        families[index].members =
+                            clean;
+
+
+                        this.value =
+                            clean;
+
+
+                        saveData();
+
+                        updateSummary();
+
+
+                        addNewRow();
+
+                    }
+
+                }
+            );
+
+
+            memberTd.appendChild(
+                memberInput
+            );
+
+
+            /* DELETE */
+
+            const actionTd =
+                document.createElement(
+                    "td"
+                );
+
+
+            const deleteBtn =
+                document.createElement(
+                    "button"
+                );
+
+
+            deleteBtn.type =
+                "button";
+
+            deleteBtn.className =
+                "delete-btn";
+
+            deleteBtn.textContent =
+                "মুছুন";
+
+
+            deleteBtn.addEventListener(
+                "click",
+                function(){
+
+                    families.splice(
+                        index,
+                        1
+                    );
+
+                    saveData();
+
+                    render();
+
+                }
+            );
+
+
+            actionTd.appendChild(
+                deleteBtn
+            );
+
+
+            tr.appendChild(
+                familyTd
+            );
+
+            tr.appendChild(
+                memberTd
+            );
+
+            tr.appendChild(
+                actionTd
+            );
+
+
+            tableBody.appendChild(
+                tr
+            );
+
+        }
+    );
+
+
+    createNewRow();
+
+    updateSummary();
+
+}
+
+
+/* =====================================================
+   NEW ROW
+   ===================================================== */
+
+function createNewRow(){
+
+    const tr =
+        document.createElement(
+            "tr"
+        );
+
+
+    tr.className =
+        "new-row";
+
+
+    /* FAMILY */
+
+    const familyTd =
+        document.createElement(
+            "td"
+        );
+
+
+    const familyInput =
+        makeInput(
+            "family-input",
+            "",
+            "পরিবারের নাম লিখুন"
+        );
+
+
+    familyInput.id =
+        "newFamily";
+
+
+    familyInput.addEventListener(
+        "keydown",
+        function(event){
+
+            if(
+                event.key ===
+                "Enter"
+            ){
+
+                event.preventDefault();
+
+
+                const member =
+                    tr.querySelector(
+                        ".member-input"
+                    );
+
+
+                focusInput(member);
+
+            }
+
+        }
+    );
+
+
+    familyTd.appendChild(
+        familyInput
+    );
+
+
+    /* MEMBER */
+
+    const memberTd =
+        document.createElement(
+            "td"
+        );
+
+
+    const memberInput =
+        makeInput(
+            "member-input",
+            "",
+            "সংখ্যা লিখুন"
+        );
+
+
+    memberInput.id =
+        "newMember";
+
+
+    /*
+      কোনো filtering নেই।
+      তাই iPhone-এ যা টাইপ করবেন
+      সেটাই সঙ্গে সঙ্গে দেখা যাবে।
+    */
+
+    memberInput.addEventListener(
+        "keydown",
+        function(event){
+
+            if(
+                event.key ===
+                "Enter"
+            ){
+
+                event.preventDefault();
+
+
+                finishNewRow();
+
+            }
+
+        }
+    );
+
+
+    memberTd.appendChild(
+        memberInput
+    );
+
+
+    /* BUTTON */
+
+    const actionTd =
+        document.createElement(
+            "td"
+        );
+
+
+    const finishBtn =
+        document.createElement(
+            "button"
+        );
+
+
+    finishBtn.type =
+        "button";
+
+    finishBtn.className =
+        "finish-btn";
+
+    finishBtn.textContent =
+        "✓ শেষ";
+
+
+    finishBtn.addEventListener(
+        "click",
+        finishNewRow
+    );
+
+
+    actionTd.appendChild(
+        finishBtn
+    );
+
+
+    tr.appendChild(
+        familyTd
+    );
+
+    tr.appendChild(
+        memberTd
+    );
+
+    tr.appendChild(
+        actionTd
+    );
+
+
+    tableBody.appendChild(
+        tr
+    );
+
+}
+
+
+/* =====================================================
+   FINISH NEW FAMILY
+   ===================================================== */
+
+function finishNewRow(){
+
+    const familyInput =
+        document.getElementById(
+            "newFamily"
+        );
+
+    const memberInput =
+        document.getElementById(
+            "newMember"
+        );
+
 
     if(
-        event.request.method !== "GET"
+        !familyInput ||
+        !memberInput
     ){
 
         return;
@@ -63,35 +1271,24 @@ self.addEventListener("fetch", event => {
     }
 
 
-    if(
-        event.request.mode === "navigate"
-    ){
+    const name =
+        familyInput.value.trim();
 
-        event.respondWith(
 
-            fetch(event.request)
-                .then(response => {
+    const members =
+        convertNumbers(
+            memberInput.value
+        );
 
-                    const copy =
-                        response.clone();
 
-                    caches.open(CACHE_NAME)
-                        .then(cache =>
-                            cache.put(
-                                "./index.html",
-                                copy
-                            )
-                        );
+    if(name === ""){
 
-                    return response;
+        alert(
+            "আগে পরিবারের নাম লিখুন।"
+        );
 
-                })
-                .catch(() =>
-                    caches.match(
-                        "./index.html"
-                    )
-                )
-
+        focusInput(
+            familyInput
         );
 
         return;
@@ -99,22 +1296,364 @@ self.addEventListener("fetch", event => {
     }
 
 
-    event.respondWith(
+    families.push({
 
-        caches.match(event.request)
-            .then(cached => {
+        name:name,
 
-                if(cached){
+        members:members
 
-                    return cached;
+    });
+
+
+    saveData();
+
+    render();
+
+
+    setTimeout(
+        () => {
+
+            const next =
+                document.getElementById(
+                    "newFamily"
+                );
+
+            focusInput(next);
+
+        },
+        50
+    );
+
+}
+
+
+/* =====================================================
+   BACKUP
+   ===================================================== */
+
+function backupData(){
+
+    const backup = {
+
+        app:
+            "পরিবার হিসাব",
+
+        version:
+            1,
+
+        backupDate:
+            new Date().toISOString(),
+
+        families:
+            families
+
+    };
+
+
+    const blob =
+        new Blob(
+            [
+                JSON.stringify(
+                    backup,
+                    null,
+                    2
+                )
+            ],
+            {
+                type:
+                    "application/json"
+            }
+        );
+
+
+    const url =
+        URL.createObjectURL(
+            blob
+        );
+
+
+    const now =
+        new Date();
+
+
+    const filename =
+        "পরিবার-হিসাব-" +
+        now.getFullYear() +
+        "-" +
+        String(
+            now.getMonth()+1
+        ).padStart(2,"0") +
+        "-" +
+        String(
+            now.getDate()
+        ).padStart(2,"0") +
+        ".json";
+
+
+    const link =
+        document.createElement(
+            "a"
+        );
+
+
+    link.href =
+        url;
+
+    link.download =
+        filename;
+
+
+    document.body.appendChild(
+        link
+    );
+
+
+    link.click();
+
+
+    link.remove();
+
+
+    setTimeout(
+        () => {
+
+            URL.revokeObjectURL(
+                url
+            );
+
+        },
+        1000
+    );
+
+}
+
+
+/* =====================================================
+   RESTORE
+   ===================================================== */
+
+restoreBtn.addEventListener(
+    "click",
+    function(){
+
+        restoreFile.value = "";
+
+        restoreFile.click();
+
+    }
+);
+
+
+restoreFile.addEventListener(
+    "change",
+    function(){
+
+        const file =
+            this.files &&
+            this.files[0];
+
+
+        if(!file){
+
+            return;
+
+        }
+
+
+        const reader =
+            new FileReader();
+
+
+        reader.onload =
+            function(event){
+
+                try{
+
+                    const backup =
+                        JSON.parse(
+                            event.target.result
+                        );
+
+
+                    let data = null;
+
+
+                    if(
+                        backup &&
+                        Array.isArray(
+                            backup.families
+                        )
+                    ){
+
+                        data =
+                            backup.families;
+
+                    }
+
+
+                    if(!data){
+
+                        throw new Error(
+                            "Invalid backup"
+                        );
+
+                    }
+
+
+                    if(
+                        !confirm(
+                            "বর্তমান তালিকা পরিবর্তন করে এই Backup রিস্টোর করবেন?"
+                        )
+                    ){
+
+                        return;
+
+                    }
+
+
+                    families =
+                        data
+                            .map(item => ({
+
+                                name:
+                                    String(
+                                        item.name || ""
+                                    ),
+
+                                members:
+                                    convertNumbers(
+                                        item.members || ""
+                                    )
+
+                            }))
+                            .filter(
+                                item =>
+                                    item.name.trim() !== ""
+                            );
+
+
+                    saveData();
+
+                    render();
+
+                    updateSummary();
+
+
+                    alert(
+                        "Backup সফলভাবে রিস্টোর হয়েছে।"
+                    );
+
+                }catch(error){
+
+                    alert(
+                        "এই Backup ফাইলটি সঠিক নয়।"
+                    );
 
                 }
 
+            };
 
-                return fetch(event.request);
 
-            })
+        reader.readAsText(file);
 
+    }
+);
+
+
+/* =====================================================
+   CLEAR
+   ===================================================== */
+
+clearBtn.addEventListener(
+    "click",
+    function(){
+
+        if(
+            families.length === 0
+        ){
+
+            return;
+
+        }
+
+
+        if(
+            !confirm(
+                "সব পরিবারের তালিকা মুছে ফেলবেন?"
+            )
+        ){
+
+            return;
+
+        }
+
+
+        families = [];
+
+        saveData();
+
+        render();
+
+        updateSummary();
+
+
+        setTimeout(
+            () => {
+
+                focusInput(
+                    document.getElementById(
+                        "newFamily"
+                    )
+                );
+
+            },
+            50
+        );
+
+    }
+);
+
+
+/* =====================================================
+   START
+   ===================================================== */
+
+loadData();
+
+render();
+
+updateSummary();
+
+
+/* =====================================================
+   SERVICE WORKER
+   ===================================================== */
+
+if(
+    "serviceWorker" in navigator
+){
+
+    window.addEventListener(
+        "load",
+        function(){
+
+            navigator.serviceWorker
+                .register(
+                    "./service-worker.js"
+                )
+                .catch(
+                    error =>
+                        console.log(
+                            error
+                        )
+                );
+
+        }
     );
 
-});
+}
+
+</script>
+
+</body>
+</html>
