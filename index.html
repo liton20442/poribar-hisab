@@ -1345,55 +1345,32 @@ function createBlankRow(){
 function saveNewFamily(){
 
     const familyInput =
-        document.getElementById(
-            "newFamilyInput"
-        );
+        document.getElementById("newFamilyInput");
 
     const memberInput =
-        document.getElementById(
-            "newMemberInput"
-        );
+        document.getElementById("newMemberInput");
 
-
-    if(
-        !familyInput ||
-        !memberInput
-    ){
-
+    if(!familyInput || !memberInput){
         return;
-
     }
-
 
     const name =
         familyInput.value.trim();
 
-
     const members =
-        toEnglishNumbers(
-            memberInput.value
-        );
-
+        toEnglishNumbers(memberInput.value);
 
     if(name === ""){
 
-        focusInput(
-            familyInput
-        );
+        familyInput.focus();
 
         return;
-
     }
 
-
     families.push({
-
-        name:name,
-
-        members:members
-
+        name: name,
+        members: members
     });
-
 
     saveData();
 
@@ -1402,15 +1379,33 @@ function saveNewFamily(){
     updateSummary();
 
 
-    /*
-      সবচেয়ে গুরুত্বপূর্ণ:
-      নতুন row তৈরি হওয়ার পর
-      নতুন পরিবারের ঘরে cursor।
-    */
+    /* নতুন রো তৈরি হওয়ার পর
+       সরাসরি নতুন পরিবারের ঘরে cursor */
 
-    focusNewFamily();
+    const newInput =
+        document.getElementById("newFamilyInput");
+
+    if(newInput){
+
+        newInput.focus();
+
+        newInput.click();
+
+        try{
+
+            newInput.setSelectionRange(
+                newInput.value.length,
+                newInput.value.length
+            );
+
+        }catch(error){}
+
+    }
 
 }
+
+    
+    
 
 
 /* =====================================================
