@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="bn">
+
 <head>
 
 <meta charset="UTF-8">
@@ -7,7 +8,8 @@
 <meta name="viewport"
       content="width=device-width,
                initial-scale=1.0,
-               maximum-scale=1.0">
+               maximum-scale=1.0,
+               user-scalable=no">
 
 <meta name="theme-color" content="#2563eb">
 
@@ -16,13 +18,24 @@
 
 <style>
 
+/* =====================================================
+   BASIC
+===================================================== */
+
 *{
   box-sizing:border-box;
+  -webkit-tap-highlight-color:transparent;
 }
 
-
+html,
 body{
   margin:0;
+  padding:0;
+  width:100%;
+  min-height:100%;
+}
+
+body{
 
   font-family:
     -apple-system,
@@ -31,149 +44,390 @@ body{
     Arial,
     sans-serif;
 
-  background:#f3f6fa;
+  background:
+    linear-gradient(
+      180deg,
+      #eef5ff 0%,
+      #f6f8fc 38%,
+      #f8fafc 100%
+    );
 
-  color:#1f2937;
+  color:#1e293b;
+
+  -webkit-font-smoothing:antialiased;
 }
 
 
-.container{
-  max-width:700px;
+/* =====================================================
+   APP CONTAINER
+===================================================== */
 
-  margin:auto;
-
-  padding:12px;
+.app{
+  width:100%;
+  max-width:760px;
+  margin:0 auto;
+  min-height:100vh;
 }
 
 
-/* =========================
-   TITLE
-========================= */
+/* =====================================================
+   HEADER
+===================================================== */
 
-h1{
-  text-align:center;
+.header{
 
-  color:#2563eb;
+  background:
+    linear-gradient(
+      135deg,
+      #2563eb,
+      #1d4ed8
+    );
 
-  margin:6px 0 14px;
+  color:white;
 
-  font-size:28px;
-}
+  padding:
+    18px
+    16px
+    20px;
 
-
-/* =========================
-   CARD
-========================= */
-
-.card{
-  background:white;
-
-  border-radius:14px;
-
-  padding:12px;
-
-  margin-bottom:14px;
+  border-radius:
+    0
+    0
+    24px
+    24px;
 
   box-shadow:
-    0 2px 8px rgba(0,0,0,.08);
+    0 6px 20px
+    rgba(37,99,235,.22);
+
+  position:relative;
 }
 
 
-/* =========================
-   SUMMARY
-========================= */
+.header-top{
 
-.summary{
-  display:grid;
+  display:flex;
 
-  grid-template-columns:1fr 1fr;
+  align-items:center;
 
-  gap:10px;
+  justify-content:space-between;
+
+  gap:12px;
 }
 
 
-.summary-box{
-  background:#eff6ff;
+.logo-area{
 
-  border-radius:12px;
+  display:flex;
 
-  padding:12px 6px;
+  align-items:center;
 
-  text-align:center;
+  gap:11px;
 }
 
 
-.summary-title{
-  font-size:15px;
+.logo{
 
-  color:#475569;
+  width:44px;
+  height:44px;
 
-  margin-bottom:3px;
+  background:
+    rgba(255,255,255,.18);
+
+  border:
+    1px solid
+    rgba(255,255,255,.28);
+
+  border-radius:13px;
+
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
+  font-size:24px;
+
+  box-shadow:
+    inset 0 1px 1px
+    rgba(255,255,255,.15);
 }
 
 
-.summary-number{
-  font-size:26px;
+.title-area h1{
+
+  margin:0;
+
+  font-size:24px;
 
   font-weight:700;
 
-  color:#2563eb;
+  letter-spacing:.1px;
 }
 
 
-/* =========================
-   TOP CLEAR BUTTON
-========================= */
+.title-area p{
 
-.top-actions{
-  text-align:right;
+  margin:3px 0 0;
 
-  margin-bottom:8px;
+  font-size:13px;
+
+  color:
+    rgba(255,255,255,.82);
 }
 
 
 .clear-btn{
-  background:#dc2626;
-
-  color:white;
 
   border:0;
 
-  border-radius:8px;
+  background:
+    rgba(255,255,255,.15);
 
-  padding:9px 15px;
+  color:white;
 
-  font-size:15px;
+  border:
+    1px solid
+    rgba(255,255,255,.25);
+
+  border-radius:10px;
+
+  padding:9px 12px;
+
+  font-size:13px;
 
   font-weight:600;
 
   cursor:pointer;
+
+  white-space:nowrap;
+
+  box-shadow:
+    0 2px 6px
+    rgba(0,0,0,.08);
 }
 
 
 .clear-btn:active{
-  transform:scale(.97);
+
+  transform:scale(.96);
+
+  background:
+    rgba(255,255,255,.24);
 }
 
 
-/* =========================
-   TABLE
-========================= */
+/* =====================================================
+   CONTENT
+===================================================== */
 
-.table-wrapper{
-  width:100%;
+.content{
+
+  padding:
+    14px
+    12px
+    30px;
+}
+
+
+/* =====================================================
+   SUMMARY
+===================================================== */
+
+.summary{
+
+  display:grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap:11px;
+
+  margin-bottom:14px;
+}
+
+
+.summary-card{
+
+  background:white;
+
+  border-radius:16px;
+
+  padding:
+    14px
+    12px;
+
+  display:flex;
+
+  align-items:center;
+
+  gap:10px;
+
+  box-shadow:
+    0 3px 12px
+    rgba(15,23,42,.07);
+
+  border:
+    1px solid
+    #e7edf5;
+}
+
+
+.summary-icon{
+
+  width:40px;
+  height:40px;
+
+  flex-shrink:0;
+
+  border-radius:11px;
+
+  background:#eff6ff;
+
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
+  font-size:20px;
+}
+
+
+.summary-info{
+
+  min-width:0;
+}
+
+
+.summary-label{
+
+  font-size:12px;
+
+  color:#64748b;
+
+  margin-bottom:2px;
+
+  white-space:nowrap;
+}
+
+
+.summary-number{
+
+  font-size:23px;
+
+  line-height:1.1;
+
+  font-weight:750;
+
+  color:#1d4ed8;
+}
+
+
+/* =====================================================
+   TABLE CARD
+===================================================== */
+
+.table-card{
+
+  background:white;
+
+  border-radius:18px;
 
   overflow:hidden;
 
+  box-shadow:
+    0 4px 16px
+    rgba(15,23,42,.08);
+
+  border:
+    1px solid
+    #e5eaf1;
+}
+
+
+/* =====================================================
+   TABLE TITLE BAR
+===================================================== */
+
+.table-title{
+
+  padding:
+    13px
+    14px;
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-between;
+
+  border-bottom:
+    1px solid
+    #e8edf3;
+}
+
+
+.table-title-left{
+
+  display:flex;
+
+  align-items:center;
+
+  gap:9px;
+}
+
+
+.table-title-icon{
+
+  width:34px;
+  height:34px;
+
   border-radius:10px;
 
-  border:1px solid #cbd5e1;
+  background:#eff6ff;
 
-  background:white;
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
+  font-size:17px;
+}
+
+
+.table-title-text{
+
+  font-size:16px;
+
+  font-weight:700;
+
+  color:#1e293b;
+}
+
+
+.table-hint{
+
+  font-size:11px;
+
+  color:#94a3b8;
+
+  text-align:right;
+}
+
+
+/* =====================================================
+   TABLE
+===================================================== */
+
+.table-wrapper{
+
+  width:100%;
+
+  overflow-x:hidden;
 }
 
 
 table{
+
   width:100%;
 
   border-collapse:collapse;
@@ -183,45 +437,56 @@ table{
 
 
 thead th{
-  background:#2563eb;
 
-  color:white;
+  background:#f8fafc;
 
-  font-size:16px;
+  color:#475569;
 
-  padding:11px 6px;
+  font-size:13px;
 
-  border-right:1px solid
-              rgba(255,255,255,.3);
-}
+  font-weight:700;
 
+  padding:
+    11px
+    7px;
 
-thead th:last-child{
-  border-right:0;
+  text-align:left;
+
+  border-bottom:
+    1px solid
+    #dfe6ee;
 }
 
 
 thead th:nth-child(1){
-  width:46%;
+  width:49%;
 }
-
 
 thead th:nth-child(2){
-  width:27%;
+  width:25%;
+  text-align:center;
 }
-
 
 thead th:nth-child(3){
-  width:27%;
+  width:26%;
+  text-align:center;
 }
 
 
-/* =========================
-   ROW
-========================= */
+/* =====================================================
+   TABLE ROW
+===================================================== */
 
 tbody tr{
-  border-bottom:1px solid #e2e8f0;
+
+  border-bottom:
+    1px solid
+    #edf1f5;
+
+  background:white;
+
+  transition:
+    background .15s ease;
 }
 
 
@@ -230,14 +495,23 @@ tbody tr:last-child{
 }
 
 
-/* =========================
+tbody tr:focus-within{
+
+  background:#f8fbff;
+}
+
+
+/* =====================================================
    CELLS
-========================= */
+===================================================== */
 
 td{
+
   padding:0;
 
-  border-right:1px solid #e2e8f0;
+  border-right:
+    1px solid
+    #edf1f5;
 
   vertical-align:middle;
 }
@@ -248,12 +522,15 @@ td:last-child{
 }
 
 
-/* =========================
+/* =====================================================
    INPUT
-========================= */
+===================================================== */
 
 td input{
+
   width:100%;
+
+  height:48px;
 
   border:0;
 
@@ -261,134 +538,296 @@ td input{
 
   background:transparent;
 
-  padding:11px 8px;
+  color:#1e293b;
 
-  font-size:16px;
+  padding:
+    10px
+    9px;
 
   font-family:inherit;
 
-  color:#1f2937;
+  font-size:16px;
+
+  font-weight:500;
+
+  border-radius:0;
+
+  appearance:none;
+
+  -webkit-appearance:none;
+}
+
+
+td input::placeholder{
+
+  color:#a3afbf;
+
+  font-weight:400;
 }
 
 
 td input:focus{
+
   background:#eff6ff;
 
   box-shadow:
-    inset 0 0 0 2px #2563eb;
+    inset 0 0 0 2px
+    #3b82f6;
 }
 
-
-/* সদস্য সংখ্যা */
 
 .member-input{
+
   text-align:center;
 }
 
 
-/* =========================
+/* =====================================================
    DELETE BUTTON
-========================= */
+===================================================== */
 
 .delete-cell{
+
   text-align:center;
 
-  padding:4px;
+  padding:5px;
 }
 
 
 .delete-btn{
+
+  min-width:58px;
+
+  height:34px;
+
   border:0;
 
-  background:#dc2626;
+  border-radius:8px;
 
-  color:white;
+  background:#fee2e2;
 
-  border-radius:7px;
+  color:#dc2626;
 
-  padding:7px 10px;
+  font-size:12px;
 
-  font-size:14px;
+  font-weight:700;
 
   cursor:pointer;
+
+  transition:
+    all .15s ease;
 }
 
 
 .delete-btn:active{
-  transform:scale(.95);
+
+  transform:scale(.94);
+
+  background:#fecaca;
 }
 
 
-/* =========================
-   NEW ROW
-========================= */
+/* =====================================================
+   EMPTY / NEW ROW
+===================================================== */
+
+.new-row{
+
+  background:#fbfdff;
+}
+
 
 .new-row td{
-  background:#f8fafc;
+
+  border-top:
+    1px dashed
+    #dbe4ef;
 }
 
 
 .new-row input{
+
   color:#64748b;
 }
 
 
 .new-row input:focus{
-  color:#1f2937;
+
+  color:#1e293b;
 }
 
 
-/* =========================
-   MOBILE
-========================= */
+/* =====================================================
+   FOOTER
+===================================================== */
+
+.footer{
+
+  text-align:center;
+
+  padding:
+    14px 10px
+    4px;
+
+  color:#94a3b8;
+
+  font-size:11px;
+}
+
+
+/* =====================================================
+   SMALL SCREEN
+===================================================== */
 
 @media(max-width:480px){
 
-  .container{
-    padding:8px;
+  .header{
+
+    padding:
+      16px
+      12px
+      18px;
+
+    border-radius:
+      0
+      0
+      20px
+      20px;
   }
 
 
-  h1{
-    font-size:25px;
+  .logo{
 
-    margin-bottom:12px;
+    width:40px;
+    height:40px;
+
+    font-size:21px;
   }
 
 
-  .summary-box{
-    padding:11px 4px;
+  .title-area h1{
+
+    font-size:21px;
   }
 
 
-  .summary-title{
-    font-size:14px;
+  .title-area p{
+
+    font-size:11px;
+  }
+
+
+  .clear-btn{
+
+    padding:
+      8px 10px;
+
+    font-size:12px;
+  }
+
+
+  .content{
+
+    padding:
+      11px
+      8px
+      25px;
+  }
+
+
+  .summary{
+
+    gap:8px;
+  }
+
+
+  .summary-card{
+
+    padding:
+      12px 9px;
+
+    border-radius:14px;
+
+    gap:8px;
+  }
+
+
+  .summary-icon{
+
+    width:34px;
+    height:34px;
+
+    font-size:17px;
+  }
+
+
+  .summary-label{
+
+    font-size:11px;
   }
 
 
   .summary-number{
-    font-size:24px;
+
+    font-size:21px;
+  }
+
+
+  .table-card{
+
+    border-radius:15px;
+  }
+
+
+  .table-title{
+
+    padding:
+      11px;
+  }
+
+
+  .table-title-text{
+
+    font-size:15px;
+  }
+
+
+  .table-hint{
+
+    font-size:10px;
   }
 
 
   thead th{
-    font-size:15px;
 
-    padding:10px 4px;
+    font-size:12px;
+
+    padding:
+      10px 5px;
   }
 
 
   td input{
-    font-size:16px;
 
-    padding:10px 6px;
+    height:46px;
+
+    font-size:15px;
+
+    padding:
+      9px 7px;
   }
 
 
   .delete-btn{
-    padding:6px 8px;
 
-    font-size:13px;
+    min-width:52px;
+
+    height:32px;
+
+    font-size:11px;
+
+    padding:
+      0 5px;
   }
 
 }
@@ -401,116 +840,202 @@ td input:focus{
 <body>
 
 
-<div class="container">
+<div class="app">
 
 
-  <h1>পরিবার হিসাব</h1>
+  <!-- =================================================
+       HEADER
+  ================================================== -->
+
+  <header class="header">
+
+    <div class="header-top">
 
 
-  <!-- =========================
-       SUMMARY
-  ========================== -->
+      <div class="logo-area">
 
-  <div class="card">
-
-    <div class="summary">
-
-
-      <div class="summary-box">
-
-        <div class="summary-title">
-          মোট পরিবার
+        <div class="logo">
+          🏠
         </div>
 
-        <div
-          class="summary-number"
-          id="totalFamilies">
-          0
-        </div>
 
-      </div>
+        <div class="title-area">
 
+          <h1>
+            পরিবার হিসাব
+          </h1>
 
-      <div class="summary-box">
+          <p>
+            পরিবারের সহজ ও দ্রুত হিসাব
+          </p>
 
-        <div class="summary-title">
-          মোট সদস্য
-        </div>
-
-        <div
-          class="summary-number"
-          id="totalMembers">
-          0
         </div>
 
       </div>
 
-
-    </div>
-
-  </div>
-
-
-
-  <!-- =========================
-       TABLE
-  ========================== -->
-
-  <div class="card">
-
-
-    <!-- CLEAR BUTTON -->
-
-    <div class="top-actions">
 
       <button
         class="clear-btn"
         onclick="clearAll()">
 
-        Clear
+        Clear All
 
       </button>
 
-    </div>
-
-
-    <div class="table-wrapper">
-
-      <table>
-
-
-        <thead>
-
-          <tr>
-
-            <th>
-              পরিবারের নাম
-            </th>
-
-            <th>
-              সদস্য সংখ্যা
-            </th>
-
-            <th>
-              Delete
-            </th>
-
-          </tr>
-
-        </thead>
-
-
-        <tbody id="familyTableBody">
-
-        </tbody>
-
-
-      </table>
 
     </div>
 
+  </header>
 
-  </div>
+
+
+  <!-- =================================================
+       CONTENT
+  ================================================== -->
+
+  <main class="content">
+
+
+    <!-- =================================================
+         SUMMARY
+    ================================================== -->
+
+    <section class="summary">
+
+
+      <div class="summary-card">
+
+        <div class="summary-icon">
+          👨‍👩‍👧‍👦
+        </div>
+
+
+        <div class="summary-info">
+
+          <div class="summary-label">
+            মোট পরিবার
+          </div>
+
+          <div
+            class="summary-number"
+            id="totalFamilies">
+            0
+          </div>
+
+        </div>
+
+      </div>
+
+
+
+      <div class="summary-card">
+
+        <div class="summary-icon">
+          👥
+        </div>
+
+
+        <div class="summary-info">
+
+          <div class="summary-label">
+            মোট সদস্য
+          </div>
+
+          <div
+            class="summary-number"
+            id="totalMembers">
+            0
+          </div>
+
+        </div>
+
+      </div>
+
+
+    </section>
+
+
+
+    <!-- =================================================
+         TABLE
+    ================================================== -->
+
+    <section class="table-card">
+
+
+      <div class="table-title">
+
+
+        <div class="table-title-left">
+
+          <div class="table-title-icon">
+            📋
+          </div>
+
+          <div class="table-title-text">
+            পরিবারের তালিকা
+          </div>
+
+        </div>
+
+
+        <div class="table-hint">
+          Enter চাপুন
+        </div>
+
+
+      </div>
+
+
+
+      <div class="table-wrapper">
+
+
+        <table>
+
+
+          <thead>
+
+            <tr>
+
+              <th>
+                পরিবারের নাম
+              </th>
+
+              <th>
+                সদস্য
+              </th>
+
+              <th>
+                কাজ
+              </th>
+
+            </tr>
+
+          </thead>
+
+
+          <tbody
+            id="familyTableBody">
+          </tbody>
+
+
+        </table>
+
+
+      </div>
+
+
+    </section>
+
+
+
+    <div class="footer">
+      তথ্য স্বয়ংক্রিয়ভাবে সংরক্ষিত হয়
+    </div>
+
+
+  </main>
 
 
 </div>
@@ -554,17 +1079,30 @@ function loadData(){
 
       if(Array.isArray(data)){
 
-        families = data;
+        families =
+          data
+          .filter(function(item){
 
-      }else{
+            return item &&
+                   typeof item === "object";
 
-        families = [];
+          })
+          .map(function(item){
+
+            return {
+
+              name:
+                item.name || "",
+
+              members:
+                item.members ??
+                ""
+
+            };
+
+          });
 
       }
-
-    }else{
-
-      families = [];
 
     }
 
@@ -582,14 +1120,17 @@ function loadData(){
 
 
 /* =====================================================
-   SAVE DATA
+   SAVE
 ===================================================== */
 
 function saveData(){
 
   localStorage.setItem(
+
     STORAGE_KEY,
+
     JSON.stringify(families)
+
   );
 
 }
@@ -649,7 +1190,7 @@ function updateMembers(
 
 
 /* =====================================================
-   ENTER FROM FAMILY NAME
+   NAME ENTER
 ===================================================== */
 
 function nameEnter(
@@ -665,11 +1206,6 @@ function nameEnter(
   event.preventDefault();
 
 
-  /*
-    পরিবারের নামের পরে
-    ডান পাশের সদস্য সংখ্যা ঘরে যাবে
-  */
-
   const memberInputs =
     document.querySelectorAll(
       ".member-input"
@@ -680,8 +1216,6 @@ function nameEnter(
 
     memberInputs[index].focus();
 
-    return;
-
   }
 
 }
@@ -689,7 +1223,7 @@ function nameEnter(
 
 
 /* =====================================================
-   ENTER FROM MEMBER COUNT
+   MEMBER ENTER
 ===================================================== */
 
 function memberEnter(
@@ -705,28 +1239,24 @@ function memberEnter(
   event.preventDefault();
 
 
-  /*
-    সদস্য সংখ্যা দেওয়ার পরে
-    নতুন Row তৈরি হবে।
-  */
+  if(!families[index]){
+    return;
+  }
+
 
   const name =
-    families[index]
-    ? String(
-        families[index].name || ""
-      ).trim()
-    : "";
+    String(
+      families[index].name || ""
+    ).trim();
 
 
   const members =
-    families[index]
-    ? families[index].members
-    : "";
+    families[index].members;
 
 
   /*
-    নাম এবং সদস্য সংখ্যা দুটোই
-    না থাকলে নতুন Row তৈরি হবে না।
+    নাম না থাকলে
+    নামের ঘরে ফিরে যাবে
   */
 
   if(!name){
@@ -748,6 +1278,11 @@ function memberEnter(
   }
 
 
+  /*
+    সদস্য সংখ্যা না থাকলে
+    একই ঘরে থাকবে
+  */
+
   if(
     members === "" ||
     members === null ||
@@ -760,7 +1295,7 @@ function memberEnter(
 
 
   /*
-    নতুন পরিবার যোগ
+    নতুন Row
   */
 
   families.push({
@@ -778,8 +1313,8 @@ function memberEnter(
 
 
   /*
-    নতুন Row-এর পরিবারের নামের
-    ঘরে কার্সর
+    নতুন Row-এর নামের ঘরে
+    কার্সর যাবে
   */
 
   setTimeout(function(){
@@ -798,14 +1333,14 @@ function memberEnter(
 
     }
 
-  },50);
+  },30);
 
 }
 
 
 
 /* =====================================================
-   DELETE FAMILY
+   DELETE
 ===================================================== */
 
 function deleteFamily(index){
@@ -840,20 +1375,31 @@ function deleteFamily(index){
 
 function clearAll(){
 
-  if(families.length === 0){
+  const hasData =
+    families.some(function(item){
+
+      return (
+        String(item.name || "").trim() !== "" ||
+        String(item.members || "").trim() !== ""
+      );
+
+    });
+
+
+  if(!hasData){
 
     return;
 
   }
 
 
-  const confirmClear =
+  const confirmed =
     confirm(
-      "সমস্ত পরিবারের তথ্য মুছে যাবে।\n\nআপনি কি নিশ্চিত?"
+      "সব পরিবারের তথ্য মুছে যাবে।\n\nআপনি কি নিশ্চিত?"
     );
 
 
-  if(!confirmClear){
+  if(!confirmed){
 
     return;
 
@@ -866,6 +1412,113 @@ function clearAll(){
   saveData();
 
   render();
+
+}
+
+
+
+/* =====================================================
+   CREATE INPUT
+===================================================== */
+
+function createInput(
+  type,
+  index,
+  value
+){
+
+  const input =
+    document.createElement(
+      "input"
+    );
+
+
+  if(type === "name"){
+
+    input.type = "text";
+
+    input.className =
+      "family-name-input";
+
+    input.placeholder =
+      "পরিবারের নাম";
+
+    input.value =
+      value || "";
+
+
+    input.autocomplete =
+      "off";
+
+
+    input.oninput =
+      function(){
+
+        updateName(
+          index,
+          this.value
+        );
+
+      };
+
+
+    input.onkeydown =
+      function(event){
+
+        nameEnter(
+          event,
+          index
+        );
+
+      };
+
+  }
+
+
+  if(type === "member"){
+
+    input.type = "number";
+
+    input.className =
+      "member-input";
+
+    input.inputMode =
+      "numeric";
+
+    input.min = "0";
+
+    input.placeholder =
+      "০";
+
+    input.value =
+      value ?? "";
+
+
+    input.oninput =
+      function(){
+
+        updateMembers(
+          index,
+          this.value
+        );
+
+      };
+
+
+    input.onkeydown =
+      function(event){
+
+        memberEnter(
+          event,
+          index
+        );
+
+      };
+
+  }
+
+
+  return input;
 
 }
 
@@ -887,7 +1540,23 @@ function render(){
 
 
   /*
-    EXISTING ROWS
+    যদি কোনো ডেটা না থাকে,
+    তাহলে প্রথম খালি Row তৈরি হবে।
+  */
+
+  if(families.length === 0){
+
+    createNewRow(tbody);
+
+    updateSummary();
+
+    return;
+
+  }
+
+
+  /*
+    পুরোনো Row
   */
 
   families.forEach(
@@ -899,9 +1568,7 @@ function render(){
         );
 
 
-      /* =====================
-         NAME
-      ===================== */
+      /* NAME */
 
       const nameCell =
         document.createElement(
@@ -910,47 +1577,11 @@ function render(){
 
 
       const nameInput =
-        document.createElement(
-          "input"
+        createInput(
+          "name",
+          index,
+          item.name
         );
-
-
-      nameInput.type =
-        "text";
-
-
-      nameInput.className =
-        "family-name-input";
-
-
-      nameInput.value =
-        item.name || "";
-
-
-      nameInput.placeholder =
-        "পরিবারের নাম";
-
-
-      nameInput.oninput =
-        function(){
-
-          updateName(
-            index,
-            this.value
-          );
-
-        };
-
-
-      nameInput.onkeydown =
-        function(event){
-
-          nameEnter(
-            event,
-            index
-          );
-
-        };
 
 
       nameCell.appendChild(
@@ -958,10 +1589,7 @@ function render(){
       );
 
 
-
-      /* =====================
-         MEMBERS
-      ===================== */
+      /* MEMBERS */
 
       const memberCell =
         document.createElement(
@@ -970,55 +1598,11 @@ function render(){
 
 
       const memberInput =
-        document.createElement(
-          "input"
+        createInput(
+          "member",
+          index,
+          item.members
         );
-
-
-      memberInput.type =
-        "number";
-
-
-      memberInput.className =
-        "member-input";
-
-
-      memberInput.inputMode =
-        "numeric";
-
-
-      memberInput.min =
-        "0";
-
-
-      memberInput.value =
-        item.members ?? "";
-
-
-      memberInput.placeholder =
-        "সদস্য";
-
-
-      memberInput.oninput =
-        function(){
-
-          updateMembers(
-            index,
-            this.value
-          );
-
-        };
-
-
-      memberInput.onkeydown =
-        function(event){
-
-          memberEnter(
-            event,
-            index
-          );
-
-        };
 
 
       memberCell.appendChild(
@@ -1026,10 +1610,7 @@ function render(){
       );
 
 
-
-      /* =====================
-         DELETE
-      ===================== */
+      /* DELETE */
 
       const deleteCell =
         document.createElement(
@@ -1068,7 +1649,6 @@ function render(){
       );
 
 
-
       row.appendChild(
         nameCell
       );
@@ -1092,19 +1672,309 @@ function render(){
   );
 
 
-
   /*
-    সবশেষে একটি খালি নতুন Row
-    থাকবে না।
-    
-    কারণ আপনার চাওয়া অনুযায়ী:
-    
-    Name → Enter
-    Member → Enter
-    তারপর নতুন Row।
+    সবসময় শেষে একটি নতুন খালি Row
+    থাকবে যাতে দ্রুত নতুন পরিবার
+    লেখা যায়।
   */
 
+  createNewRow(tbody);
+
+
   updateSummary();
+
+}
+
+
+
+/* =====================================================
+   CREATE NEW EMPTY ROW
+===================================================== */
+
+function createNewRow(tbody){
+
+  const row =
+    document.createElement(
+      "tr"
+    );
+
+
+  row.className =
+    "new-row";
+
+
+  /*
+    NAME CELL
+  */
+
+  const nameCell =
+    document.createElement(
+      "td"
+    );
+
+
+  const nameInput =
+    document.createElement(
+      "input"
+    );
+
+
+  nameInput.type =
+    "text";
+
+
+  nameInput.className =
+    "family-name-input";
+
+
+  nameInput.placeholder =
+    "নতুন পরিবারের নাম";
+
+
+  nameInput.autocomplete =
+    "off";
+
+
+  nameInput.onkeydown =
+    function(event){
+
+      if(event.key !== "Enter"){
+        return;
+      }
+
+
+      event.preventDefault();
+
+
+      const name =
+        this.value.trim();
+
+
+      if(!name){
+
+        return;
+
+      }
+
+
+      /*
+        নতুন পরিবারের প্রথম তথ্য
+      */
+
+      families.push({
+
+        name:name,
+
+        members:""
+
+      });
+
+
+      saveData();
+
+      render();
+
+
+      /*
+        নতুন তৈরি Row-এর সদস্য ঘরে
+        কার্সর যাবে
+      */
+
+      setTimeout(function(){
+
+        const memberInputs =
+          document.querySelectorAll(
+            ".member-input"
+          );
+
+
+        if(memberInputs.length){
+
+          memberInputs[
+            memberInputs.length - 1
+          ].focus();
+
+        }
+
+      },30);
+
+    };
+
+
+  nameCell.appendChild(
+    nameInput
+  );
+
+
+
+  /*
+    MEMBER CELL
+  */
+
+  const memberCell =
+    document.createElement(
+      "td"
+    );
+
+
+  const memberInput =
+    document.createElement(
+      "input"
+    );
+
+
+  memberInput.type =
+    "number";
+
+
+  memberInput.className =
+    "member-input";
+
+
+  memberInput.inputMode =
+    "numeric";
+
+
+  memberInput.min =
+    "0";
+
+
+  memberInput.placeholder =
+    "সদস্য";
+
+
+  memberInput.onkeydown =
+    function(event){
+
+      if(event.key !== "Enter"){
+        return;
+
+      }
+
+
+      event.preventDefault();
+
+
+      /*
+        খালি নাম হলে নামের ঘরে যাবে
+      */
+
+      const name =
+        nameInput.value.trim();
+
+
+      if(!name){
+
+        nameInput.focus();
+
+        return;
+
+      }
+
+
+      /*
+        সদস্য সংখ্যা না থাকলে
+        নতুন Row হবে না
+      */
+
+      if(this.value === ""){
+
+        return;
+
+      }
+
+
+      /*
+        এই নতুন Row-কে
+        স্থায়ী ডেটাতে যোগ করা
+      */
+
+      families.push({
+
+        name:name,
+
+        members:this.value
+
+      });
+
+
+      saveData();
+
+      render();
+
+
+      /*
+        পরের নতুন Row
+      */
+
+      setTimeout(function(){
+
+        const inputs =
+          document.querySelectorAll(
+            ".family-name-input"
+          );
+
+
+        if(inputs.length){
+
+          inputs[
+            inputs.length - 1
+          ].focus();
+
+        }
+
+      },30);
+
+    };
+
+
+  memberCell.appendChild(
+    memberInput
+  );
+
+
+
+  /*
+    DELETE CELL
+  */
+
+  const deleteCell =
+    document.createElement(
+      "td"
+    );
+
+
+  deleteCell.className =
+    "delete-cell";
+
+
+  deleteCell.innerHTML =
+    '<span style="color:#cbd5e1;font-size:13px;">—</span>';
+
+
+
+  /*
+    ADD ROW
+  */
+
+  row.appendChild(
+    nameCell
+  );
+
+
+  row.appendChild(
+    memberCell
+  );
+
+
+  row.appendChild(
+    deleteCell
+  );
+
+
+  tbody.appendChild(
+    row
+  );
 
 }
 
@@ -1116,12 +1986,27 @@ function render(){
 
 function updateSummary(){
 
+  /*
+    খালি নতুন Row-কে
+    পরিবার হিসেবে গণনা করা হবে না।
+  */
+
+  const validFamilies =
+    families.filter(function(item){
+
+      return (
+        String(item.name || "").trim() !== ""
+      );
+
+    });
+
+
   const totalFamilies =
-    families.length;
+    validFamilies.length;
 
 
   const totalMembers =
-    families.reduce(
+    validFamilies.reduce(
       function(total,item){
 
         return total +
@@ -1150,7 +2035,7 @@ function updateSummary(){
 
 
 /* =====================================================
-   START APP
+   START
 ===================================================== */
 
 loadData();
@@ -1160,4 +2045,5 @@ loadData();
 
 
 </body>
+
 </html>
