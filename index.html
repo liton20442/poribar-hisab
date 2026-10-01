@@ -1,323 +1,565 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+<meta name="viewport"
+      content="width=device-width,
+               initial-scale=1.0,
+               maximum-scale=1.0">
+
 <meta name="theme-color" content="#2563eb">
+
 <title>পরিবার হিসাব</title>
 
+
 <style>
+
 *{
   box-sizing:border-box;
 }
 
+
 body{
   margin:0;
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Arial,
+    sans-serif;
+
   background:#f3f6fa;
+
   color:#1f2937;
 }
 
+
 .container{
   max-width:700px;
+
   margin:auto;
-  padding:15px;
+
+  padding:12px;
 }
+
+
+/* =========================
+   TITLE
+========================= */
 
 h1{
   text-align:center;
+
   color:#2563eb;
-  margin:8px 0 18px;
+
+  margin:6px 0 14px;
+
   font-size:28px;
 }
 
+
+/* =========================
+   CARD
+========================= */
+
 .card{
   background:white;
+
   border-radius:14px;
-  padding:16px;
-  margin-bottom:15px;
-  box-shadow:0 2px 8px rgba(0,0,0,.08);
-}
 
-label{
-  display:block;
-  font-weight:600;
-  margin-bottom:6px;
-}
-
-input{
-  width:100%;
   padding:12px;
-  border:1px solid #cbd5e1;
-  border-radius:9px;
-  font-size:16px;
-  margin-bottom:12px;
-  background:white;
+
+  margin-bottom:14px;
+
+  box-shadow:
+    0 2px 8px rgba(0,0,0,.08);
 }
 
-button{
-  border:0;
-  border-radius:9px;
-  padding:11px 14px;
-  font-size:15px;
-  cursor:pointer;
-  margin:3px;
-}
 
-.primary{
-  background:#2563eb;
-  color:white;
-}
+/* =========================
+   SUMMARY
+========================= */
 
-.secondary{
-  background:#64748b;
-  color:white;
-}
-
-.success{
-  background:#16a34a;
-  color:white;
-}
-
-.warning{
-  background:#d97706;
-  color:white;
-}
-
-.danger{
-  background:#dc2626;
-  color:white;
-}
-
-.dark{
-  background:#334155;
-  color:white;
-}
-
-.stats{
+.summary{
   display:grid;
+
   grid-template-columns:1fr 1fr;
+
   gap:10px;
 }
 
-.stat{
+
+.summary-box{
   background:#eff6ff;
+
   border-radius:12px;
-  padding:14px;
+
+  padding:12px 6px;
+
   text-align:center;
 }
 
-.stat strong{
-  display:block;
+
+.summary-title{
+  font-size:15px;
+
+  color:#475569;
+
+  margin-bottom:3px;
+}
+
+
+.summary-number{
   font-size:26px;
+
+  font-weight:700;
+
   color:#2563eb;
 }
 
-.search{
-  margin-bottom:10px;
+
+/* =========================
+   TOP CLEAR BUTTON
+========================= */
+
+.top-actions{
+  text-align:right;
+
+  margin-bottom:8px;
 }
 
-.family{
-  border:1px solid #dbe2ea;
-  border-radius:12px;
-  padding:14px;
-  margin-bottom:10px;
-  background:#fff;
+
+.clear-btn{
+  background:#dc2626;
+
+  color:white;
+
+  border:0;
+
+  border-radius:8px;
+
+  padding:9px 15px;
+
+  font-size:15px;
+
+  font-weight:600;
+
+  cursor:pointer;
 }
 
-.family-name{
-  font-size:19px;
-  font-weight:700;
-  margin-bottom:7px;
+
+.clear-btn:active{
+  transform:scale(.97);
 }
 
-.info{
-  color:#475569;
-  margin:4px 0;
+
+/* =========================
+   TABLE
+========================= */
+
+.table-wrapper{
+  width:100%;
+
+  overflow:hidden;
+
+  border-radius:10px;
+
+  border:1px solid #cbd5e1;
+
+  background:white;
 }
 
-.actions{
-  margin-top:9px;
+
+table{
+  width:100%;
+
+  border-collapse:collapse;
+
+  table-layout:fixed;
 }
 
-.empty{
+
+thead th{
+  background:#2563eb;
+
+  color:white;
+
+  font-size:16px;
+
+  padding:11px 6px;
+
+  border-right:1px solid
+              rgba(255,255,255,.3);
+}
+
+
+thead th:last-child{
+  border-right:0;
+}
+
+
+thead th:nth-child(1){
+  width:46%;
+}
+
+
+thead th:nth-child(2){
+  width:27%;
+}
+
+
+thead th:nth-child(3){
+  width:27%;
+}
+
+
+/* =========================
+   ROW
+========================= */
+
+tbody tr{
+  border-bottom:1px solid #e2e8f0;
+}
+
+
+tbody tr:last-child{
+  border-bottom:0;
+}
+
+
+/* =========================
+   CELLS
+========================= */
+
+td{
+  padding:0;
+
+  border-right:1px solid #e2e8f0;
+
+  vertical-align:middle;
+}
+
+
+td:last-child{
+  border-right:0;
+}
+
+
+/* =========================
+   INPUT
+========================= */
+
+td input{
+  width:100%;
+
+  border:0;
+
+  outline:none;
+
+  background:transparent;
+
+  padding:11px 8px;
+
+  font-size:16px;
+
+  font-family:inherit;
+
+  color:#1f2937;
+}
+
+
+td input:focus{
+  background:#eff6ff;
+
+  box-shadow:
+    inset 0 0 0 2px #2563eb;
+}
+
+
+/* সদস্য সংখ্যা */
+
+.member-input{
   text-align:center;
-  color:#64748b;
-  padding:20px;
 }
 
-.hidden{
-  display:none !important;
-}
 
-.tabs{
-  display:flex;
-  gap:6px;
-  margin-bottom:10px;
-}
+/* =========================
+   DELETE BUTTON
+========================= */
 
-.tabs button{
-  flex:1;
-}
-
-.backup-box{
+.delete-cell{
   text-align:center;
+
+  padding:4px;
 }
 
-.small{
-  font-size:13px;
-  color:#64748b;
-  line-height:1.5;
+
+.delete-btn{
+  border:0;
+
+  background:#dc2626;
+
+  color:white;
+
+  border-radius:7px;
+
+  padding:7px 10px;
+
+  font-size:14px;
+
+  cursor:pointer;
 }
+
+
+.delete-btn:active{
+  transform:scale(.95);
+}
+
+
+/* =========================
+   NEW ROW
+========================= */
+
+.new-row td{
+  background:#f8fafc;
+}
+
+
+.new-row input{
+  color:#64748b;
+}
+
+
+.new-row input:focus{
+  color:#1f2937;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:480px){
+
+  .container{
+    padding:8px;
+  }
+
+
+  h1{
+    font-size:25px;
+
+    margin-bottom:12px;
+  }
+
+
+  .summary-box{
+    padding:11px 4px;
+  }
+
+
+  .summary-title{
+    font-size:14px;
+  }
+
+
+  .summary-number{
+    font-size:24px;
+  }
+
+
+  thead th{
+    font-size:15px;
+
+    padding:10px 4px;
+  }
+
+
+  td input{
+    font-size:16px;
+
+    padding:10px 6px;
+  }
+
+
+  .delete-btn{
+    padding:6px 8px;
+
+    font-size:13px;
+  }
+
+}
+
 </style>
+
 </head>
+
 
 <body>
 
+
 <div class="container">
 
-<h1>পরিবার হিসাব</h1>
 
-<!-- Statistics -->
-<div class="card">
-  <div class="stats">
-    <div class="stat">
-      <strong id="totalFamilies">0</strong>
-      মোট পরিবার
+  <h1>পরিবার হিসাব</h1>
+
+
+  <!-- =========================
+       SUMMARY
+  ========================== -->
+
+  <div class="card">
+
+    <div class="summary">
+
+
+      <div class="summary-box">
+
+        <div class="summary-title">
+          মোট পরিবার
+        </div>
+
+        <div
+          class="summary-number"
+          id="totalFamilies">
+          0
+        </div>
+
+      </div>
+
+
+      <div class="summary-box">
+
+        <div class="summary-title">
+          মোট সদস্য
+        </div>
+
+        <div
+          class="summary-number"
+          id="totalMembers">
+          0
+        </div>
+
+      </div>
+
+
     </div>
 
-    <div class="stat">
-      <strong id="totalMembers">0</strong>
-      মোট সদস্য
+  </div>
+
+
+
+  <!-- =========================
+       TABLE
+  ========================== -->
+
+  <div class="card">
+
+
+    <!-- CLEAR BUTTON -->
+
+    <div class="top-actions">
+
+      <button
+        class="clear-btn"
+        onclick="clearAll()">
+
+        Clear
+
+      </button>
+
     </div>
-  </div>
-</div>
 
-<!-- Add / Edit -->
-<div class="card">
 
-  <label>পরিবারের নাম *</label>
-  <input
-    type="text"
-    id="familyName"
-    placeholder="পরিবারের নাম লিখুন"
-  >
+    <div class="table-wrapper">
 
-  <label>সদস্য সংখ্যা *</label>
-  <input
-    type="number"
-    id="memberCount"
-    min="1"
-    inputmode="numeric"
-    placeholder="সদস্য সংখ্যা লিখুন"
-  >
+      <table>
 
-  <label>গ্রামের নাম</label>
-  <input
-    type="text"
-    id="village"
-    placeholder="গ্রামের নাম লিখুন"
-  >
 
-  <label>ওয়ার্ড নম্বর</label>
-  <input
-    type="text"
-    id="ward"
-    placeholder="যেমন: ১, ২, ৩"
-  >
+        <thead>
 
-  <button class="primary" id="saveBtn" onclick="saveFamily()">
-    পরিবার যোগ করুন
-  </button>
+          <tr>
 
-  <button class="secondary hidden" id="cancelBtn" onclick="cancelEdit()">
-    বাতিল
-  </button>
+            <th>
+              পরিবারের নাম
+            </th>
 
-</div>
+            <th>
+              সদস্য সংখ্যা
+            </th>
 
-<!-- Search -->
-<div class="card">
+            <th>
+              Delete
+            </th>
 
-  <label>পরিবার খুঁজুন</label>
+          </tr>
 
-  <input
-    class="search"
-    type="search"
-    id="searchBox"
-    placeholder="নাম, গ্রাম বা ওয়ার্ড দিয়ে খুঁজুন..."
-    oninput="render()"
-  >
+        </thead>
 
-  <div class="tabs">
-    <button class="primary" onclick="showActive()">
-      সক্রিয় পরিবার
-    </button>
 
-    <button class="warning" onclick="showDeleted()">
-      Restore
-    </button>
+        <tbody id="familyTableBody">
+
+        </tbody>
+
+
+      </table>
+
+    </div>
+
+
   </div>
 
-</div>
-
-<!-- Backup -->
-<div class="card backup-box">
-
-  <h3>Backup ও Restore</h3>
-
-  <p class="small">
-    আপনার পরিবারের তথ্য একটি Backup ফাইলে সংরক্ষণ করে রাখতে পারবেন।
-    পরে প্রয়োজন হলে সেই ফাইল থেকে তথ্য ফিরিয়ে আনতে পারবেন।
-  </p>
-
-  <button class="success" onclick="backupData()">
-    Backup Download
-  </button>
-
-  <button class="dark" onclick="document.getElementById('restoreFile').click()">
-    Backup Restore
-  </button>
-
-  <input
-    type="file"
-    id="restoreFile"
-    accept=".json,application/json"
-    class="hidden"
-    onchange="restoreData(event)"
-  >
 
 </div>
 
-<!-- Family List -->
-<div id="familyList"></div>
 
-</div>
 
 <script>
 
-const STORAGE_KEY = "poribarHisabDataV2";
+
+/* =====================================================
+   STORAGE
+===================================================== */
+
+const STORAGE_KEY =
+  "poribarHisabSimpleV1";
+
 
 let families = [];
-let editId = null;
-let currentView = "active";
 
-/* =========================
+
+
+/* =====================================================
    LOAD DATA
-========================= */
+===================================================== */
 
 function loadData(){
 
   try{
 
-    const saved = localStorage.getItem(STORAGE_KEY);
+    const saved =
+      localStorage.getItem(
+        STORAGE_KEY
+      );
+
 
     if(saved){
 
-      families = JSON.parse(saved);
+      const data =
+        JSON.parse(saved);
 
-      if(!Array.isArray(families)){
+
+      if(Array.isArray(data)){
+
+        families = data;
+
+      }else{
+
         families = [];
+
       }
 
     }else{
@@ -332,28 +574,16 @@ function loadData(){
 
   }
 
-  /*
-    পুরোনো ডেটার সাথে নতুন Village/Ward
-    ফিল্ড না থাকলেও সমস্যা হবে না।
-  */
 
-  families = families.map(item => ({
-    id: item.id || Date.now() + Math.random(),
-    name: item.name || "",
-    members: Number(item.members) || 0,
-    village: item.village || "",
-    ward: item.ward || "",
-    deleted: item.deleted === true
-  }));
-
-  saveData();
   render();
+
 }
 
 
-/* =========================
-   SAVE LOCAL DATA
-========================= */
+
+/* =====================================================
+   SAVE DATA
+===================================================== */
 
 function saveData(){
 
@@ -365,733 +595,569 @@ function saveData(){
 }
 
 
-/* =========================
-   CLEAR FORM
-========================= */
 
-function clearForm(){
+/* =====================================================
+   UPDATE NAME
+===================================================== */
 
-  document.getElementById("familyName").value = "";
-  document.getElementById("memberCount").value = "";
-  document.getElementById("village").value = "";
-  document.getElementById("ward").value = "";
+function updateName(
+  index,
+  value
+){
+
+  if(!families[index]){
+    return;
+  }
+
+
+  families[index].name =
+    value;
+
+
+  saveData();
+
+  updateSummary();
 
 }
 
 
-/* =========================
-   SAVE / UPDATE FAMILY
-========================= */
 
-function saveFamily(){
+/* =====================================================
+   UPDATE MEMBERS
+===================================================== */
+
+function updateMembers(
+  index,
+  value
+){
+
+  if(!families[index]){
+    return;
+  }
+
+
+  families[index].members =
+    value;
+
+
+  saveData();
+
+  updateSummary();
+
+}
+
+
+
+/* =====================================================
+   ENTER FROM FAMILY NAME
+===================================================== */
+
+function nameEnter(
+  event,
+  index
+){
+
+  if(event.key !== "Enter"){
+    return;
+  }
+
+
+  event.preventDefault();
+
+
+  /*
+    পরিবারের নামের পরে
+    ডান পাশের সদস্য সংখ্যা ঘরে যাবে
+  */
+
+  const memberInputs =
+    document.querySelectorAll(
+      ".member-input"
+    );
+
+
+  if(memberInputs[index]){
+
+    memberInputs[index].focus();
+
+    return;
+
+  }
+
+}
+
+
+
+/* =====================================================
+   ENTER FROM MEMBER COUNT
+===================================================== */
+
+function memberEnter(
+  event,
+  index
+){
+
+  if(event.key !== "Enter"){
+    return;
+  }
+
+
+  event.preventDefault();
+
+
+  /*
+    সদস্য সংখ্যা দেওয়ার পরে
+    নতুন Row তৈরি হবে।
+  */
 
   const name =
-    document.getElementById("familyName").value.trim();
+    families[index]
+    ? String(
+        families[index].name || ""
+      ).trim()
+    : "";
+
 
   const members =
-    Number(document.getElementById("memberCount").value);
+    families[index]
+    ? families[index].members
+    : "";
 
-  const village =
-    document.getElementById("village").value.trim();
 
-  const ward =
-    document.getElementById("ward").value.trim();
-
+  /*
+    নাম এবং সদস্য সংখ্যা দুটোই
+    না থাকলে নতুন Row তৈরি হবে না।
+  */
 
   if(!name){
 
-    alert("পরিবারের নাম লিখুন।");
-    return;
-
-  }
-
-  if(!members || members < 1){
-
-    alert("সদস্য সংখ্যা লিখুন।");
-    return;
-
-  }
+    const nameInputs =
+      document.querySelectorAll(
+        ".family-name-input"
+      );
 
 
-  if(editId !== null){
+    if(nameInputs[index]){
 
-    const family =
-      families.find(item => item.id === editId);
-
-    if(family){
-
-      family.name = name;
-      family.members = members;
-      family.village = village;
-      family.ward = ward;
+      nameInputs[index].focus();
 
     }
 
-    editId = null;
-
-    document.getElementById("saveBtn").textContent =
-      "পরিবার যোগ করুন";
-
-    document.getElementById("cancelBtn")
-      .classList.add("hidden");
-
-  }else{
-
-    families.push({
-
-      id: Date.now() + Math.random(),
-
-      name: name,
-
-      members: members,
-
-      village: village,
-
-      ward: ward,
-
-      deleted: false
-
-    });
-
-  }
-
-
-  saveData();
-
-  clearForm();
-
-  currentView = "active";
-
-  render();
-
-}
-
-
-/* =========================
-   EDIT FAMILY
-========================= */
-
-function editFamily(id){
-
-  const family =
-    families.find(item => item.id === id);
-
-  if(!family) return;
-
-
-  document.getElementById("familyName").value =
-    family.name || "";
-
-  document.getElementById("memberCount").value =
-    family.members || "";
-
-  document.getElementById("village").value =
-    family.village || "";
-
-  document.getElementById("ward").value =
-    family.ward || "";
-
-
-  editId = id;
-
-
-  document.getElementById("saveBtn").textContent =
-    "তথ্য আপডেট করুন";
-
-  document.getElementById("cancelBtn")
-    .classList.remove("hidden");
-
-
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
-
-}
-
-
-/* =========================
-   CANCEL EDIT
-========================= */
-
-function cancelEdit(){
-
-  editId = null;
-
-  clearForm();
-
-  document.getElementById("saveBtn").textContent =
-    "পরিবার যোগ করুন";
-
-  document.getElementById("cancelBtn")
-    .classList.add("hidden");
-
-}
-
-
-/* =========================
-   DELETE
-========================= */
-
-function deleteFamily(id){
-
-  const family =
-    families.find(item => item.id === id);
-
-  if(!family) return;
-
-
-  if(confirm("এই পরিবারটি Delete করতে চান?")){
-
-    family.deleted = true;
-
-    saveData();
-
-    render();
-
-  }
-
-}
-
-
-/* =========================
-   RESTORE
-========================= */
-
-function restoreFamily(id){
-
-  const family =
-    families.find(item => item.id === id);
-
-  if(!family) return;
-
-
-  family.deleted = false;
-
-  saveData();
-
-  render();
-
-}
-
-
-/* =========================
-   PERMANENT DELETE
-========================= */
-
-function permanentDelete(id){
-
-  if(!confirm(
-    "এই তথ্য স্থায়ীভাবে মুছে যাবে।\n\nনিশ্চিত?"
-  )){
-
     return;
 
   }
 
 
-  families =
-    families.filter(item => item.id !== id);
+  if(
+    members === "" ||
+    members === null ||
+    members === undefined
+  ){
 
-  saveData();
-
-  render();
-
-}
-
-
-/* =========================
-   SHOW ACTIVE
-========================= */
-
-function showActive(){
-
-  currentView = "active";
-
-  render();
-
-}
-
-
-/* =========================
-   SHOW DELETED
-========================= */
-
-function showDeleted(){
-
-  currentView = "deleted";
-
-  render();
-
-}
-
-
-/* =========================
-   RENDER
-========================= */
-
-function render(){
-
-  const list =
-    document.getElementById("familyList");
-
-  const search =
-    document.getElementById("searchBox")
-      .value
-      .trim()
-      .toLowerCase();
-
-
-  let filtered =
-    families.filter(item => {
-
-      if(currentView === "active"){
-
-        return item.deleted !== true;
-
-      }else{
-
-        return item.deleted === true;
-
-      }
-
-    });
-
-
-  if(search){
-
-    filtered =
-      filtered.filter(item => {
-
-        const name =
-          (item.name || "").toLowerCase();
-
-        const village =
-          (item.village || "").toLowerCase();
-
-        const ward =
-          (item.ward || "").toLowerCase();
-
-        return (
-          name.includes(search) ||
-          village.includes(search) ||
-          ward.includes(search)
-        );
-
-      });
+    return;
 
   }
 
 
   /*
-    মোট হিসাব শুধু Active পরিবারের জন্য
+    নতুন পরিবার যোগ
   */
 
-  const activeFamilies =
-    families.filter(item => item.deleted !== true);
+  families.push({
 
+    name:"",
+
+    members:""
+
+  });
+
+
+  saveData();
+
+  render();
+
+
+  /*
+    নতুন Row-এর পরিবারের নামের
+    ঘরে কার্সর
+  */
+
+  setTimeout(function(){
+
+    const nameInputs =
+      document.querySelectorAll(
+        ".family-name-input"
+      );
+
+
+    if(nameInputs.length){
+
+      nameInputs[
+        nameInputs.length - 1
+      ].focus();
+
+    }
+
+  },50);
+
+}
+
+
+
+/* =====================================================
+   DELETE FAMILY
+===================================================== */
+
+function deleteFamily(index){
+
+  if(
+    index < 0 ||
+    index >= families.length
+  ){
+
+    return;
+
+  }
+
+
+  families.splice(
+    index,
+    1
+  );
+
+
+  saveData();
+
+  render();
+
+}
+
+
+
+/* =====================================================
+   CLEAR ALL
+===================================================== */
+
+function clearAll(){
+
+  if(families.length === 0){
+
+    return;
+
+  }
+
+
+  const confirmClear =
+    confirm(
+      "সমস্ত পরিবারের তথ্য মুছে যাবে।\n\nআপনি কি নিশ্চিত?"
+    );
+
+
+  if(!confirmClear){
+
+    return;
+
+  }
+
+
+  families = [];
+
+
+  saveData();
+
+  render();
+
+}
+
+
+
+/* =====================================================
+   RENDER
+===================================================== */
+
+function render(){
+
+  const tbody =
+    document.getElementById(
+      "familyTableBody"
+    );
+
+
+  tbody.innerHTML = "";
+
+
+  /*
+    EXISTING ROWS
+  */
+
+  families.forEach(
+    function(item,index){
+
+      const row =
+        document.createElement(
+          "tr"
+        );
+
+
+      /* =====================
+         NAME
+      ===================== */
+
+      const nameCell =
+        document.createElement(
+          "td"
+        );
+
+
+      const nameInput =
+        document.createElement(
+          "input"
+        );
+
+
+      nameInput.type =
+        "text";
+
+
+      nameInput.className =
+        "family-name-input";
+
+
+      nameInput.value =
+        item.name || "";
+
+
+      nameInput.placeholder =
+        "পরিবারের নাম";
+
+
+      nameInput.oninput =
+        function(){
+
+          updateName(
+            index,
+            this.value
+          );
+
+        };
+
+
+      nameInput.onkeydown =
+        function(event){
+
+          nameEnter(
+            event,
+            index
+          );
+
+        };
+
+
+      nameCell.appendChild(
+        nameInput
+      );
+
+
+
+      /* =====================
+         MEMBERS
+      ===================== */
+
+      const memberCell =
+        document.createElement(
+          "td"
+        );
+
+
+      const memberInput =
+        document.createElement(
+          "input"
+        );
+
+
+      memberInput.type =
+        "number";
+
+
+      memberInput.className =
+        "member-input";
+
+
+      memberInput.inputMode =
+        "numeric";
+
+
+      memberInput.min =
+        "0";
+
+
+      memberInput.value =
+        item.members ?? "";
+
+
+      memberInput.placeholder =
+        "সদস্য";
+
+
+      memberInput.oninput =
+        function(){
+
+          updateMembers(
+            index,
+            this.value
+          );
+
+        };
+
+
+      memberInput.onkeydown =
+        function(event){
+
+          memberEnter(
+            event,
+            index
+          );
+
+        };
+
+
+      memberCell.appendChild(
+        memberInput
+      );
+
+
+
+      /* =====================
+         DELETE
+      ===================== */
+
+      const deleteCell =
+        document.createElement(
+          "td"
+        );
+
+
+      deleteCell.className =
+        "delete-cell";
+
+
+      const deleteButton =
+        document.createElement(
+          "button"
+        );
+
+
+      deleteButton.className =
+        "delete-btn";
+
+
+      deleteButton.textContent =
+        "Delete";
+
+
+      deleteButton.onclick =
+        function(){
+
+          deleteFamily(index);
+
+        };
+
+
+      deleteCell.appendChild(
+        deleteButton
+      );
+
+
+
+      row.appendChild(
+        nameCell
+      );
+
+
+      row.appendChild(
+        memberCell
+      );
+
+
+      row.appendChild(
+        deleteCell
+      );
+
+
+      tbody.appendChild(
+        row
+      );
+
+    }
+  );
+
+
+
+  /*
+    সবশেষে একটি খালি নতুন Row
+    থাকবে না।
+    
+    কারণ আপনার চাওয়া অনুযায়ী:
+    
+    Name → Enter
+    Member → Enter
+    তারপর নতুন Row।
+  */
+
+  updateSummary();
+
+}
+
+
+
+/* =====================================================
+   SUMMARY
+===================================================== */
+
+function updateSummary(){
 
   const totalFamilies =
-    activeFamilies.length;
+    families.length;
 
 
   const totalMembers =
-    activeFamilies.reduce(
-      (sum,item) =>
-        sum + (Number(item.members) || 0),
+    families.reduce(
+      function(total,item){
+
+        return total +
+          (
+            Number(item.members) || 0
+          );
+
+      },
       0
     );
 
 
-  document.getElementById("totalFamilies")
-    .textContent = totalFamilies;
+  document.getElementById(
+    "totalFamilies"
+  ).textContent =
+    totalFamilies;
 
 
-  document.getElementById("totalMembers")
-    .textContent = totalMembers;
-
-
-  if(filtered.length === 0){
-
-    list.innerHTML = `
-      <div class="card empty">
-        ${
-          currentView === "active"
-          ? "কোনো পরিবার পাওয়া যায়নি।"
-          : "Restore করার মতো কোনো পরিবার নেই।"
-        }
-      </div>
-    `;
-
-    return;
-
-  }
-
-
-  list.innerHTML =
-    filtered.map(item => {
-
-      const villageText =
-        item.village
-        ? item.village
-        : "দেওয়া হয়নি";
-
-      const wardText =
-        item.ward
-        ? item.ward
-        : "দেওয়া হয়নি";
-
-
-      if(currentView === "active"){
-
-        return `
-
-          <div class="family">
-
-            <div class="family-name">
-              ${escapeHTML(item.name)}
-            </div>
-
-            <div class="info">
-              👥 সদস্য সংখ্যা:
-              <strong>${item.members}</strong>
-            </div>
-
-            <div class="info">
-              🏡 গ্রাম:
-              ${escapeHTML(villageText)}
-            </div>
-
-            <div class="info">
-              📍 ওয়ার্ড:
-              ${escapeHTML(wardText)}
-            </div>
-
-            <div class="actions">
-
-              <button
-                class="primary"
-                onclick="editFamily(${item.id})"
-              >
-                Edit
-              </button>
-
-              <button
-                class="danger"
-                onclick="deleteFamily(${item.id})"
-              >
-                Delete
-              </button>
-
-            </div>
-
-          </div>
-
-        `;
-
-      }else{
-
-        return `
-
-          <div class="family">
-
-            <div class="family-name">
-              ${escapeHTML(item.name)}
-            </div>
-
-            <div class="info">
-              👥 সদস্য:
-              <strong>${item.members}</strong>
-            </div>
-
-            <div class="info">
-              🏡 গ্রাম:
-              ${escapeHTML(villageText)}
-            </div>
-
-            <div class="info">
-              📍 ওয়ার্ড:
-              ${escapeHTML(wardText)}
-            </div>
-
-            <div class="actions">
-
-              <button
-                class="success"
-                onclick="restoreFamily(${item.id})"
-              >
-                Restore
-              </button>
-
-              <button
-                class="danger"
-                onclick="permanentDelete(${item.id})"
-              >
-                স্থায়ী Delete
-              </button>
-
-            </div>
-
-          </div>
-
-        `;
-
-      }
-
-    }).join("");
+  document.getElementById(
+    "totalMembers"
+  ).textContent =
+    totalMembers;
 
 }
 
 
-/* =========================
-   SAFE HTML
-========================= */
 
-function escapeHTML(value){
-
-  return String(value)
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
-
-}
-
-
-/* =========================
-   BACKUP
-========================= */
-
-function backupData(){
-
-  /*
-    Backup-এ পুরো ডেটা রাখা হচ্ছে
-  */
-
-  const backup = {
-
-    app: "Poribar Hisab",
-
-    version: 2,
-
-    backupDate: new Date().toISOString(),
-
-    data: families
-
-  };
-
-
-  const json =
-    JSON.stringify(backup,null,2);
-
-
-  const blob =
-    new Blob(
-      [json],
-      {type:"application/json"}
-    );
-
-
-  const url =
-    URL.createObjectURL(blob);
-
-
-  const a =
-    document.createElement("a");
-
-
-  const date =
-    new Date()
-      .toISOString()
-      .slice(0,10);
-
-
-  a.href = url;
-
-  a.download =
-    "Poribar-Hisab-Backup-" + date + ".json";
-
-
-  document.body.appendChild(a);
-
-  a.click();
-
-  document.body.removeChild(a);
-
-  URL.revokeObjectURL(url);
-
-
-  alert(
-    "Backup ফাইল তৈরি হয়েছে।\n\nFiles-এ এটি সংরক্ষণ করে রাখুন।"
-  );
-
-}
-
-
-/* =========================
-   RESTORE BACKUP
-========================= */
-
-function restoreData(event){
-
-  const file =
-    event.target.files[0];
-
-
-  if(!file) return;
-
-
-  const reader =
-    new FileReader();
-
-
-  reader.onload = function(e){
-
-    try{
-
-      const backup =
-        JSON.parse(e.target.result);
-
-
-      let restoredData = null;
-
-
-      /*
-        নতুন Backup format
-      */
-
-      if(
-        backup &&
-        Array.isArray(backup.data)
-      ){
-
-        restoredData = backup.data;
-
-      }
-
-      /*
-        সরাসরি Array থাকলেও গ্রহণ করবে
-      */
-
-      else if(Array.isArray(backup)){
-
-        restoredData = backup;
-
-      }
-
-
-      if(!restoredData){
-
-        throw new Error("Invalid backup");
-
-      }
-
-
-      /*
-        পুরোনো/নতুন সব তথ্য ঠিক করা
-      */
-
-      restoredData =
-        restoredData.map(item => ({
-
-          id:
-            item.id ||
-            Date.now() + Math.random(),
-
-          name:
-            item.name || "",
-
-          members:
-            Number(item.members) || 0,
-
-          village:
-            item.village || "",
-
-          ward:
-            item.ward || "",
-
-          deleted:
-            item.deleted === true
-
-        }));
-
-
-      if(
-        !confirm(
-          "Backup থেকে তথ্য Restore করলে বর্তমানে থাকা তথ্য Backup-এর তথ্য দিয়ে প্রতিস্থাপিত হবে।\n\nআপনি কি নিশ্চিত?"
-        )
-      ){
-
-        event.target.value = "";
-
-        return;
-
-      }
-
-
-      families = restoredData;
-
-      saveData();
-
-      currentView = "active";
-
-      render();
-
-
-      alert(
-        "Backup সফলভাবে Restore হয়েছে।"
-      );
-
-
-    }catch(error){
-
-      alert(
-        "Backup ফাইলটি সঠিক নয়।"
-      );
-
-    }
-
-
-    event.target.value = "";
-
-  };
-
-
-  reader.readAsText(file);
-
-}
-
-
-/* =========================
-   SERVICE WORKER
-========================= */
-
-if(
-  "serviceWorker" in navigator
-){
-
-  window.addEventListener(
-    "load",
-    function(){
-
-      navigator.serviceWorker
-        .register("./service-worker.js")
-        .catch(function(){});
-
-    }
-  );
-
-}
-
-
-/* =========================
+/* =====================================================
    START APP
-========================= */
+===================================================== */
 
 loadData();
 
+
 </script>
+
 
 </body>
 </html>
