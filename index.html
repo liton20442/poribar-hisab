@@ -2,7 +2,6 @@
 <html lang="bn">
 
 <head>
-
 <meta charset="UTF-8">
 
 <meta name="viewport"
@@ -27,12 +26,11 @@
 
 <title>পরিবার হিসাব</title>
 
-
 <style>
 
-/* =========================
+/* ================================
    BASIC
-========================= */
+================================ */
 
 *{
     box-sizing:border-box;
@@ -41,16 +39,11 @@
 
 html,
 body{
-
     margin:0;
     padding:0;
-
     min-height:100%;
-
     background:#f3f6fb;
-
     color:#172033;
-
     font-family:
         -apple-system,
         BlinkMacSystemFont,
@@ -61,7 +54,6 @@ body{
 }
 
 body{
-
     padding:
         env(safe-area-inset-top)
         10px
@@ -70,28 +62,23 @@ body{
 }
 
 .app{
-
     width:100%;
     max-width:900px;
-
     margin:0 auto;
-
     padding:10px 0 30px;
 }
 
 
-/* =========================
+/* ================================
    HEADER
-========================= */
+================================ */
 
 .header{
-
-    background:
-        linear-gradient(
-            135deg,
-            #2563eb,
-            #1d4ed8
-        );
+    background:linear-gradient(
+        135deg,
+        #2563eb,
+        #1d4ed8
+    );
 
     color:#fff;
 
@@ -107,42 +94,30 @@ body{
 }
 
 .header-title{
-
     font-size:29px;
-
     font-weight:800;
-
     line-height:1.2;
 }
 
 .header-subtitle{
-
     margin-top:7px;
-
     font-size:16px;
-
     opacity:.94;
 }
 
 
-/* =========================
+/* ================================
    SUMMARY
-========================= */
+================================ */
 
 .summary{
-
     display:grid;
-
-    grid-template-columns:
-        1fr 1fr;
-
+    grid-template-columns:1fr 1fr;
     gap:12px;
-
     margin-bottom:14px;
 }
 
 .summary-card{
-
     background:#fff;
 
     border:1px solid #e5eaf2;
@@ -159,32 +134,24 @@ body{
 }
 
 .summary-label{
-
     font-size:16px;
-
     font-weight:600;
-
     color:#64748b;
 }
 
 .summary-number{
-
     margin-top:4px;
-
     font-size:30px;
-
     font-weight:800;
-
     color:#1d4ed8;
 }
 
 
-/* =========================
-   BACKUP AREA
-========================= */
+/* ================================
+   CONTROLS
+================================ */
 
 .controls{
-
     background:#fff;
 
     border:1px solid #e5eaf2;
@@ -201,26 +168,18 @@ body{
 }
 
 .control-title{
-
     font-size:19px;
-
     font-weight:800;
-
     margin-bottom:10px;
 }
 
 .button-row{
-
     display:grid;
-
-    grid-template-columns:
-        1fr 1fr;
-
+    grid-template-columns:1fr 1fr;
     gap:10px;
 }
 
 .btn{
-
     min-height:52px;
 
     border:0;
@@ -235,42 +194,33 @@ body{
 }
 
 .backup-btn{
-
     background:#0f766e;
-
     color:#fff;
 }
 
 .restore-btn{
-
     background:#7c3aed;
-
     color:#fff;
 }
 
 .clear-btn{
-
     width:100%;
-
     margin-top:10px;
 
     background:#fee2e2;
-
     color:#b91c1c;
 }
 
 #restoreFile{
-
     display:none;
 }
 
 
-/* =========================
+/* ================================
    FAMILY LIST
-========================= */
+================================ */
 
 .list-card{
-
     background:#fff;
 
     border:1px solid #e5eaf2;
@@ -285,78 +235,35 @@ body{
 }
 
 .list-header{
-
     padding:16px 14px;
 
-    border-bottom:
-        1px solid #e5eaf2;
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    gap:10px;
+    border-bottom:1px solid #e5eaf2;
 }
 
 .list-title{
-
     font-size:22px;
-
     font-weight:800;
-
     color:#172033;
-
-    cursor:pointer;
-
-    user-select:none;
-}
-
-.enter-badge{
-
-    background:#dbeafe;
-
-    color:#1d4ed8;
-
-    border:1px solid #93c5fd;
-
-    border-radius:999px;
-
-    padding:7px 12px;
-
-    font-size:14px;
-
-    font-weight:800;
-
-    white-space:nowrap;
 }
 
 
-/* =========================
+/* ================================
    TABLE
-========================= */
+================================ */
 
 .table-wrap{
-
     width:100%;
-
     overflow-x:auto;
-
     -webkit-overflow-scrolling:touch;
 }
 
 table{
-
     width:100%;
-
     border-collapse:collapse;
-
     table-layout:fixed;
 }
 
 th{
-
     background:#eff6ff;
 
     color:#1e3a8a;
@@ -367,51 +274,43 @@ th{
 
     padding:12px 7px;
 
-    border-bottom:
-        1px solid #dbeafe;
+    border-bottom:1px solid #dbeafe;
 }
 
 td{
-
     padding:7px;
 
-    border-bottom:
-        1px solid #e5e7eb;
+    border-bottom:1px solid #e5e7eb;
 
     vertical-align:middle;
 }
 
 th:nth-child(1){
-
     width:48%;
 }
 
 th:nth-child(2){
-
     width:25%;
 }
 
 th:nth-child(3){
-
     width:27%;
 }
 
 
-/* =========================
+/* ================================
    INPUT
-========================= */
+================================ */
 
 .family-input,
 .member-input{
-
     display:block;
 
     width:100%;
 
     height:52px;
 
-    border:
-        2px solid #d7deea;
+    border:2px solid #d7deea;
 
     border-radius:11px;
 
@@ -426,13 +325,11 @@ th:nth-child(3){
     outline:none;
 
     -webkit-appearance:none;
-
     appearance:none;
 }
 
 .family-input:focus,
 .member-input:focus{
-
     border-color:#2563eb;
 
     box-shadow:
@@ -441,20 +338,17 @@ th:nth-child(3){
 }
 
 .member-input{
-
     text-align:center;
-
     font-weight:700;
 }
 
 
-/* =========================
+/* ================================
    BUTTONS
-========================= */
+================================ */
 
 .delete-btn,
 .finish-btn{
-
     width:100%;
 
     min-height:48px;
@@ -471,44 +365,36 @@ th:nth-child(3){
 }
 
 .delete-btn{
-
     background:#fee2e2;
-
     color:#b91c1c;
 }
 
 .finish-btn{
-
     background:#dcfce7;
-
     color:#166534;
 }
 
 
-/* =========================
+/* ================================
    NEW ROW
-========================= */
+================================ */
 
 .new-row td{
-
     background:#f8fafc;
 }
 
 .new-row .family-input,
 .new-row .member-input{
-
     border-color:#93c5fd;
-
     background:#f8fbff;
 }
 
 
-/* =========================
+/* ================================
    FOOTER
-========================= */
+================================ */
 
 .footer{
-
     text-align:center;
 
     color:#64748b;
@@ -519,32 +405,22 @@ th:nth-child(3){
 }
 
 
-/* =========================
+/* ================================
    MOBILE
-========================= */
+================================ */
 
 @media(max-width:480px){
 
     .header-title{
-
         font-size:26px;
     }
 
     .header-subtitle{
-
         font-size:15px;
-    }
-
-    .list-header{
-
-        flex-direction:column;
-
-        align-items:flex-start;
     }
 
     .family-input,
     .member-input{
-
         font-size:18px;
     }
 
@@ -557,194 +433,178 @@ th:nth-child(3){
 
 <body>
 
-
 <div class="app">
 
 
-<!-- =========================
-     HEADER
-========================= -->
+    <!-- ==========================
+         HEADER
+    =========================== -->
 
-<div class="header">
+    <div class="header">
 
-    <div class="header-title">
-        পরিবার হিসাব
-    </div>
-
-    <div class="header-subtitle">
-        পরিবার ও সদস্য সংখ্যা সংরক্ষণের সহজ অ্যাপ
-    </div>
-
-</div>
-
-
-
-<!-- =========================
-     SUMMARY
-========================= -->
-
-<div class="summary">
-
-
-    <div class="summary-card">
-
-        <div class="summary-label">
-            মোট পরিবার সংখ্যা
+        <div class="header-title">
+            পরিবার হিসাব
         </div>
 
-        <div
-            id="totalFamilies"
-            class="summary-number">
-            0
+        <div class="header-subtitle">
+            পরিবার ও সদস্য সংখ্যা সংরক্ষণের সহজ অ্যাপ
         </div>
 
     </div>
 
 
+    <!-- ==========================
+         SUMMARY
+    =========================== -->
 
-    <div class="summary-card">
+    <div class="summary">
 
-        <div class="summary-label">
-            মোট সদস্য সংখ্যা
+        <div class="summary-card">
+
+            <div class="summary-label">
+                মোট পরিবার সংখ্যা
+            </div>
+
+            <div
+                id="totalFamilies"
+                class="summary-number">
+                ০
+            </div>
+
         </div>
 
-        <div
-            id="totalMembers"
-            class="summary-number">
-            0
+
+        <div class="summary-card">
+
+            <div class="summary-label">
+                মোট সদস্য সংখ্যা
+            </div>
+
+            <div
+                id="totalMembers"
+                class="summary-number">
+                ০
+            </div>
+
         </div>
 
     </div>
 
 
-</div>
+    <!-- ==========================
+         BACKUP / RESTORE
+    =========================== -->
+
+    <div class="controls">
+
+        <div class="control-title">
+            ডাটা সংরক্ষণ
+        </div>
 
 
+        <div class="button-row">
 
-<!-- =========================
-     BACKUP
-========================= -->
+            <button
+                id="backupBtn"
+                class="btn backup-btn"
+                type="button">
 
-<div class="controls">
+                💾 ব্যাকআপ
 
-
-    <div class="control-title">
-        ডাটা সংরক্ষণ
-    </div>
+            </button>
 
 
-    <div class="button-row">
+            <button
+                id="restoreBtn"
+                class="btn restore-btn"
+                type="button">
+
+                ♻️ রিস্টোর
+
+            </button>
+
+        </div>
 
 
         <button
-            id="backupBtn"
-            class="btn backup-btn"
+            id="clearBtn"
+            class="btn clear-btn"
             type="button">
 
-            💾 ব্যাকআপ
+            🗑️ সব মুছুন
 
         </button>
 
 
-
-        <button
-            id="restoreBtn"
-            class="btn restore-btn"
-            type="button">
-
-            ♻️ রিস্টোর
-
-        </button>
-
+        <input
+            id="restoreFile"
+            type="file"
+            accept=".json,application/json">
 
     </div>
 
 
+    <!-- ==========================
+         FAMILY LIST
+    =========================== -->
 
-    <button
-        id="clearBtn"
-        class="btn clear-btn"
-        type="button">
-
-        🗑️ সব মুছুন
-
-    </button>
+    <div class="list-card">
 
 
+        <div class="list-header">
 
-    <input
-        id="restoreFile"
-        type="file"
-        accept=".json,application/json">
+            <div class="list-title">
+                পরিবারের তালিকা
+            </div>
 
-
-</div>
-
+        </div>
 
 
-<!-- =========================
-     FAMILY LIST
-========================= -->
+        <div class="table-wrap">
 
-<div class="list-card">
-<div class="list-header">
-<div class="list-title">পরিবারের তালিকা</div>
-</div>
+            <table>
 
-  
-    </div>
+                <thead>
 
+                    <tr>
 
+                        <th>
+                            পরিবারের নাম
+                        </th>
 
-    <div class="table-wrap">
+                        <th>
+                            সদস্য সংখ্যা
+                        </th>
 
+                        <th>
+                            কাজ
+                        </th>
 
-        <table>
+                    </tr>
 
-
-            <thead>
-
-                <tr>
-
-                    <th>
-                        পরিবারের নাম
-                    </th>
-
-                    <th>
-                        সদস্য সংখ্যা
-                    </th>
-
-                    <th>
-                        কাজ
-                    </th>
-
-                </tr>
-
-            </thead>
+                </thead>
 
 
+                <tbody id="familyTableBody">
 
-            <tbody
-                id="familyTableBody">
+                </tbody>
 
-            </tbody>
+            </table>
 
-
-        </table>
-
+        </div>
 
     </div>
 
 
-</div>
+    <!-- ==========================
+         FOOTER
+    =========================== -->
 
+    <div class="footer">
 
+        তথ্য এই ফোনের ব্রাউজারে সংরক্ষিত থাকবে।
 
-<div class="footer">
-
-    তথ্য এই ফোনের ব্রাউজারে সংরক্ষিত থাকবে।
-
-</div>
+    </div>
 
 
 </div>
@@ -753,25 +613,20 @@ th:nth-child(3){
 
 <script>
 
-
-/* =====================================================
+/* =========================================
    STORAGE
-===================================================== */
+========================================= */
 
 const STORAGE_KEY =
     "poribarHisabFinalV2";
 
 
-/* =====================================================
-   DATA
-===================================================== */
-
 let families = [];
 
 
-/* =====================================================
+/* =========================================
    ELEMENTS
-===================================================== */
+========================================= */
 
 const tableBody =
     document.getElementById(
@@ -808,15 +663,10 @@ const clearBtn =
         "clearBtn"
     );
 
-const familyListTitle =
-    document.getElementById(
-        "familyListTitle"
-    );
 
-
-/* =====================================================
-   NUMBER CONVERSION
-===================================================== */
+/* =========================================
+   BANGLA NUMBER → ENGLISH NUMBER
+========================================= */
 
 function toEnglishNumbers(value){
 
@@ -853,7 +703,6 @@ function toEnglishNumbers(value){
                 );
 
         }
-
         else if(
             english.indexOf(ch) >= 0
         ){
@@ -870,9 +719,9 @@ function toEnglishNumbers(value){
 }
 
 
-/* =====================================================
-   SAVE
-===================================================== */
+/* =========================================
+   SAVE DATA
+========================================= */
 
 function saveData(){
 
@@ -880,13 +729,10 @@ function saveData(){
 
         localStorage.setItem(
             STORAGE_KEY,
-            JSON.stringify(
-                families
-            )
+            JSON.stringify(families)
         );
 
     }
-
     catch(error){
 
         console.log(
@@ -899,9 +745,9 @@ function saveData(){
 }
 
 
-/* =====================================================
-   LOAD
-===================================================== */
+/* =========================================
+   LOAD DATA
+========================================= */
 
 function loadData(){
 
@@ -915,10 +761,6 @@ function loadData(){
                 STORAGE_KEY
             );
 
-
-        /*
-          পুরোনো ডাটাও নেওয়া হবে
-        */
 
         if(!saved){
 
@@ -950,14 +792,10 @@ function loadData(){
 
 
         const data =
-            JSON.parse(
-                saved
-            );
+            JSON.parse(saved);
 
 
-        if(
-            !Array.isArray(data)
-        ){
+        if(!Array.isArray(data)){
 
             families = [];
 
@@ -968,8 +806,10 @@ function loadData(){
 
         families =
             data
-            .map(
-                item => ({
+
+            .map(function(item){
+
+                return {
 
                     name:
                         String(
@@ -981,16 +821,20 @@ function loadData(){
                             item.members || ""
                         )
 
-                })
-            )
-            .filter(
-                item =>
-                    item.name.trim() !== ""
-            );
+                };
 
+            })
+
+
+            .filter(function(item){
+
+                return (
+                    item.name.trim() !== ""
+                );
+
+            });
 
     }
-
     catch(error){
 
         console.log(
@@ -1005,9 +849,9 @@ function loadData(){
 }
 
 
-/* =====================================================
-   SUMMARY
-===================================================== */
+/* =========================================
+   UPDATE SUMMARY
+========================================= */
 
 function updateSummary(){
 
@@ -1015,7 +859,7 @@ function updateSummary(){
 
 
     families.forEach(
-        item => {
+        function(item){
 
             const number =
                 parseInt(
@@ -1026,12 +870,9 @@ function updateSummary(){
                 );
 
 
-            if(
-                !isNaN(number)
-            ){
+            if(!isNaN(number)){
 
-                memberTotal +=
-                    number;
+                memberTotal += number;
 
             }
 
@@ -1053,9 +894,9 @@ function updateSummary(){
 }
 
 
-/* =====================================================
-   FOCUS
-===================================================== */
+/* =========================================
+   FOCUS INPUT
+========================================= */
 
 function focusInput(input){
 
@@ -1065,10 +906,6 @@ function focusInput(input){
 
     }
 
-
-    /*
-      iPhone-এ cursor ঠিক রাখার জন্য
-    */
 
     requestAnimationFrame(
         function(){
@@ -1084,7 +921,6 @@ function focusInput(input){
                 );
 
             }
-
             catch(error){}
 
         }
@@ -1093,56 +929,9 @@ function focusInput(input){
 }
 
 
-/* =====================================================
-   NEW FAMILY FOCUS
-===================================================== */
-
-function focusNewFamily(){
-
-    const input =
-        document.getElementById(
-            "newFamilyInput"
-        );
-
-
-    if(!input){
-
-        return;
-
-    }
-
-
-    /*
-      নতুন row তৈরি হওয়ার পর
-      একই input-এ সরাসরি cursor।
-    */
-
-    requestAnimationFrame(
-        function(){
-
-            input.focus();
-
-
-            try{
-
-                input.setSelectionRange(
-                    0,
-                    0
-                );
-
-            }
-
-            catch(error){}
-
-        }
-    );
-
-}
-
-
-/* =====================================================
+/* =========================================
    CREATE INPUT
-===================================================== */
+========================================= */
 
 function createInput(
     className,
@@ -1156,8 +945,7 @@ function createInput(
         );
 
 
-    input.type =
-        "text";
+    input.type = "text";
 
     input.className =
         className;
@@ -1181,22 +969,10 @@ function createInput(
         false;
 
 
-    if(
-        className ===
-        "family-input"
-    ){
-
-        input.enterKeyHint =
-            "next";
-
-    }
-
-    else{
-
-        input.enterKeyHint =
-            "done";
-
-    }
+    input.enterKeyHint =
+        className === "family-input"
+        ? "next"
+        : "done";
 
 
     return input;
@@ -1204,30 +980,17 @@ function createInput(
 }
 
 
-/* =====================================================
+/* =========================================
    RENDER
-===================================================== */
+========================================= */
 
 function render(){
-
-    /*
-      পরিবারের তালিকার table
-      সম্পূর্ণ পরিষ্কার করে
-      আবার তৈরি করা হচ্ছে।
-    */
 
     tableBody.innerHTML = "";
 
 
-    /*
-      SAVED FAMILIES
-    */
-
     families.forEach(
-        function(
-            family,
-            index
-        ){
+        function(family,index){
 
             const tr =
                 document.createElement(
@@ -1235,9 +998,7 @@ function render(){
                 );
 
 
-            /* -----------------
-               FAMILY NAME
-            ----------------- */
+            /* FAMILY NAME */
 
             const familyTd =
                 document.createElement(
@@ -1301,9 +1062,7 @@ function render(){
             );
 
 
-            /* -----------------
-               MEMBER
-            ----------------- */
+            /* MEMBER COUNT */
 
             const memberTd =
                 document.createElement(
@@ -1360,7 +1119,6 @@ function render(){
 
                         updateSummary();
 
-
                         createNextFamily();
 
                     }
@@ -1374,9 +1132,7 @@ function render(){
             );
 
 
-            /* -----------------
-               DELETE
-            ----------------- */
+            /* DELETE */
 
             const actionTd =
                 document.createElement(
@@ -1444,21 +1200,16 @@ function render(){
     );
 
 
-    /*
-      সব সময় একটি খালি row থাকবে
-    */
-
     createBlankRow();
-
 
     updateSummary();
 
 }
 
 
-/* =====================================================
-   CREATE BLANK ROW
-===================================================== */
+/* =========================================
+   CREATE NEW BLANK ROW
+========================================= */
 
 function createBlankRow(){
 
@@ -1472,9 +1223,7 @@ function createBlankRow(){
         "new-row";
 
 
-    /* -----------------
-       FAMILY
-    ----------------- */
+    /* FAMILY */
 
     const familyTd =
         document.createElement(
@@ -1529,9 +1278,7 @@ function createBlankRow(){
     );
 
 
-    /* -----------------
-       MEMBER
-    ----------------- */
+    /* MEMBER */
 
     const memberTd =
         document.createElement(
@@ -1564,7 +1311,6 @@ function createBlankRow(){
 
                 event.stopPropagation();
 
-
                 saveNewFamily();
 
             }
@@ -1578,9 +1324,7 @@ function createBlankRow(){
     );
 
 
-    /* -----------------
-       FINISH
-    ----------------- */
+    /* FINISH */
 
     const actionTd =
         document.createElement(
@@ -1639,9 +1383,9 @@ function createBlankRow(){
 }
 
 
-/* =====================================================
+/* =========================================
    SAVE NEW FAMILY
-===================================================== */
+========================================= */
 
 function saveNewFamily(){
 
@@ -1650,6 +1394,7 @@ function saveNewFamily(){
             "newFamilyInput"
         );
 
+
     const memberInput =
         document.getElementById(
             "newMemberInput"
@@ -1698,20 +1443,10 @@ function saveNewFamily(){
 
     saveData();
 
-
-    /*
-      নতুন row তৈরি
-    */
-
     render();
 
     updateSummary();
 
-
-    /*
-      নতুন row-এর
-      পরিবারের নামের ঘরে cursor
-    */
 
     const newInput =
         document.getElementById(
@@ -1732,7 +1467,6 @@ function saveNewFamily(){
             );
 
         }
-
         catch(error){}
 
     }
@@ -1740,9 +1474,9 @@ function saveNewFamily(){
 }
 
 
-/* =====================================================
+/* =========================================
    CREATE NEXT FAMILY
-===================================================== */
+========================================= */
 
 function createNextFamily(){
 
@@ -1751,6 +1485,7 @@ function createNextFamily(){
             "newFamilyInput"
         );
 
+
     const memberInput =
         document.getElementById(
             "newMemberInput"
@@ -1799,16 +1534,10 @@ function createNextFamily(){
 
     saveData();
 
-
     render();
 
     updateSummary();
 
-
-    /*
-      এখানে কোনো delay নেই।
-      নতুন input-এই cursor।
-    */
 
     const newInput =
         document.getElementById(
@@ -1829,7 +1558,6 @@ function createNextFamily(){
             );
 
         }
-
         catch(error){}
 
     }
@@ -1837,59 +1565,9 @@ function createNextFamily(){
 }
 
 
-/* =====================================================
-   FAMILY LIST TITLE
-===================================================== */
-
-
-
-        const input =
-            document.getElementById(
-                "newFamilyInput"
-            );
-
-
-        if(input){
-
-            input.focus();
-
-        }
-
-    }
-);
-
-
-
-
-        if(
-            event.key ===
-            "Enter"
-        ){
-
-            event.preventDefault();
-
-
-            const input =
-                document.getElementById(
-                    "newFamilyInput"
-                );
-
-
-            if(input){
-
-                input.focus();
-
-            }
-
-        }
-
-    }
-);
-
-
-/* =====================================================
+/* =========================================
    BACKUP
-===================================================== */
+========================================= */
 
 function backupData(){
 
@@ -1943,7 +1621,7 @@ function backupData(){
         date.getFullYear() +
         "-" +
         String(
-            date.getMonth()+1
+            date.getMonth() + 1
         ).padStart(2,"0") +
         "-" +
         String(
@@ -1975,7 +1653,6 @@ function backupData(){
 
     link.click();
 
-
     link.remove();
 
 
@@ -1993,9 +1670,9 @@ function backupData(){
 }
 
 
-/* =====================================================
-   RESTORE
-===================================================== */
+/* =========================================
+   RESTORE BUTTON
+========================================= */
 
 restoreBtn.addEventListener(
     "click",
@@ -2008,6 +1685,10 @@ restoreBtn.addEventListener(
     }
 );
 
+
+/* =========================================
+   RESTORE FILE
+========================================= */
 
 restoreFile.addEventListener(
     "change",
@@ -2069,24 +1750,37 @@ restoreFile.addEventListener(
 
                     families =
                         backup.families
+
                         .map(
-                            item => ({
+                            function(item){
 
-                                name:
-                                    String(
-                                        item.name || ""
-                                    ),
+                                return {
 
-                                members:
-                                    toEnglishNumbers(
-                                        item.members || ""
-                                    )
+                                    name:
+                                        String(
+                                            item.name ||
+                                            ""
+                                        ),
 
-                            })
+                                    members:
+                                        toEnglishNumbers(
+                                            item.members ||
+                                            ""
+                                        )
+
+                                };
+
+                            }
                         )
+
                         .filter(
-                            item =>
-                                item.name.trim() !== ""
+                            function(item){
+
+                                return (
+                                    item.name.trim() !== ""
+                                );
+
+                            }
                         );
 
 
@@ -2101,14 +1795,10 @@ restoreFile.addEventListener(
                         "Backup সফলভাবে রিস্টোর হয়েছে।"
                     );
 
-
                 }
-
                 catch(error){
 
-                    console.log(
-                        error
-                    );
+                    console.log(error);
 
 
                     alert(
@@ -2120,15 +1810,17 @@ restoreFile.addEventListener(
             };
 
 
-        reader.readAsText(file);
+        reader.readAsText(
+            file
+        );
 
     }
 );
 
 
-/* =====================================================
-   CLEAR
-===================================================== */
+/* =========================================
+   CLEAR ALL
+========================================= */
 
 clearBtn.addEventListener(
     "click",
@@ -2182,9 +1874,9 @@ clearBtn.addEventListener(
 );
 
 
-/* =====================================================
-   BUTTON EVENTS
-===================================================== */
+/* =========================================
+   BACKUP BUTTON
+========================================= */
 
 backupBtn.addEventListener(
     "click",
@@ -2192,9 +1884,9 @@ backupBtn.addEventListener(
 );
 
 
-/* =====================================================
+/* =========================================
    START APP
-===================================================== */
+========================================= */
 
 loadData();
 
@@ -2203,9 +1895,9 @@ render();
 updateSummary();
 
 
-/* =====================================================
+/* =========================================
    SERVICE WORKER
-===================================================== */
+========================================= */
 
 if(
     "serviceWorker" in navigator
@@ -2219,6 +1911,7 @@ if(
                 .register(
                     "./service-worker.js"
                 )
+
                 .catch(
                     function(error){
 
@@ -2237,6 +1930,6 @@ if(
 
 </script>
 
-
 </body>
+
 </html>
