@@ -1,1301 +1,1856 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-
 <meta charset="UTF-8">
 
 <meta name="viewport"
-content="width=device-width,
-initial-scale=1,
-maximum-scale=1,
-viewport-fit=cover">
-
-<title>পরিবার হিসাব</title>
-
-<link rel="manifest" href="./manifest.json">
+      content="width=device-width, initial-scale=1.0,
+               maximum-scale=1.0, user-scalable=no,
+               viewport-fit=cover">
 
 <meta name="theme-color" content="#2563eb">
-
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="পরিবার হিসাব">
 
+<link rel="manifest" href="./manifest.json">
+
+<title>পরিবার হিসাব</title>
+
 <style>
 
 *{
-box-sizing:border-box;
--webkit-tap-highlight-color:transparent;
+    box-sizing:border-box;
+    -webkit-tap-highlight-color:transparent;
 }
-
-html,body{
-margin:0;
-padding:0;
-min-height:100%;
-
-font-family:
--apple-system,
-BlinkMacSystemFont,
-"Noto Sans Bengali",
-"Noto Sans",
-Arial,
-sans-serif;
-
-background:#f3f6fb;
-color:#172033;
-}
-
-body{
-padding-bottom:env(safe-area-inset-bottom);
-}
-
-/* HEADER */
-
-.header{
-background:linear-gradient(135deg,#2563eb,#1d4ed8);
-color:#fff;
-
-padding:
-calc(16px + env(safe-area-inset-top))
-18px
-18px;
-
-box-shadow:0 4px 18px rgba(37,99,235,.22);
-}
-
-.header-top{
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:12px;
-}
-
-.logo{
-width:50px;
-height:50px;
-border-radius:15px;
-
-background:rgba(255,255,255,.18);
-
-display:flex;
-align-items:center;
-justify-content:center;
-
-font-size:28px;
-flex:none;
-}
-
-.title-wrap{
-flex:1;
-}
-
-.title{
-font-size:28px;
-font-weight:800;
-line-height:1.15;
-}
-
-.subtitle{
-font-size:15px;
-margin-top:5px;
-opacity:.9;
-}
-
-.clear-btn{
-border:1px solid rgba(255,255,255,.35);
-background:rgba(255,255,255,.13);
-
-color:#fff;
-
-border-radius:11px;
-
-padding:10px 12px;
-
-font-size:14px;
-font-weight:700;
-}
-
-/* MAIN */
-
-.container{
-max-width:900px;
-margin:auto;
-padding:16px;
-}
-
-/* SUMMARY */
-
-.summary{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:12px;
-margin-bottom:16px;
-}
-
-.summary-card{
-background:#fff;
-
-border-radius:17px;
-
-padding:17px;
-
-text-align:center;
-
-box-shadow:0 5px 18px rgba(15,23,42,.07);
-
-border:1px solid #e5eaf2;
-}
-
-.summary-number{
-font-size:30px;
-font-weight:800;
-color:#2563eb;
-line-height:1.1;
-}
-
-.summary-label{
-font-size:15px;
-font-weight:700;
-color:#596579;
-margin-top:7px;
-}
-
-/* TABLE */
-
-.table-card{
-background:#fff;
-
-border-radius:18px;
-
-box-shadow:0 5px 20px rgba(15,23,42,.08);
-
-overflow:hidden;
-
-border:1px solid #e5eaf2;
-}
-
-.table-head{
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:10px;
-
-padding:15px 16px;
-
-border-bottom:1px solid #e8edf4;
-}
-
-.table-title{
-font-size:20px;
-font-weight:800;
-}
-
-/* ENTER BADGE */
-
-.enter-hint{
-display:flex;
-align-items:center;
-gap:6px;
-
-background:#2563eb;
-color:#fff;
-
-border-radius:999px;
-
-padding:7px 10px;
-
-font-size:13px;
-font-weight:800;
-
-box-shadow:0 4px 12px rgba(37,99,235,.25);
-}
-
-.enter-key{
-background:#fff;
-color:#2563eb;
-
-border-radius:5px;
-
-padding:2px 6px;
-
-font-size:12px;
-font-weight:900;
-}
-
-/* TABLE */
-
-.table-wrap{
-overflow-x:auto;
-}
-
-table{
-width:100%;
-border-collapse:collapse;
-min-width:480px;
-}
-
-th{
-background:#f1f5ff;
-
-color:#1e3a8a;
-
-font-size:17px;
-font-weight:800;
-
-padding:13px 10px;
-
-border-bottom:2px solid #dbe5f5;
-}
-
-td{
-padding:10px;
-
-border-bottom:1px solid #e8edf4;
-
-text-align:center;
-}
-
-td:first-child{
-text-align:left;
-}
-
-/* INPUT */
-
-input{
-width:100%;
-height:46px;
-
-border:1px solid #cfd8e6;
-
-border-radius:10px;
-
-background:#fff;
-
-padding:8px 11px;
-
-font-size:18px;
-
-color:#172033;
-
-outline:none;
-
--webkit-appearance:none;
-}
-
-input:focus{
-border:2px solid #2563eb;
-background:#f8fbff;
-}
-
-input::placeholder{
-color:#9aa6b5;
-}
-
-/* FINISH BUTTON */
-
-.finish-btn{
-width:100%;
-height:40px;
-
-border:0;
-border-radius:10px;
-
-background:#dcfce7;
-color:#15803d;
-
-font-size:14px;
-font-weight:800;
-}
-
-/* DELETE */
-
-.delete-btn{
-min-width:70px;
-height:40px;
-
-border:0;
-border-radius:10px;
-
-background:#fee2e2;
-color:#b91c1c;
-
-font-size:15px;
-font-weight:800;
-}
-
-/* FOOTER */
-
-.footer{
-text-align:center;
-
-color:#7b8798;
-
-font-size:13px;
-
-padding:18px 0 8px;
-}
-
-/* MOBILE */
-
-@media(max-width:600px){
-
-.container{
-padding:12px;
-}
-
-.header{
-padding-left:14px;
-padding-right:14px;
-}
-
-.title{
-font-size:25px;
-}
-
-.subtitle{
-font-size:14px;
-}
-
-.clear-btn{
-font-size:13px;
-padding:9px 10px;
-}
-
-.summary-card{
-padding:15px 8px;
-}
-
-.summary-number{
-font-size:28px;
-}
-
-.summary-label{
-font-size:14px;
-}
-
-.table-title{
-font-size:19px;
-}
-
-.enter-hint{
-font-size:12px;
-padding:6px 8px;
-}
-
-th{
-font-size:16px;
-}
-
-input{
-font-size:17px;
-}
-
-}
-
-/* PWA */
-
-@media(display-mode:standalone){
 
 html,
 body{
-overscroll-behavior:none;
+    margin:0;
+    padding:0;
+    min-height:100%;
+    font-family:-apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                "Noto Sans Bengali",
+                Arial,
+                sans-serif;
+    background:#f3f6fb;
+    color:#172033;
 }
 
+body{
+    padding:
+        env(safe-area-inset-top)
+        12px
+        env(safe-area-inset-bottom)
+        12px;
+}
+
+.app{
+    width:100%;
+    max-width:900px;
+    margin:0 auto;
+    padding:12px 0 30px;
+}
+
+/* Header */
+
+.header{
+    background:linear-gradient(135deg,#2563eb,#1d4ed8);
+    color:white;
+    border-radius:20px;
+    padding:22px 18px;
+    box-shadow:0 8px 24px rgba(37,99,235,.20);
+    margin-bottom:14px;
+}
+
+.header-title{
+    font-size:29px;
+    font-weight:800;
+    line-height:1.2;
+    margin:0;
+}
+
+.header-subtitle{
+    font-size:16px;
+    margin-top:7px;
+    opacity:.92;
+}
+
+/* Summary */
+
+.summary{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+    margin-bottom:14px;
+}
+
+.summary-card{
+    background:white;
+    border-radius:17px;
+    padding:16px 14px;
+    box-shadow:0 3px 12px rgba(0,0,0,.07);
+    border:1px solid #e5eaf2;
+    text-align:center;
+}
+
+.summary-label{
+    font-size:16px;
+    color:#64748b;
+    font-weight:600;
+}
+
+.summary-number{
+    font-size:31px;
+    font-weight:800;
+    color:#1d4ed8;
+    margin-top:4px;
+}
+
+/* Controls */
+
+.controls{
+    background:white;
+    border-radius:18px;
+    padding:14px;
+    box-shadow:0 3px 12px rgba(0,0,0,.07);
+    border:1px solid #e5eaf2;
+    margin-bottom:14px;
+}
+
+.control-title{
+    font-size:19px;
+    font-weight:800;
+    margin-bottom:11px;
+}
+
+.button-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+}
+
+.btn{
+    border:0;
+    border-radius:13px;
+    min-height:52px;
+    padding:10px 12px;
+    font-size:17px;
+    font-weight:750;
+    cursor:pointer;
+    touch-action:manipulation;
+}
+
+.btn-backup{
+    background:#0f766e;
+    color:white;
+}
+
+.btn-restore{
+    background:#7c3aed;
+    color:white;
+}
+
+.btn-clear{
+    width:100%;
+    margin-top:10px;
+    background:#fee2e2;
+    color:#b91c1c;
+}
+
+.btn:active{
+    transform:scale(.98);
+}
+
+/* List */
+
+.list-card{
+    background:white;
+    border-radius:18px;
+    box-shadow:0 3px 12px rgba(0,0,0,.07);
+    border:1px solid #e5eaf2;
+    overflow:hidden;
+}
+
+.list-header{
+    padding:16px 14px 12px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
+    border-bottom:1px solid #e5eaf2;
+}
+
+.list-title{
+    font-size:21px;
+    font-weight:800;
+}
+
+.enter-badge{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    background:#dbeafe;
+    color:#1d4ed8;
+    border:1px solid #93c5fd;
+    border-radius:999px;
+    padding:7px 11px;
+    font-size:14px;
+    font-weight:800;
+    white-space:nowrap;
+}
+
+/* Table */
+
+.table-wrap{
+    width:100%;
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    table-layout:fixed;
+}
+
+th{
+    background:#eff6ff;
+    color:#1e3a8a;
+    font-size:16px;
+    font-weight:800;
+    padding:12px 8px;
+    border-bottom:1px solid #dbeafe;
+}
+
+td{
+    padding:8px;
+    border-bottom:1px solid #e5e7eb;
+    vertical-align:middle;
+}
+
+th:nth-child(1){
+    width:48%;
+}
+
+th:nth-child(2){
+    width:25%;
+}
+
+th:nth-child(3){
+    width:27%;
+}
+
+/* Inputs */
+
+.family-input,
+.member-input{
+    width:100%;
+    height:52px;
+    border:2px solid #d7deea;
+    border-radius:11px;
+    background:#fff;
+    padding:8px 11px;
+    font-size:19px;
+    color:#111827;
+    outline:none;
+    -webkit-appearance:none;
+    appearance:none;
+    box-shadow:none;
+}
+
+.family-input:focus,
+.member-input:focus{
+    border-color:#2563eb;
+    box-shadow:0 0 0 3px rgba(37,99,235,.12);
+    background:#f8fbff;
+}
+
+/*
+   সদস্য সংখ্যা ইচ্ছাকৃতভাবে text রাখা হয়েছে।
+   এতে iPhone-এর Return/Enter ব্যবহার করা সহজ হয়।
+*/
+.member-input{
+    text-align:center;
+    font-weight:700;
+}
+
+/* Delete */
+
+.delete-btn{
+    width:100%;
+    min-height:48px;
+    border:0;
+    border-radius:11px;
+    background:#fee2e2;
+    color:#b91c1c;
+    font-size:16px;
+    font-weight:800;
+    cursor:pointer;
+    touch-action:manipulation;
+}
+
+.delete-btn:active{
+    transform:scale(.97);
+}
+
+/* New row */
+
+.new-row td{
+    background:#f8fafc;
+}
+
+.new-row .family-input{
+    border-color:#93c5fd;
+    background:#f8fbff;
+}
+
+.new-row .member-input{
+    border-color:#93c5fd;
+    background:#f8fbff;
+}
+
+/* Empty */
+
+.empty-message{
+    text-align:center;
+    padding:24px 15px;
+    color:#64748b;
+    font-size:16px;
+}
+
+/* Footer */
+
+.footer{
+    text-align:center;
+    color:#64748b;
+    font-size:14px;
+    padding:18px 5px 5px;
+}
+
+/* Restore file input hidden */
+
+#restoreFile{
+    display:none;
+}
+
+/* Small screens */
+
+@media(max-width:480px){
+
+    body{
+        padding-left:9px;
+        padding-right:9px;
+    }
+
+    .header{
+        padding:19px 15px;
+        border-radius:17px;
+    }
+
+    .header-title{
+        font-size:26px;
+    }
+
+    .header-subtitle{
+        font-size:15px;
+    }
+
+    .summary-number{
+        font-size:28px;
+    }
+
+    .list-header{
+        align-items:flex-start;
+        flex-direction:column;
+    }
+
+    .enter-badge{
+        font-size:13px;
+    }
+
+    th{
+        font-size:15px;
+    }
+
+    .family-input,
+    .member-input{
+        font-size:18px;
+        height:50px;
+    }
+
+    .delete-btn{
+        font-size:14px;
+    }
 }
 
 </style>
-
 </head>
-
 
 <body>
 
+<div class="app">
 
-<header class="header">
+    <!-- Header -->
 
-<div class="header-top">
+    <div class="header">
 
-<div class="logo">
-🏠
+        <div class="header-title">
+            পরিবার হিসাব
+        </div>
+
+        <div class="header-subtitle">
+            পরিবার ও সদস্য সংখ্যা সংরক্ষণের সহজ ব্যবস্থা
+        </div>
+
+    </div>
+
+
+    <!-- Summary -->
+
+    <div class="summary">
+
+        <div class="summary-card">
+
+            <div class="summary-label">
+                মোট পরিবার সংখ্যা
+            </div>
+
+            <div
+                class="summary-number"
+                id="totalFamilies"
+            >
+                0
+            </div>
+
+        </div>
+
+
+        <div class="summary-card">
+
+            <div class="summary-label">
+                মোট সদস্য সংখ্যা
+            </div>
+
+            <div
+                class="summary-number"
+                id="totalMembers"
+            >
+                0
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Backup / Restore -->
+
+    <div class="controls">
+
+        <div class="control-title">
+            ডাটা সংরক্ষণ
+        </div>
+
+        <div class="button-row">
+
+            <button
+                type="button"
+                class="btn btn-backup"
+                id="backupBtn"
+            >
+                💾 ব্যাকআপ
+            </button>
+
+            <button
+                type="button"
+                class="btn btn-restore"
+                id="restoreBtn"
+            >
+                ♻️ রিস্টোর
+            </button>
+
+        </div>
+
+        <button
+            type="button"
+            class="btn btn-clear"
+            id="clearBtn"
+        >
+            🗑️ সব মুছুন
+        </button>
+
+        <input
+            type="file"
+            id="restoreFile"
+            accept=".json,application/json"
+        >
+
+    </div>
+
+
+    <!-- Family List -->
+
+    <div class="list-card">
+
+        <div class="list-header">
+
+            <div class="list-title">
+                পরিবারের তালিকা
+            </div>
+
+            <div class="enter-badge">
+                ↵ Enter চাপুন
+            </div>
+
+        </div>
+
+
+        <div class="table-wrap">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            পরিবারের নাম
+                        </th>
+
+                        <th>
+                            সদস্য সংখ্যা
+                        </th>
+
+                        <th>
+                            কাজ
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="familyTableBody">
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer">
+        আপনার তথ্য এই ফোনের ব্রাউজারে সংরক্ষিত থাকবে।
+    </div>
+
 </div>
-
-<div class="title-wrap">
-
-<div class="title">
-পরিবার হিসাব
-</div>
-
-<div class="subtitle">
-পরিবার ও সদস্য সংখ্যা সহজে সংরক্ষণ করুন
-</div>
-
-</div>
-
-<button
-class="clear-btn"
-onclick="clearAll()">
-
-সব মুছুন
-
-</button>
-
-</div>
-
-</header>
-
-
-<main class="container">
-
-
-<section class="summary">
-
-<div class="summary-card">
-
-<div
-class="summary-number"
-id="familyTotal">
-
-0
-
-</div>
-
-<div class="summary-label">
-মোট পরিবার সংখ্যা
-</div>
-
-</div>
-
-
-<div class="summary-card">
-
-<div
-class="summary-number"
-id="memberTotal">
-
-0
-
-</div>
-
-<div class="summary-label">
-মোট সদস্য সংখ্যা
-</div>
-
-</div>
-
-</section>
-
-
-<section class="table-card">
-
-
-<div class="table-head">
-
-<div class="table-title">
-পরিবারের তালিকা
-</div>
-
-<div class="enter-hint">
-
-<span class="enter-key">
-Enter
-</span>
-
-<span>
-চাপুন
-</span>
-
-</div>
-
-</div>
-
-
-<div class="table-wrap">
-
-<table>
-
-<thead>
-
-<tr>
-
-<th style="width:52%">
-পরিবারের নাম
-</th>
-
-<th style="width:25%">
-সদস্য
-</th>
-
-<th style="width:23%">
-কাজ
-</th>
-
-</tr>
-
-</thead>
-
-
-<tbody id="familyBody">
-</tbody>
-
-</table>
-
-</div>
-
-</section>
-
-
-<div class="footer">
-ডাটা এই ফোনেই স্বয়ংক্রিয়ভাবে সংরক্ষিত থাকবে
-</div>
-
-
-</main>
 
 
 <script>
 
-const STORAGE_KEY =
-"poribarHisabSimpleV1";
+/* =========================================================
+   পরিবার হিসাব
+   সম্পূর্ণ নতুন সংস্করণ
+   ========================================================= */
 
-let families=[];
+
+/* ---------------------------------------------------------
+   Storage
+   --------------------------------------------------------- */
+
+const STORAGE_KEY = "poribarHisabSimpleV2";
 
 
-/* LOAD */
+/* ---------------------------------------------------------
+   Data
+   --------------------------------------------------------- */
+
+let families = [];
+
+
+/* ---------------------------------------------------------
+   DOM
+   --------------------------------------------------------- */
+
+const tableBody =
+    document.getElementById("familyTableBody");
+
+const totalFamilies =
+    document.getElementById("totalFamilies");
+
+const totalMembers =
+    document.getElementById("totalMembers");
+
+const backupBtn =
+    document.getElementById("backupBtn");
+
+const restoreBtn =
+    document.getElementById("restoreBtn");
+
+const restoreFile =
+    document.getElementById("restoreFile");
+
+const clearBtn =
+    document.getElementById("clearBtn");
+
+
+/* ---------------------------------------------------------
+   Load data
+   --------------------------------------------------------- */
 
 function loadData(){
 
-try{
+    try{
 
-const data=
-JSON.parse(
-localStorage.getItem(STORAGE_KEY)
-||"[]"
-);
+        const saved =
+            localStorage.getItem(STORAGE_KEY);
 
-if(Array.isArray(data)){
+        if(!saved){
 
-families=data
-.filter(
-x=>
-x &&
-String(x.name||"").trim()!==""
-)
-.map(x=>({
+            families = [];
 
-name:String(x.name||"").trim(),
+            return;
+        }
 
-members:String(x.members||"")
-.replace(/\D/g,"")
+        const parsed =
+            JSON.parse(saved);
 
-}));
+        if(Array.isArray(parsed)){
+
+            families = parsed
+                .filter(item =>
+                    item &&
+                    (
+                        String(item.name || "").trim() !== "" ||
+                        String(item.members || "").trim() !== ""
+                    )
+                )
+                .map(item => ({
+
+                    name:
+                        String(item.name || ""),
+
+                    members:
+                        String(item.members || "")
+                            .replace(/\D/g,"")
+
+                }));
+
+        }else{
+
+            families = [];
+
+        }
+
+    }catch(error){
+
+        console.error(error);
+
+        families = [];
+
+    }
 
 }
 
-}catch(e){
 
-families=[];
-
-}
-
-}
-
-
-/* SAVE */
+/* ---------------------------------------------------------
+   Save data
+   --------------------------------------------------------- */
 
 function saveData(){
 
-localStorage.setItem(
-STORAGE_KEY,
-JSON.stringify(families)
-);
+    localStorage.setItem(
+        STORAGE_KEY,
+        JSON.stringify(families)
+    );
 
 }
 
 
-/* SUMMARY */
+/* ---------------------------------------------------------
+   Summary
+   --------------------------------------------------------- */
 
 function updateSummary(){
 
-document.getElementById(
-"familyTotal"
-).textContent=families.length;
+    let familyCount = 0;
+
+    let memberCount = 0;
 
 
-let total=0;
+    families.forEach(item => {
 
-families.forEach(
-x=>{
+        const name =
+            String(item.name || "").trim();
 
-const n=
-parseInt(x.members,10);
-
-if(!isNaN(n)){
-total+=n;
-}
-
-});
+        const members =
+            parseInt(
+                String(item.members || "")
+                    .replace(/\D/g,""),
+                10
+            ) || 0;
 
 
-document.getElementById(
-"memberTotal"
-).textContent=total;
+        if(name !== ""){
 
-}
+            familyCount++;
 
-
-/* ONLY NUMBERS */
-
-function onlyNumbers(input){
-
-input.value=
-input.value.replace(
-/[^0-9]/g,
-""
-);
-
-}
+        }
 
 
-/* FOCUS MEMBER */
+        memberCount += members;
 
-function focusMember(index){
+    });
 
-setTimeout(
-()=>{
 
-const input=
-document.querySelector(
-'[data-member-index="'+index+'"]'
-);
+    totalFamilies.textContent =
+        familyCount.toLocaleString("bn-BD");
 
-if(input){
-
-input.focus();
-
-input.setSelectionRange(
-input.value.length,
-input.value.length
-);
-
-}
-
-},
-80
-);
+    totalMembers.textContent =
+        memberCount.toLocaleString("bn-BD");
 
 }
 
 
-/* FOCUS NEW FAMILY */
+/* ---------------------------------------------------------
+   Keep only numbers
+   --------------------------------------------------------- */
 
-function focusNewFamily(){
+function cleanNumber(value){
 
-setTimeout(
-()=>{
-
-const input=
-document.querySelector(
-'[data-new-family="1"]'
-);
-
-if(input){
-
-input.focus();
-
-input.setSelectionRange(
-input.value.length,
-input.value.length
-);
-
-}
-
-},
-80
-);
+    return String(value || "")
+        .replace(/\D/g,"");
 
 }
 
 
-/* FINISH FAMILY */
-
-function finishFamily(index){
-
-const input=
-document.querySelector(
-'[data-member-index="'+index+'"]'
-);
-
-if(input){
-
-onlyNumbers(input);
-
-families[index].members=
-input.value;
-
-}
-
-
-if(
-families[index].name.trim()===""
-){
-
-return;
-
-}
-
-
-saveData();
-
-render();
-
-focusNewFamily();
-
-}
-
-
-/* CREATE INPUT */
+/* ---------------------------------------------------------
+   Create input
+   --------------------------------------------------------- */
 
 function createInput(
-value,
-type,
-index
+    className,
+    value,
+    placeholder
 ){
 
-const input=
-document.createElement("input");
+    const input =
+        document.createElement("input");
 
 
-input.type="text";
+    input.type = "text";
 
-input.value=value||"";
+    input.className = className;
 
-input.autocomplete="off";
+    input.value = value || "";
 
+    input.placeholder = placeholder;
 
-/* FAMILY NAME */
+    input.autocomplete = "off";
 
-if(type==="name"){
+    input.autocapitalize = "sentences";
 
-input.enterKeyHint="next";
+    input.spellcheck = false;
 
-input.placeholder=
-"পরিবারের নাম লিখুন";
-
-
-input.addEventListener(
-"input",
-function(){
-
-families[index].name=
-this.value;
-
-saveData();
-
-}
-);
+    input.enterKeyHint =
+        className === "family-input"
+            ? "next"
+            : "done";
 
 
-input.addEventListener(
-"keydown",
-function(event){
-
-if(
-event.key==="Enter" ||
-event.keyCode===13
-){
-
-event.preventDefault();
-
-families[index].name=
-this.value.trim();
-
-saveData();
-
-focusMember(index);
-
-}
-
-}
-);
+    return input;
 
 }
 
 
-/* MEMBER */
+/* ---------------------------------------------------------
+   Focus helper
+   --------------------------------------------------------- */
 
-if(type==="member"){
+function focusInput(input){
 
-input.enterKeyHint="done";
-
-input.placeholder="সংখ্যা";
-
-input.setAttribute(
-"data-member-index",
-index
-);
+    if(!input) return;
 
 
-/*
-   এখানে inputMode=numeric
-   ব্যবহার করা হয়নি।
+    /*
+      প্রথমে selection সরিয়ে cursor শেষে নেওয়া হচ্ছে।
+    */
 
-   কারণ iPhone-এর numeric
-   keyboard-এ Return/Enter
-   থাকে না।
-*/
+    try{
 
+        input.focus({
+            preventScroll:false
+        });
 
-input.addEventListener(
-"input",
-function(){
+    }catch(error){
 
-onlyNumbers(this);
+        input.focus();
 
-families[index].members=
-this.value;
-
-saveData();
-
-updateSummary();
-
-}
-);
+    }
 
 
-input.addEventListener(
-"keydown",
-function(event){
+    try{
 
-if(
-event.key==="Enter" ||
-event.keyCode===13
-){
+        const length =
+            input.value.length;
 
-event.preventDefault();
+        input.setSelectionRange(
+            length,
+            length
+        );
 
-finishFamily(index);
-
-}
-
-}
-);
+    }catch(error){}
 
 }
 
 
-return input;
-
-}
-
-
-/* RENDER */
+/* ---------------------------------------------------------
+   Render table
+   --------------------------------------------------------- */
 
 function render(){
 
-const body=
-document.getElementById(
-"familyBody"
-);
-
-body.innerHTML="";
+    tableBody.innerHTML = "";
 
 
-/* SAVED ROWS */
+    /*
+      Saved rows
+    */
 
-families.forEach(
-(family,index)=>{
+    families.forEach(
+        (family,index) => {
 
-const tr=
-document.createElement("tr");
-
-
-/* NAME */
-
-const nameTd=
-document.createElement("td");
-
-nameTd.appendChild(
-createInput(
-family.name,
-"name",
-index
-)
-);
+            const tr =
+                document.createElement("tr");
 
 
-/* MEMBER */
+            /* Family */
 
-const memberTd=
-document.createElement("td");
+            const familyTd =
+                document.createElement("td");
 
-memberTd.appendChild(
-createInput(
-family.members,
-"member",
-index
-)
-);
-
-
-/* DELETE */
-
-const actionTd=
-document.createElement("td");
-
-const deleteBtn=
-document.createElement("button");
-
-deleteBtn.className=
-"delete-btn";
-
-deleteBtn.textContent=
-"মুছুন";
-
-deleteBtn.onclick=
-function(){
-
-families.splice(
-index,
-1
-);
-
-saveData();
-
-render();
-
-focusNewFamily();
-
-};
+            const familyInput =
+                createInput(
+                    "family-input",
+                    family.name,
+                    "পরিবারের নাম"
+                );
 
 
-actionTd.appendChild(
-deleteBtn
-);
+            familyInput.dataset.index =
+                index;
 
 
-tr.append(
-nameTd,
-memberTd,
-actionTd
-);
+            familyInput.addEventListener(
+                "input",
+                function(){
 
-body.appendChild(tr);
+                    families[index].name =
+                        this.value;
+
+                    saveData();
+
+                    updateSummary();
+
+                }
+            );
+
+
+            familyInput.addEventListener(
+                "keydown",
+                function(event){
+
+                    if(event.key === "Enter"){
+
+                        event.preventDefault();
+
+                        event.stopPropagation();
+
+
+                        const memberInput =
+                            tr.querySelector(
+                                ".member-input"
+                            );
+
+                        focusInput(memberInput);
+
+                    }
+
+                }
+            );
+
+
+            familyTd.appendChild(
+                familyInput
+            );
+
+
+            /* Member */
+
+            const memberTd =
+                document.createElement("td");
+
+            const memberInput =
+                createInput(
+                    "member-input",
+                    family.members,
+                    "সংখ্যা"
+                );
+
+
+            memberInput.inputMode = "text";
+
+            memberInput.dataset.index =
+                index;
+
+
+            memberInput.addEventListener(
+                "input",
+                function(){
+
+                    const clean =
+                        cleanNumber(
+                            this.value
+                        );
+
+
+                    if(this.value !== clean){
+
+                        const cursor =
+                            this.selectionStart;
+
+                        this.value =
+                            clean;
+
+                        try{
+
+                            this.setSelectionRange(
+                                cursor - 1,
+                                cursor - 1
+                            );
+
+                        }catch(error){}
+
+                    }
+
+
+                    families[index].members =
+                        clean;
+
+
+                    saveData();
+
+                    updateSummary();
+
+                }
+            );
+
+
+            memberInput.addEventListener(
+                "keydown",
+                function(event){
+
+                    if(event.key === "Enter"){
+
+                        event.preventDefault();
+
+                        event.stopPropagation();
+
+
+                        families[index].members =
+                            cleanNumber(
+                                this.value
+                            );
+
+
+                        saveData();
+
+                        updateSummary();
+
+
+                        addNewFamilyRow(
+                            true
+                        );
+
+                    }
+
+                }
+            );
+
+
+            memberTd.appendChild(
+                memberInput
+            );
+
+
+            /* Delete */
+
+            const actionTd =
+                document.createElement("td");
+
+            const deleteBtn =
+                document.createElement("button");
+
+            deleteBtn.type = "button";
+
+            deleteBtn.className =
+                "delete-btn";
+
+            deleteBtn.textContent =
+                "মুছুন";
+
+
+            deleteBtn.addEventListener(
+                "click",
+                function(){
+
+                    families.splice(
+                        index,
+                        1
+                    );
+
+                    saveData();
+
+                    render();
+
+                }
+            );
+
+
+            actionTd.appendChild(
+                deleteBtn
+            );
+
+
+            tr.appendChild(
+                familyTd
+            );
+
+            tr.appendChild(
+                memberTd
+            );
+
+            tr.appendChild(
+                actionTd
+            );
+
+
+            tableBody.appendChild(
+                tr
+            );
+
+        }
+    );
+
+
+    /*
+      সবসময় একটি নতুন খালি row থাকবে।
+    */
+
+    createNewRow();
+
+
+    updateSummary();
 
 }
-);
 
 
-/* NEW ROW */
+/* ---------------------------------------------------------
+   Create new blank row
+   --------------------------------------------------------- */
 
-const tr=
-document.createElement("tr");
+function createNewRow(){
 
+    const tr =
+        document.createElement("tr");
 
-/* NEW FAMILY */
-
-const nameTd=
-document.createElement("td");
-
-const nameInput=
-document.createElement("input");
-
-nameInput.type="text";
-
-nameInput.placeholder=
-"পরিবারের নাম লিখুন";
-
-nameInput.autocomplete="off";
-
-nameInput.setAttribute(
-"data-new-family",
-"1"
-);
-
-nameInput.enterKeyHint="next";
+    tr.className = "new-row";
 
 
-nameInput.addEventListener(
-"keydown",
-function(event){
+    /* Family */
 
-if(
-event.key==="Enter" ||
-event.keyCode===13
+    const familyTd =
+        document.createElement("td");
+
+    const familyInput =
+        createInput(
+            "family-input",
+            "",
+            "পরিবারের নাম লিখুন"
+        );
+
+
+    familyInput.id =
+        "newFamilyInput";
+
+
+    familyInput.addEventListener(
+        "input",
+        function(){
+
+            /*
+              নতুন row-এর নাম temporary
+              DOM-এর মধ্যেই থাকবে।
+            */
+
+        }
+    );
+
+
+    familyInput.addEventListener(
+        "keydown",
+        function(event){
+
+            if(event.key === "Enter"){
+
+                event.preventDefault();
+
+                event.stopPropagation();
+
+
+                const memberInput =
+                    tr.querySelector(
+                        ".member-input"
+                    );
+
+                focusInput(memberInput);
+
+            }
+
+        }
+    );
+
+
+    familyTd.appendChild(
+        familyInput
+    );
+
+
+    /* Member */
+
+    const memberTd =
+        document.createElement("td");
+
+    const memberInput =
+        createInput(
+            "member-input",
+            "",
+            "সংখ্যা লিখুন"
+        );
+
+
+    memberInput.id =
+        "newMemberInput";
+
+
+    memberInput.addEventListener(
+        "input",
+        function(){
+
+            this.value =
+                cleanNumber(
+                    this.value
+                );
+
+        }
+    );
+
+
+    memberInput.addEventListener(
+        "keydown",
+        function(event){
+
+            if(event.key === "Enter"){
+
+                event.preventDefault();
+
+                event.stopPropagation();
+
+
+                finishNewRow();
+
+            }
+
+        }
+    );
+
+
+    memberTd.appendChild(
+        memberInput
+    );
+
+
+    /* Finish button */
+
+    const actionTd =
+        document.createElement("td");
+
+    const finishBtn =
+        document.createElement("button");
+
+    finishBtn.type = "button";
+
+    finishBtn.className =
+        "delete-btn";
+
+    finishBtn.style.background =
+        "#dcfce7";
+
+    finishBtn.style.color =
+        "#166534";
+
+    finishBtn.textContent =
+        "✓ শেষ";
+
+
+    finishBtn.addEventListener(
+        "click",
+        function(){
+
+            finishNewRow();
+
+        }
+    );
+
+
+    actionTd.appendChild(
+        finishBtn
+    );
+
+
+    tr.appendChild(
+        familyTd
+    );
+
+    tr.appendChild(
+        memberTd
+    );
+
+    tr.appendChild(
+        actionTd
+    );
+
+
+    tableBody.appendChild(
+        tr
+    );
+
+}
+
+
+/* ---------------------------------------------------------
+   Finish new row
+   --------------------------------------------------------- */
+
+function finishNewRow(){
+
+    const familyInput =
+        document.getElementById(
+            "newFamilyInput"
+        );
+
+    const memberInput =
+        document.getElementById(
+            "newMemberInput"
+        );
+
+
+    if(!familyInput || !memberInput){
+
+        return;
+
+    }
+
+
+    const name =
+        familyInput.value.trim();
+
+
+    const members =
+        cleanNumber(
+            memberInput.value
+        );
+
+
+    /*
+      একদম খালি হলে কিছু করা হবে না।
+    */
+
+    if(name === "" && members === ""){
+
+        focusInput(familyInput);
+
+        return;
+
+    }
+
+
+    /*
+      পরিবার নাম না থাকলে শুধু member সংখ্যা
+      save করা হবে না।
+    */
+
+    if(name === ""){
+
+        alert(
+            "আগে পরিবারের নাম লিখুন।"
+        );
+
+        focusInput(familyInput);
+
+        return;
+
+    }
+
+
+    families.push({
+
+        name:name,
+
+        members:members
+
+    });
+
+
+    saveData();
+
+    render();
+
+
+    /*
+      নতুন খালি পরিবারের ঘরে cursor।
+    */
+
+    setTimeout(
+        function(){
+
+            const newInput =
+                document.getElementById(
+                    "newFamilyInput"
+                );
+
+            focusInput(newInput);
+
+        },
+        50
+    );
+
+}
+
+
+/* ---------------------------------------------------------
+   Add new row helper
+   --------------------------------------------------------- */
+
+function addNewFamilyRow(
+    focusNewInput
 ){
 
-event.preventDefault();
+    const familyInput =
+        document.getElementById(
+            "newFamilyInput"
+        );
 
-const name=
-this.value.trim();
+    const memberInput =
+        document.getElementById(
+            "newMemberInput"
+        );
 
-if(name===""){
 
-return;
+    if(
+        !familyInput ||
+        !memberInput
+    ){
+
+        render();
+
+        return;
+
+    }
+
+
+    const name =
+        familyInput.value.trim();
+
+
+    const members =
+        cleanNumber(
+            memberInput.value
+        );
+
+
+    /*
+      যদি নতুন row-এ কিছু লেখা থাকে,
+      সেটি save করা হবে।
+    */
+
+    if(name !== ""){
+
+        families.push({
+
+            name:name,
+
+            members:members
+
+        });
+
+        saveData();
+
+    }
+
+
+    render();
+
+
+    if(focusNewInput){
+
+        setTimeout(
+            function(){
+
+                const input =
+                    document.getElementById(
+                        "newFamilyInput"
+                    );
+
+                focusInput(input);
+
+            },
+            50
+        );
+
+    }
 
 }
 
 
-/*
-   পরিবার যোগ
-*/
+/* ---------------------------------------------------------
+   Backup
+   --------------------------------------------------------- */
 
-families.push({
+function backupData(){
 
-name:name,
+    /*
+      খালি নতুন row Backup-এ যাবে না।
+    */
 
-members:""
+    const backupFamilies =
+        families
+            .filter(item =>
+                String(item.name || "").trim() !== ""
+            )
+            .map(item => ({
 
-});
+                name:
+                    String(item.name || "")
+                        .trim(),
 
-saveData();
+                members:
+                    cleanNumber(
+                        item.members
+                    )
 
-render();
+            }));
 
 
-/*
-   নতুন পরিবারের
-   সদস্য ঘরে যাওয়া
-*/
+    const backup = {
 
-focusMember(
-families.length-1
+        app:"পরিবার হিসাব",
+
+        version:2,
+
+        exportedAt:
+            new Date().toISOString(),
+
+        data:backupFamilies
+
+    };
+
+
+    const json =
+        JSON.stringify(
+            backup,
+            null,
+            2
+        );
+
+
+    const blob =
+        new Blob(
+            [json],
+            {
+                type:"application/json"
+            }
+        );
+
+
+    const url =
+        URL.createObjectURL(blob);
+
+
+    const date =
+        new Date();
+
+
+    const year =
+        date.getFullYear();
+
+
+    const month =
+        String(
+            date.getMonth() + 1
+        ).padStart(2,"0");
+
+
+    const day =
+        String(
+            date.getDate()
+        ).padStart(2,"0");
+
+
+    const fileName =
+        "পরিবার-হিসাব-" +
+        year +
+        "-" +
+        month +
+        "-" +
+        day +
+        ".json";
+
+
+    const link =
+        document.createElement("a");
+
+
+    link.href = url;
+
+    link.download = fileName;
+
+    document.body.appendChild(link);
+
+    link.click();
+
+    link.remove();
+
+
+    setTimeout(
+        function(){
+
+            URL.revokeObjectURL(url);
+
+        },
+        1000
+    );
+
+}
+
+
+/* ---------------------------------------------------------
+   Restore button
+   --------------------------------------------------------- */
+
+function openRestore(){
+
+    restoreFile.value = "";
+
+    restoreFile.click();
+
+}
+
+
+/* ---------------------------------------------------------
+   Restore file
+   --------------------------------------------------------- */
+
+restoreFile.addEventListener(
+    "change",
+    function(){
+
+        const file =
+            this.files &&
+            this.files[0];
+
+
+        if(!file){
+
+            return;
+
+        }
+
+
+        const reader =
+            new FileReader();
+
+
+        reader.onload =
+            function(event){
+
+                try{
+
+                    const backup =
+                        JSON.parse(
+                            event.target.result
+                        );
+
+
+                    let restored = null;
+
+
+                    /*
+                      নতুন Backup format
+                    */
+
+                    if(
+                        backup &&
+                        backup.data &&
+                        Array.isArray(
+                            backup.data
+                        )
+                    ){
+
+                        restored =
+                            backup.data;
+
+                    }
+
+
+                    /*
+                      যদি পুরোনো simple array
+                      হয়
+                    */
+
+                    else if(
+                        Array.isArray(
+                            backup
+                        )
+                    ){
+
+                        restored =
+                            backup;
+
+                    }
+
+
+                    if(!restored){
+
+                        throw new Error(
+                            "Invalid backup"
+                        );
+
+                    }
+
+
+                    const cleaned =
+                        restored
+                            .filter(item =>
+                                item &&
+                                String(
+                                    item.name || ""
+                                ).trim() !== ""
+                            )
+                            .map(item => ({
+
+                                name:
+                                    String(
+                                        item.name || ""
+                                    ).trim(),
+
+                                members:
+                                    cleanNumber(
+                                        item.members
+                                    )
+
+                            }));
+
+
+                    if(
+                        !confirm(
+                            "এই Backup রিস্টোর করলে বর্তমান তালিকা পরিবর্তন হবে।\n\nরিস্টোর করতে OK চাপুন।"
+                        )
+                    ){
+
+                        return;
+
+                    }
+
+
+                    families =
+                        cleaned;
+
+
+                    saveData();
+
+                    render();
+
+
+                    alert(
+                        "Backup সফলভাবে রিস্টোর হয়েছে।"
+                    );
+
+
+                    setTimeout(
+                        function(){
+
+                            const input =
+                                document.getElementById(
+                                    "newFamilyInput"
+                                );
+
+                            focusInput(input);
+
+                        },
+                        100
+                    );
+
+
+                }catch(error){
+
+                    console.error(error);
+
+                    alert(
+                        "এই ফাইলটি সঠিক পরিবার হিসাব Backup নয়।"
+                    );
+
+                }
+
+            };
+
+
+        reader.onerror =
+            function(){
+
+                alert(
+                    "Backup ফাইল পড়া যায়নি।"
+                );
+
+            };
+
+
+        reader.readAsText(file);
+
+    }
 );
 
-}
 
-}
-);
-
-
-nameTd.appendChild(
-nameInput
-);
-
-
-/* NEW MEMBER */
-
-const memberTd=
-document.createElement("td");
-
-const memberInput=
-document.createElement("input");
-
-memberInput.type="text";
-
-memberInput.placeholder=
-"সংখ্যা";
-
-memberInput.autocomplete="off";
-
-memberInput.enterKeyHint="done";
-
-
-memberInput.addEventListener(
-"input",
-function(){
-
-onlyNumbers(this);
-
-}
-);
-
-
-memberInput.addEventListener(
-"keydown",
-function(event){
-
-if(
-event.key==="Enter" ||
-event.keyCode===13
-){
-
-event.preventDefault();
-
-
-if(
-families.length===0
-){
-
-return;
-
-}
-
-
-const index=
-families.length-1;
-
-
-const number=
-this.value.trim();
-
-
-if(number===""){
-
-return;
-
-}
-
-
-families[index].members=
-number;
-
-
-saveData();
-
-render();
-
-focusNewFamily();
-
-}
-
-}
-);
-
-
-memberTd.appendChild(
-memberInput
-);
-
-
-/* ACTION */
-
-const actionTd=
-document.createElement("td");
-
-const finishBtn=
-document.createElement("button");
-
-finishBtn.className=
-"finish-btn";
-
-finishBtn.textContent=
-"✓ শেষ";
-
-finishBtn.onclick=
-function(){
-
-if(
-families.length===0
-){
-
-return;
-
-}
-
-
-const index=
-families.length-1;
-
-
-const number=
-memberInput.value.trim();
-
-
-if(number===""){
-
-return;
-
-}
-
-
-families[index].members=
-number;
-
-saveData();
-
-render();
-
-focusNewFamily();
-
-};
-
-
-actionTd.appendChild(
-finishBtn
-);
-
-
-tr.append(
-nameTd,
-memberTd,
-actionTd
-);
-
-body.appendChild(tr);
-
-
-updateSummary();
-
-}
-
-
-/* CLEAR */
+/* ---------------------------------------------------------
+   Clear all
+   --------------------------------------------------------- */
 
 function clearAll(){
 
-if(
-families.length===0
-){
+    if(
+        families.length === 0
+    ){
 
-return;
+        return;
+
+    }
+
+
+    const ok =
+        confirm(
+            "আপনি কি এই তালিকার সব পরিবার মুছে ফেলতে চান?\n\nএর আগে Backup নিয়ে রাখা ভালো।"
+        );
+
+
+    if(!ok){
+
+        return;
+
+    }
+
+
+    families = [];
+
+
+    saveData();
+
+    render();
+
+
+    setTimeout(
+        function(){
+
+            const input =
+                document.getElementById(
+                    "newFamilyInput"
+                );
+
+            focusInput(input);
+
+        },
+        50
+    );
 
 }
 
 
-if(
-confirm(
-"সব পরিবারের তথ্য মুছে ফেলবেন?"
-)
-){
+/* ---------------------------------------------------------
+   Buttons
+   --------------------------------------------------------- */
 
-families=[];
-
-saveData();
-
-render();
-
-focusNewFamily();
-
-}
-
-}
+backupBtn.addEventListener(
+    "click",
+    backupData
+);
 
 
-/* START */
+restoreBtn.addEventListener(
+    "click",
+    openRestore
+);
+
+
+clearBtn.addEventListener(
+    "click",
+    clearAll
+);
+
+
+/* ---------------------------------------------------------
+   Start
+   --------------------------------------------------------- */
 
 loadData();
 
 render();
 
 
-/* SERVICE WORKER */
+/* ---------------------------------------------------------
+   Service Worker
+   --------------------------------------------------------- */
 
 if(
-"serviceWorker" in navigator
+    "serviceWorker" in navigator
 ){
 
-window.addEventListener(
-"load",
-function(){
+    window.addEventListener(
+        "load",
+        function(){
 
-navigator.serviceWorker
-.register(
-"./service-worker.js"
-)
-.catch(
-error=>
-console.log(
-"Service Worker Error:",
-error
-)
-);
+            navigator.serviceWorker
+                .register(
+                    "./service-worker.js"
+                )
+                .catch(
+                    function(error){
 
-}
-);
+                        console.log(
+                            "Service Worker Error:",
+                            error
+                        );
+
+                    }
+                );
+
+        }
+    );
 
 }
 
 </script>
-
 
 </body>
 </html>
