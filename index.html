@@ -28,10 +28,6 @@
 
 <style>
 
-/* ================================
-   BASIC
-================================ */
-
 *{
     box-sizing:border-box;
     -webkit-tap-highlight-color:transparent;
@@ -69,9 +65,7 @@ body{
 }
 
 
-/* ================================
-   HEADER
-================================ */
+/* HEADER */
 
 .header{
     background:linear-gradient(
@@ -106,9 +100,7 @@ body{
 }
 
 
-/* ================================
-   SUMMARY
-================================ */
+/* SUMMARY */
 
 .summary{
     display:grid;
@@ -119,15 +111,10 @@ body{
 
 .summary-card{
     background:#fff;
-
     border:1px solid #e5eaf2;
-
     border-radius:17px;
-
     padding:15px 10px;
-
     text-align:center;
-
     box-shadow:
         0 3px 12px
         rgba(0,0,0,.06);
@@ -147,21 +134,14 @@ body{
 }
 
 
-/* ================================
-   CONTROLS
-================================ */
+/* CONTROLS */
 
 .controls{
     background:#fff;
-
     border:1px solid #e5eaf2;
-
     border-radius:18px;
-
     padding:14px;
-
     margin-bottom:14px;
-
     box-shadow:
         0 3px 12px
         rgba(0,0,0,.06);
@@ -181,15 +161,10 @@ body{
 
 .btn{
     min-height:52px;
-
     border:0;
-
     border-radius:13px;
-
     font-size:17px;
-
     font-weight:800;
-
     cursor:pointer;
 }
 
@@ -206,7 +181,6 @@ body{
 .clear-btn{
     width:100%;
     margin-top:10px;
-
     background:#fee2e2;
     color:#b91c1c;
 }
@@ -216,19 +190,13 @@ body{
 }
 
 
-/* ================================
-   FAMILY LIST
-================================ */
+/* FAMILY LIST */
 
 .list-card{
     background:#fff;
-
     border:1px solid #e5eaf2;
-
     border-radius:18px;
-
     overflow:hidden;
-
     box-shadow:
         0 3px 12px
         rgba(0,0,0,.06);
@@ -236,7 +204,6 @@ body{
 
 .list-header{
     padding:16px 14px;
-
     border-bottom:1px solid #e5eaf2;
 }
 
@@ -247,9 +214,7 @@ body{
 }
 
 
-/* ================================
-   TABLE
-================================ */
+/* TABLE */
 
 .table-wrap{
     width:100%;
@@ -265,23 +230,16 @@ table{
 
 th{
     background:#eff6ff;
-
     color:#1e3a8a;
-
     font-size:16px;
-
     font-weight:800;
-
     padding:12px 7px;
-
     border-bottom:1px solid #dbeafe;
 }
 
 td{
     padding:7px;
-
     border-bottom:1px solid #e5e7eb;
-
     vertical-align:middle;
 }
 
@@ -298,32 +256,20 @@ th:nth-child(3){
 }
 
 
-/* ================================
-   INPUT
-================================ */
+/* INPUT */
 
 .family-input,
 .member-input{
     display:block;
-
     width:100%;
-
     height:52px;
-
     border:2px solid #d7deea;
-
     border-radius:11px;
-
     background:#fff;
-
     padding:8px 10px;
-
     font-size:19px;
-
     color:#111827;
-
     outline:none;
-
     -webkit-appearance:none;
     appearance:none;
 }
@@ -331,7 +277,6 @@ th:nth-child(3){
 .family-input:focus,
 .member-input:focus{
     border-color:#2563eb;
-
     box-shadow:
         0 0 0 3px
         rgba(37,99,235,.12);
@@ -343,24 +288,16 @@ th:nth-child(3){
 }
 
 
-/* ================================
-   BUTTONS
-================================ */
+/* BUTTONS */
 
 .delete-btn,
 .finish-btn{
     width:100%;
-
     min-height:48px;
-
     border:0;
-
     border-radius:11px;
-
     font-size:15px;
-
     font-weight:800;
-
     cursor:pointer;
 }
 
@@ -375,9 +312,7 @@ th:nth-child(3){
 }
 
 
-/* ================================
-   NEW ROW
-================================ */
+/* NEW ROW */
 
 .new-row td{
     background:#f8fafc;
@@ -390,24 +325,17 @@ th:nth-child(3){
 }
 
 
-/* ================================
-   FOOTER
-================================ */
+/* FOOTER */
 
 .footer{
     text-align:center;
-
     color:#64748b;
-
     font-size:14px;
-
     padding:18px 5px;
 }
 
 
-/* ================================
-   MOBILE
-================================ */
+/* MOBILE */
 
 @media(max-width:480px){
 
@@ -436,9 +364,7 @@ th:nth-child(3){
 <div class="app">
 
 
-    <!-- ==========================
-         HEADER
-    =========================== -->
+    <!-- HEADER -->
 
     <div class="header">
 
@@ -453,9 +379,7 @@ th:nth-child(3){
     </div>
 
 
-    <!-- ==========================
-         SUMMARY
-    =========================== -->
+    <!-- SUMMARY -->
 
     <div class="summary">
 
@@ -491,9 +415,7 @@ th:nth-child(3){
     </div>
 
 
-    <!-- ==========================
-         BACKUP / RESTORE
-    =========================== -->
+    <!-- BACKUP / RESTORE -->
 
     <div class="controls">
 
@@ -544,12 +466,9 @@ th:nth-child(3){
     </div>
 
 
-    <!-- ==========================
-         FAMILY LIST
-    =========================== -->
+    <!-- FAMILY LIST -->
 
     <div class="list-card">
-
 
         <div class="list-header">
 
@@ -596,9 +515,7 @@ th:nth-child(3){
     </div>
 
 
-    <!-- ==========================
-         FOOTER
-    =========================== -->
+    <!-- FOOTER -->
 
     <div class="footer">
 
@@ -619,7 +536,6 @@ th:nth-child(3){
 
 const STORAGE_KEY =
     "poribarHisabFinalV2";
-
 
 let families = [];
 
@@ -665,7 +581,7 @@ const clearBtn =
 
 
 /* =========================================
-   BANGLA NUMBER → ENGLISH NUMBER
+   BANGLA NUMBER TO ENGLISH NUMBER
 ========================================= */
 
 function toEnglishNumbers(value){
@@ -698,9 +614,7 @@ function toEnglishNumbers(value){
         if(position >= 0){
 
             result +=
-                english.charAt(
-                    position
-                );
+                english.charAt(position);
 
         }
         else if(
@@ -806,7 +720,6 @@ function loadData(){
 
         families =
             data
-
             .map(function(item){
 
                 return {
@@ -824,8 +737,6 @@ function loadData(){
                 };
 
             })
-
-
             .filter(function(item){
 
                 return (
@@ -911,7 +822,6 @@ function focusInput(input){
         function(){
 
             input.focus();
-
 
             try{
 
@@ -1208,7 +1118,7 @@ function render(){
 
 
 /* =========================================
-   CREATE NEW BLANK ROW
+   CREATE BLANK ROW
 ========================================= */
 
 function createBlankRow(){
@@ -1458,7 +1368,6 @@ function saveNewFamily(){
 
         newInput.focus();
 
-
         try{
 
             newInput.setSelectionRange(
@@ -1549,7 +1458,6 @@ function createNextFamily(){
 
         newInput.focus();
 
-
         try{
 
             newInput.setSelectionRange(
@@ -1567,9 +1475,9 @@ function createNextFamily(){
 
 /* =========================================
    BACKUP
+   iPHONE SHARE SHEET
 ========================================= */
 
-function backupData(){
 async function backupData(){
 
     const backup = {
@@ -1597,16 +1505,6 @@ async function backupData(){
         );
 
 
-    const blob =
-        new Blob(
-            [json],
-            {
-                type:
-                    "application/json"
-            }
-        );
-
-
     const date =
         new Date();
 
@@ -1627,7 +1525,7 @@ async function backupData(){
 
     const file =
         new File(
-            [blob],
+            [json],
             filename,
             {
                 type:
@@ -1636,53 +1534,68 @@ async function backupData(){
         );
 
 
-    /* iPhone Share Sheet */
+    /*
+       iPhone / Safari:
+       সরাসরি Share Sheet
+    */
 
     if(
         navigator.share &&
-        navigator.canShare &&
-        navigator.canShare({
-            files:[file]
-        })
+        navigator.canShare
     ){
 
         try{
 
-            await navigator.share({
+            const shareAvailable =
+                navigator.canShare({
+                    files:[file]
+                });
 
-                files:[file],
 
-                title:
-                    "পরিবার হিসাব Backup",
+            if(shareAvailable){
 
-                text:
-                    "পরিবার হিসাবের Backup ফাইল"
+                await navigator.share({
 
-            });
+                    files:[file],
 
-            return;
+                    title:
+                        "পরিবার হিসাব Backup"
 
-        }
-        catch(error){
+                });
 
-            /* User cancelled Share Sheet */
-
-            if(
-                error &&
-                error.name ===
-                "AbortError"
-            ){
 
                 return;
 
             }
 
         }
+        catch(error){
+
+            console.log(
+                "Share cancelled or unavailable:",
+                error
+            );
+
+        }
 
     }
 
 
-    /* Fallback */
+    /*
+       Fallback:
+       Share Sheet না থাকলে
+       ফাইল Save/Download হবে
+    */
+
+    const blob =
+        new Blob(
+            [json],
+            {
+                type:
+                    "application/json"
+            }
+        );
+
 
     const url =
         URL.createObjectURL(
@@ -1728,7 +1641,8 @@ async function backupData(){
     );
 
 }
-    
+
+
 /* =========================================
    RESTORE BUTTON
 ========================================= */
@@ -1809,7 +1723,6 @@ restoreFile.addEventListener(
 
                     families =
                         backup.families
-
                         .map(
                             function(item){
 
@@ -1831,7 +1744,6 @@ restoreFile.addEventListener(
 
                             }
                         )
-
                         .filter(
                             function(item){
 
@@ -1970,7 +1882,6 @@ if(
                 .register(
                     "./service-worker.js"
                 )
-
                 .catch(
                     function(error){
 
