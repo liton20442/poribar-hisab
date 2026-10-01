@@ -1,36 +1,56 @@
 <!DOCTYPE html>
 <html lang="bn">
+
 <head>
+
 <meta charset="UTF-8">
 
 <meta name="viewport"
-content="width=device-width, initial-scale=1.0,
-maximum-scale=1.0, user-scalable=no,
-viewport-fit=cover">
+      content="width=device-width,
+               initial-scale=1.0,
+               maximum-scale=1.0,
+               user-scalable=no,
+               viewport-fit=cover">
 
 <meta name="theme-color" content="#2563eb">
 
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="apple-mobile-web-app-title" content="পরিবার হিসাব">
+<meta name="apple-mobile-web-app-capable"
+      content="yes">
+
+<meta name="apple-mobile-web-app-status-bar-style"
+      content="default">
+
+<meta name="apple-mobile-web-app-title"
+      content="পরিবার হিসাব">
 
 <link rel="manifest" href="./manifest.json">
 
 <title>পরিবার হিসাব</title>
 
+
 <style>
+
+/* =========================
+   BASIC
+========================= */
 
 *{
     box-sizing:border-box;
     -webkit-tap-highlight-color:transparent;
 }
 
-html,body{
+html,
+body{
+
     margin:0;
     padding:0;
+
     min-height:100%;
+
     background:#f3f6fb;
+
     color:#172033;
+
     font-family:
         -apple-system,
         BlinkMacSystemFont,
@@ -41,6 +61,7 @@ html,body{
 }
 
 body{
+
     padding:
         env(safe-area-inset-top)
         10px
@@ -49,207 +70,349 @@ body{
 }
 
 .app{
+
     width:100%;
     max-width:900px;
+
     margin:0 auto;
+
     padding:10px 0 30px;
 }
 
 
-/* HEADER */
+/* =========================
+   HEADER
+========================= */
 
 .header{
-    background:linear-gradient(135deg,#2563eb,#1d4ed8);
+
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #1d4ed8
+        );
+
     color:#fff;
+
     border-radius:20px;
+
     padding:22px 18px;
+
     margin-bottom:14px;
-    box-shadow:0 8px 24px rgba(37,99,235,.20);
+
+    box-shadow:
+        0 8px 24px
+        rgba(37,99,235,.20);
 }
 
 .header-title{
+
     font-size:29px;
+
     font-weight:800;
+
     line-height:1.2;
 }
 
 .header-subtitle{
+
     margin-top:7px;
+
     font-size:16px;
+
     opacity:.94;
 }
 
 
-/* SUMMARY */
+/* =========================
+   SUMMARY
+========================= */
 
 .summary{
+
     display:grid;
-    grid-template-columns:1fr 1fr;
+
+    grid-template-columns:
+        1fr 1fr;
+
     gap:12px;
+
     margin-bottom:14px;
 }
 
 .summary-card{
+
     background:#fff;
+
     border:1px solid #e5eaf2;
+
     border-radius:17px;
+
     padding:15px 10px;
+
     text-align:center;
-    box-shadow:0 3px 12px rgba(0,0,0,.06);
+
+    box-shadow:
+        0 3px 12px
+        rgba(0,0,0,.06);
 }
 
 .summary-label{
+
     font-size:16px;
+
     font-weight:600;
+
     color:#64748b;
 }
 
 .summary-number{
+
     margin-top:4px;
+
     font-size:30px;
+
     font-weight:800;
+
     color:#1d4ed8;
 }
 
 
-/* CONTROLS */
+/* =========================
+   BACKUP AREA
+========================= */
 
 .controls{
+
     background:#fff;
+
     border:1px solid #e5eaf2;
+
     border-radius:18px;
+
     padding:14px;
+
     margin-bottom:14px;
-    box-shadow:0 3px 12px rgba(0,0,0,.06);
+
+    box-shadow:
+        0 3px 12px
+        rgba(0,0,0,.06);
 }
 
 .control-title{
+
     font-size:19px;
+
     font-weight:800;
+
     margin-bottom:10px;
 }
 
 .button-row{
+
     display:grid;
-    grid-template-columns:1fr 1fr;
+
+    grid-template-columns:
+        1fr 1fr;
+
     gap:10px;
 }
 
 .btn{
+
     min-height:52px;
+
     border:0;
+
     border-radius:13px;
+
     font-size:17px;
+
     font-weight:800;
+
     cursor:pointer;
-    touch-action:manipulation;
 }
 
 .backup-btn{
+
     background:#0f766e;
+
     color:#fff;
 }
 
 .restore-btn{
+
     background:#7c3aed;
+
     color:#fff;
 }
 
 .clear-btn{
+
     width:100%;
+
     margin-top:10px;
+
     background:#fee2e2;
+
     color:#b91c1c;
 }
 
+#restoreFile{
 
-/* LIST */
+    display:none;
+}
+
+
+/* =========================
+   FAMILY LIST
+========================= */
 
 .list-card{
+
     background:#fff;
+
     border:1px solid #e5eaf2;
+
     border-radius:18px;
+
     overflow:hidden;
-    box-shadow:0 3px 12px rgba(0,0,0,.06);
+
+    box-shadow:
+        0 3px 12px
+        rgba(0,0,0,.06);
 }
 
 .list-header{
+
     padding:16px 14px;
-    border-bottom:1px solid #e5eaf2;
+
+    border-bottom:
+        1px solid #e5eaf2;
+
     display:flex;
+
     justify-content:space-between;
+
     align-items:center;
+
     gap:10px;
 }
 
 .list-title{
+
     font-size:22px;
+
     font-weight:800;
+
+    color:#172033;
+
+    cursor:pointer;
+
+    user-select:none;
 }
 
 .enter-badge{
+
     background:#dbeafe;
+
     color:#1d4ed8;
+
     border:1px solid #93c5fd;
+
     border-radius:999px;
+
     padding:7px 12px;
+
     font-size:14px;
+
     font-weight:800;
+
     white-space:nowrap;
 }
 
 
-/* TABLE */
+/* =========================
+   TABLE
+========================= */
 
 .table-wrap{
+
     width:100%;
+
     overflow-x:auto;
+
     -webkit-overflow-scrolling:touch;
 }
 
 table{
+
     width:100%;
+
     border-collapse:collapse;
+
     table-layout:fixed;
 }
 
 th{
+
     background:#eff6ff;
+
     color:#1e3a8a;
+
     font-size:16px;
+
     font-weight:800;
+
     padding:12px 7px;
-    border-bottom:1px solid #dbeafe;
+
+    border-bottom:
+        1px solid #dbeafe;
 }
 
 td{
+
     padding:7px;
-    border-bottom:1px solid #e5e7eb;
+
+    border-bottom:
+        1px solid #e5e7eb;
+
     vertical-align:middle;
 }
 
 th:nth-child(1){
+
     width:48%;
 }
 
 th:nth-child(2){
+
     width:25%;
 }
 
 th:nth-child(3){
+
     width:27%;
 }
 
 
-/* INPUT */
+/* =========================
+   INPUT
+========================= */
 
 .family-input,
 .member-input{
+
     display:block;
+
     width:100%;
+
     height:52px;
 
-    border:2px solid #d7deea;
+    border:
+        2px solid #d7deea;
+
     border-radius:11px;
 
     background:#fff;
@@ -257,280 +420,361 @@ th:nth-child(3){
     padding:8px 10px;
 
     font-size:19px;
+
     color:#111827;
 
     outline:none;
 
     -webkit-appearance:none;
+
     appearance:none;
 }
 
 .family-input:focus,
 .member-input:focus{
+
     border-color:#2563eb;
-    box-shadow:0 0 0 3px rgba(37,99,235,.12);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(37,99,235,.12);
 }
 
 .member-input{
+
     text-align:center;
+
     font-weight:700;
 }
 
 
-/* ACTION BUTTONS */
+/* =========================
+   BUTTONS
+========================= */
 
 .delete-btn,
 .finish-btn{
+
     width:100%;
+
     min-height:48px;
+
     border:0;
+
     border-radius:11px;
+
     font-size:15px;
+
     font-weight:800;
+
     cursor:pointer;
 }
 
 .delete-btn{
+
     background:#fee2e2;
+
     color:#b91c1c;
 }
 
 .finish-btn{
+
     background:#dcfce7;
+
     color:#166534;
 }
 
 
-/* NEW ROW */
+/* =========================
+   NEW ROW
+========================= */
 
 .new-row td{
+
     background:#f8fafc;
 }
 
 .new-row .family-input,
 .new-row .member-input{
+
     border-color:#93c5fd;
+
     background:#f8fbff;
 }
 
 
-/* FOOTER */
+/* =========================
+   FOOTER
+========================= */
 
 .footer{
+
     text-align:center;
+
     color:#64748b;
+
     font-size:14px;
+
     padding:18px 5px;
 }
 
 
-/* FILE */
-
-#restoreFile{
-    display:none;
-}
-
+/* =========================
+   MOBILE
+========================= */
 
 @media(max-width:480px){
 
     .header-title{
+
         font-size:26px;
     }
 
     .header-subtitle{
+
         font-size:15px;
     }
 
     .list-header{
+
         flex-direction:column;
+
         align-items:flex-start;
     }
 
     .family-input,
     .member-input{
+
         font-size:18px;
     }
 
 }
 
 </style>
+
 </head>
 
 
 <body>
 
+
 <div class="app">
 
 
-    <!-- HEADER -->
+<!-- =========================
+     HEADER
+========================= -->
 
-    <div class="header">
+<div class="header">
 
-        <div class="header-title">
-            পরিবার হিসাব
+    <div class="header-title">
+        পরিবার হিসাব
+    </div>
+
+    <div class="header-subtitle">
+        পরিবার ও সদস্য সংখ্যা সংরক্ষণের সহজ অ্যাপ
+    </div>
+
+</div>
+
+
+
+<!-- =========================
+     SUMMARY
+========================= -->
+
+<div class="summary">
+
+
+    <div class="summary-card">
+
+        <div class="summary-label">
+            মোট পরিবার সংখ্যা
         </div>
 
-        <div class="header-subtitle">
-            পরিবার ও সদস্য সংখ্যা সংরক্ষণের সহজ অ্যাপ
+        <div
+            id="totalFamilies"
+            class="summary-number">
+            0
         </div>
 
     </div>
 
 
-    <!-- SUMMARY -->
 
-    <div class="summary">
+    <div class="summary-card">
 
-        <div class="summary-card">
-
-            <div class="summary-label">
-                মোট পরিবার সংখ্যা
-            </div>
-
-            <div
-                id="totalFamilies"
-                class="summary-number"
-            >
-                0
-            </div>
-
+        <div class="summary-label">
+            মোট সদস্য সংখ্যা
         </div>
 
-
-        <div class="summary-card">
-
-            <div class="summary-label">
-                মোট সদস্য সংখ্যা
-            </div>
-
-            <div
-                id="totalMembers"
-                class="summary-number"
-            >
-                0
-            </div>
-
+        <div
+            id="totalMembers"
+            class="summary-number">
+            0
         </div>
 
     </div>
 
 
-    <!-- BACKUP -->
+</div>
 
-    <div class="controls">
 
-        <div class="control-title">
-            ডাটা সংরক্ষণ
-        </div>
 
-        <div class="button-row">
+<!-- =========================
+     BACKUP
+========================= -->
 
-            <button
-                id="backupBtn"
-                class="btn backup-btn"
-                type="button"
-            >
-                💾 ব্যাকআপ
-            </button>
+<div class="controls">
 
-            <button
-                id="restoreBtn"
-                class="btn restore-btn"
-                type="button"
-            >
-                ♻️ রিস্টোর
-            </button>
 
-        </div>
+    <div class="control-title">
+        ডাটা সংরক্ষণ
+    </div>
+
+
+    <div class="button-row">
 
 
         <button
-            id="clearBtn"
-            class="btn clear-btn"
-            type="button"
-        >
-            🗑️ সব মুছুন
+            id="backupBtn"
+            class="btn backup-btn"
+            type="button">
+
+            💾 ব্যাকআপ
+
         </button>
 
 
-        <input
-            id="restoreFile"
-            type="file"
-            accept=".json,application/json"
-        >
+
+        <button
+            id="restoreBtn"
+            class="btn restore-btn"
+            type="button">
+
+            ♻️ রিস্টোর
+
+        </button>
+
 
     </div>
 
 
-    <!-- FAMILY LIST -->
 
-    <div class="list-card">
+    <button
+        id="clearBtn"
+        class="btn clear-btn"
+        type="button">
 
-        <div class="list-header">
+        🗑️ সব মুছুন
 
-            <div
-    class="list-title"
-    id="familyListTitle"
-    role="button"
-    tabindex="0"
->
-    পরিবারের তালিকা
+    </button>
+
+
+
+    <input
+        id="restoreFile"
+        type="file"
+        accept=".json,application/json">
+
+
 </div>
 
-            <div class="enter-badge">
-                ↵ Enter চাপুন
-            </div>
+
+
+<!-- =========================
+     FAMILY LIST
+========================= -->
+
+<div class="list-card">
+
+
+    <div class="list-header">
+
+
+        <div
+            id="familyListTitle"
+            class="list-title"
+            role="button"
+            tabindex="0">
+
+            পরিবারের তালিকা
 
         </div>
 
 
-        <div class="table-wrap">
+        <div class="enter-badge">
 
-            <table>
-
-                <thead>
-
-                    <tr>
-
-                        <th>
-                            পরিবারের নাম
-                        </th>
-
-                        <th>
-                            সদস্য সংখ্যা
-                        </th>
-
-                        <th>
-                            কাজ
-                        </th>
-
-                    </tr>
-
-                </thead>
-
-
-                <tbody id="familyTableBody">
-                </tbody>
-
-            </table>
+            ↵ Enter চাপুন
 
         </div>
 
+
     </div>
 
 
-    <div class="footer">
-        তথ্য এই ফোনের ব্রাউজারে সংরক্ষিত থাকবে।
+
+    <div class="table-wrap">
+
+
+        <table>
+
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        পরিবারের নাম
+                    </th>
+
+                    <th>
+                        সদস্য সংখ্যা
+                    </th>
+
+                    <th>
+                        কাজ
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+
+            <tbody
+                id="familyTableBody">
+
+            </tbody>
+
+
+        </table>
+
+
     </div>
+
 
 </div>
+
+
+
+<div class="footer">
+
+    তথ্য এই ফোনের ব্রাউজারে সংরক্ষিত থাকবে।
+
+</div>
+
+
+</div>
+
 
 
 <script>
 
+
 /* =====================================================
    STORAGE
-   ===================================================== */
+===================================================== */
 
 const STORAGE_KEY =
     "poribarHisabFinalV2";
@@ -538,14 +782,14 @@ const STORAGE_KEY =
 
 /* =====================================================
    DATA
-   ===================================================== */
+===================================================== */
 
 let families = [];
 
 
 /* =====================================================
    ELEMENTS
-   ===================================================== */
+===================================================== */
 
 const tableBody =
     document.getElementById(
@@ -582,19 +826,28 @@ const clearBtn =
         "clearBtn"
     );
 
+const familyListTitle =
+    document.getElementById(
+        "familyListTitle"
+    );
+
 
 /* =====================================================
    NUMBER CONVERSION
-   ===================================================== */
+===================================================== */
 
 function toEnglishNumbers(value){
 
-    const bn = "০১২৩৪৫৬৭৮৯";
-    const en = "0123456789";
+    const bangla =
+        "০১২৩৪৫৬৭৮৯";
+
+    const english =
+        "0123456789";
 
     let result = "";
 
-    value = String(value || "");
+    value =
+        String(value || "");
 
 
     for(
@@ -606,17 +859,21 @@ function toEnglishNumbers(value){
         const ch =
             value.charAt(i);
 
-        const pos =
-            bn.indexOf(ch);
+        const position =
+            bangla.indexOf(ch);
 
 
-        if(pos >= 0){
+        if(position >= 0){
 
             result +=
-                en.charAt(pos);
+                english.charAt(
+                    position
+                );
 
-        }else if(
-            en.indexOf(ch) >= 0
+        }
+
+        else if(
+            english.indexOf(ch) >= 0
         ){
 
             result += ch;
@@ -633,7 +890,7 @@ function toEnglishNumbers(value){
 
 /* =====================================================
    SAVE
-   ===================================================== */
+===================================================== */
 
 function saveData(){
 
@@ -641,10 +898,14 @@ function saveData(){
 
         localStorage.setItem(
             STORAGE_KEY,
-            JSON.stringify(families)
+            JSON.stringify(
+                families
+            )
         );
 
-    }catch(error){
+    }
+
+    catch(error){
 
         console.log(
             "Save error:",
@@ -658,7 +919,7 @@ function saveData(){
 
 /* =====================================================
    LOAD
-   ===================================================== */
+===================================================== */
 
 function loadData(){
 
@@ -674,8 +935,7 @@ function loadData(){
 
 
         /*
-          যদি নতুন storage-এ data না থাকে,
-          আগের সংস্করণের data নেওয়া হবে।
+          পুরোনো ডাটাও নেওয়া হবে
         */
 
         if(!saved){
@@ -700,16 +960,6 @@ function loadData(){
 
         if(!saved){
 
-            saved =
-                localStorage.getItem(
-                    "poribarHisabSimpleV1"
-                );
-
-        }
-
-
-        if(!saved){
-
             families = [];
 
             return;
@@ -718,10 +968,14 @@ function loadData(){
 
 
         const data =
-            JSON.parse(saved);
+            JSON.parse(
+                saved
+            );
 
 
-        if(!Array.isArray(data)){
+        if(
+            !Array.isArray(data)
+        ){
 
             families = [];
 
@@ -732,26 +986,30 @@ function loadData(){
 
         families =
             data
-            .map(item => ({
+            .map(
+                item => ({
 
-                name:
-                    String(
-                        item.name || ""
-                    ),
+                    name:
+                        String(
+                            item.name || ""
+                        ),
 
-                members:
-                    toEnglishNumbers(
-                        item.members || ""
-                    )
+                    members:
+                        toEnglishNumbers(
+                            item.members || ""
+                        )
 
-            }))
+                })
+            )
             .filter(
                 item =>
                     item.name.trim() !== ""
             );
 
 
-    }catch(error){
+    }
+
+    catch(error){
 
         console.log(
             "Load error:",
@@ -767,31 +1025,36 @@ function loadData(){
 
 /* =====================================================
    SUMMARY
-   ===================================================== */
+===================================================== */
 
 function updateSummary(){
 
-    let members = 0;
+    let memberTotal = 0;
 
 
-    families.forEach(item => {
+    families.forEach(
+        item => {
 
-        const n =
-            parseInt(
-                toEnglishNumbers(
-                    item.members
-                ),
-                10
-            );
+            const number =
+                parseInt(
+                    toEnglishNumbers(
+                        item.members
+                    ),
+                    10
+                );
 
 
-        if(!isNaN(n)){
+            if(
+                !isNaN(number)
+            ){
 
-            members += n;
+                memberTotal +=
+                    number;
+
+            }
 
         }
-
-    });
+    );
 
 
     totalFamilies.textContent =
@@ -801,7 +1064,7 @@ function updateSummary(){
 
 
     totalMembers.textContent =
-        members.toLocaleString(
+        memberTotal.toLocaleString(
             "bn-BD"
         );
 
@@ -810,7 +1073,7 @@ function updateSummary(){
 
 /* =====================================================
    FOCUS
-   ===================================================== */
+===================================================== */
 
 function focusInput(input){
 
@@ -822,43 +1085,82 @@ function focusInput(input){
 
 
     /*
-      iPhone-এ focus নিশ্চিত করার জন্য
-      requestAnimationFrame + setTimeout।
+      iPhone-এ cursor ঠিক রাখার জন্য
     */
 
-    requestAnimationFrame(() => {
+    requestAnimationFrame(
+        function(){
 
-        setTimeout(() => {
+            input.focus();
+
 
             try{
-
-                input.focus();
 
                 input.setSelectionRange(
                     input.value.length,
                     input.value.length
                 );
 
-            }catch(error){
-
-                try{
-
-                    input.focus();
-
-                }catch(e){}
-
             }
 
-        },30);
+            catch(error){}
 
-    });
+        }
+    );
 
 }
 
 
 /* =====================================================
-   INPUT CREATOR
-   ===================================================== */
+   NEW FAMILY FOCUS
+===================================================== */
+
+function focusNewFamily(){
+
+    const input =
+        document.getElementById(
+            "newFamilyInput"
+        );
+
+
+    if(!input){
+
+        return;
+
+    }
+
+
+    /*
+      নতুন row তৈরি হওয়ার পর
+      একই input-এ সরাসরি cursor।
+    */
+
+    requestAnimationFrame(
+        function(){
+
+            input.focus();
+
+
+            try{
+
+                input.setSelectionRange(
+                    0,
+                    0
+                );
+
+            }
+
+            catch(error){}
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   CREATE INPUT
+===================================================== */
 
 function createInput(
     className,
@@ -872,7 +1174,8 @@ function createInput(
         );
 
 
-    input.type = "text";
+    input.type =
+        "text";
 
     input.className =
         className;
@@ -889,13 +1192,29 @@ function createInput(
     input.autocorrect =
         "off";
 
+    input.autocapitalize =
+        "sentences";
+
     input.spellcheck =
         false;
 
-    input.enterKeyHint =
-        className === "family-input"
-            ? "next"
-            : "done";
+
+    if(
+        className ===
+        "family-input"
+    ){
+
+        input.enterKeyHint =
+            "next";
+
+    }
+
+    else{
+
+        input.enterKeyHint =
+            "done";
+
+    }
 
 
     return input;
@@ -905,19 +1224,28 @@ function createInput(
 
 /* =====================================================
    RENDER
-   ===================================================== */
+===================================================== */
 
 function render(){
+
+    /*
+      পরিবারের তালিকার table
+      সম্পূর্ণ পরিষ্কার করে
+      আবার তৈরি করা হচ্ছে।
+    */
 
     tableBody.innerHTML = "";
 
 
     /*
-      SAVED ROWS
+      SAVED FAMILIES
     */
 
     families.forEach(
-        (family,index) => {
+        function(
+            family,
+            index
+        ){
 
             const tr =
                 document.createElement(
@@ -925,7 +1253,9 @@ function render(){
                 );
 
 
-            /* FAMILY */
+            /* -----------------
+               FAMILY NAME
+            ----------------- */
 
             const familyTd =
                 document.createElement(
@@ -949,8 +1279,6 @@ function render(){
                         this.value;
 
                     saveData();
-
-                    updateSummary();
 
                 }
             );
@@ -991,7 +1319,9 @@ function render(){
             );
 
 
-            /* MEMBER */
+            /* -----------------
+               MEMBER
+            ----------------- */
 
             const memberTd =
                 document.createElement(
@@ -1010,11 +1340,6 @@ function render(){
             memberInput.addEventListener(
                 "input",
                 function(){
-
-                    /*
-                      টাইপ করার সময়
-                      কিছু মুছে দেওয়া হচ্ছে না।
-                    */
 
                     families[index].members =
                         this.value;
@@ -1039,18 +1364,14 @@ function render(){
                         event.stopPropagation();
 
 
-                        const number =
+                        families[index].members =
                             toEnglishNumbers(
                                 this.value
                             );
 
 
-                        families[index].members =
-                            number;
-
-
                         this.value =
-                            number;
+                            families[index].members;
 
 
                         saveData();
@@ -1071,7 +1392,9 @@ function render(){
             );
 
 
-            /* ACTION */
+            /* -----------------
+               DELETE
+            ----------------- */
 
             const actionTd =
                 document.createElement(
@@ -1104,12 +1427,10 @@ function render(){
                         1
                     );
 
+
                     saveData();
 
                     render();
-
-
-                    focusNewFamily();
 
                 }
             );
@@ -1142,7 +1463,7 @@ function render(){
 
 
     /*
-      ALWAYS NEW ROW
+      সব সময় একটি খালি row থাকবে
     */
 
     createBlankRow();
@@ -1155,7 +1476,7 @@ function render(){
 
 /* =====================================================
    CREATE BLANK ROW
-   ===================================================== */
+===================================================== */
 
 function createBlankRow(){
 
@@ -1169,7 +1490,9 @@ function createBlankRow(){
         "new-row";
 
 
-    /* FAMILY */
+    /* -----------------
+       FAMILY
+    ----------------- */
 
     const familyTd =
         document.createElement(
@@ -1224,7 +1547,9 @@ function createBlankRow(){
     );
 
 
-    /* MEMBER */
+    /* -----------------
+       MEMBER
+    ----------------- */
 
     const memberTd =
         document.createElement(
@@ -1242,19 +1567,6 @@ function createBlankRow(){
 
     memberInput.id =
         "newMemberInput";
-
-
-    memberInput.addEventListener(
-        "input",
-        function(){
-
-            /*
-              কিছু filter করা হচ্ছে না।
-              তাই সংখ্যা সরাসরি দেখা যাবে।
-            */
-
-        }
-    );
 
 
     memberInput.addEventListener(
@@ -1284,7 +1596,9 @@ function createBlankRow(){
     );
 
 
-    /* ACTION */
+    /* -----------------
+       FINISH
+    ----------------- */
 
     const actionTd =
         document.createElement(
@@ -1345,77 +1659,108 @@ function createBlankRow(){
 
 /* =====================================================
    SAVE NEW FAMILY
-   ===================================================== */
+===================================================== */
 
 function saveNewFamily(){
 
     const familyInput =
-        document.getElementById("newFamilyInput");
+        document.getElementById(
+            "newFamilyInput"
+        );
 
     const memberInput =
-        document.getElementById("newMemberInput");
+        document.getElementById(
+            "newMemberInput"
+        );
 
-    if(!familyInput || !memberInput){
+
+    if(
+        !familyInput ||
+        !memberInput
+    ){
+
         return;
+
     }
+
 
     const name =
         familyInput.value.trim();
 
+
     const members =
-        toEnglishNumbers(memberInput.value);
+        toEnglishNumbers(
+            memberInput.value
+        );
+
 
     if(name === ""){
 
-        familyInput.focus();
+        focusInput(
+            familyInput
+        );
 
         return;
+
     }
 
+
     families.push({
-        name: name,
-        members: members
+
+        name:name,
+
+        members:members
+
     });
 
+
     saveData();
+
+
+    /*
+      নতুন row তৈরি
+    */
 
     render();
 
     updateSummary();
 
 
-    /* নতুন রো তৈরি হওয়ার পর
-       সরাসরি নতুন পরিবারের ঘরে cursor */
+    /*
+      নতুন row-এর
+      পরিবারের নামের ঘরে cursor
+    */
 
     const newInput =
-        document.getElementById("newFamilyInput");
+        document.getElementById(
+            "newFamilyInput"
+        );
+
 
     if(newInput){
 
         newInput.focus();
 
-        newInput.click();
 
         try{
 
             newInput.setSelectionRange(
-                newInput.value.length,
-                newInput.value.length
+                0,
+                0
             );
 
-        }catch(error){}
+        }
+
+        catch(error){}
 
     }
 
 }
 
-    
-    
-
 
 /* =====================================================
-   NEW FAMILY AFTER ENTER
-   ===================================================== */
+   CREATE NEXT FAMILY
+===================================================== */
 
 function createNextFamily(){
 
@@ -1435,10 +1780,6 @@ function createNextFamily(){
         !memberInput
     ){
 
-        render();
-
-        focusNewFamily();
-
         return;
 
     }
@@ -1454,20 +1795,27 @@ function createNextFamily(){
         );
 
 
-    if(name !== ""){
+    if(name === ""){
 
-        families.push({
+        focusInput(
+            familyInput
+        );
 
-            name:name,
-
-            members:members
-
-        });
-
-
-        saveData();
+        return;
 
     }
+
+
+    families.push({
+
+        name:name,
+
+        members:members
+
+    });
+
+
+    saveData();
 
 
     render();
@@ -1476,22 +1824,72 @@ function createNextFamily(){
 
 
     /*
-      নতুন পরিবারের ঘরে cursor।
+      এখানে কোনো delay নেই।
+      নতুন input-এই cursor।
     */
 
-    focusNewFamily();
+    const newInput =
+        document.getElementById(
+            "newFamilyInput"
+        );
+
+
+    if(newInput){
+
+        newInput.focus();
+
+
+        try{
+
+            newInput.setSelectionRange(
+                0,
+                0
+            );
+
+        }
+
+        catch(error){}
+
+    }
 
 }
 
 
 /* =====================================================
-   FOCUS NEW FAMILY
-   ===================================================== */
+   FAMILY LIST TITLE
+===================================================== */
 
-function focusNewFamily(){
+familyListTitle.addEventListener(
+    "click",
+    function(){
 
-    setTimeout(
-        function(){
+        const input =
+            document.getElementById(
+                "newFamilyInput"
+            );
+
+
+        if(input){
+
+            input.focus();
+
+        }
+
+    }
+);
+
+
+familyListTitle.addEventListener(
+    "keydown",
+    function(event){
+
+        if(
+            event.key ===
+            "Enter"
+        ){
+
+            event.preventDefault();
+
 
             const input =
                 document.getElementById(
@@ -1501,24 +1899,21 @@ function focusNewFamily(){
 
             if(input){
 
-                focusInput(
-                    input
-                );
+                input.focus();
 
             }
 
-        },
-        80
-    );
+        }
 
-}
+    }
+);
 
 
 /* =====================================================
    BACKUP
-   ===================================================== */
+===================================================== */
 
-async function backupData(){
+function backupData(){
 
     const backup = {
 
@@ -1532,19 +1927,7 @@ async function backupData(){
             new Date().toISOString(),
 
         families:
-            families.map(item => ({
-
-                name:
-                    String(
-                        item.name || ""
-                    ),
-
-                members:
-                    toEnglishNumbers(
-                        item.members || ""
-                    )
-
-            }))
+            families
 
     };
 
@@ -1557,145 +1940,84 @@ async function backupData(){
         );
 
 
-    const fileName =
+    const blob =
+        new Blob(
+            [json],
+            {
+                type:
+                    "application/json"
+            }
+        );
+
+
+    const url =
+        URL.createObjectURL(
+            blob
+        );
+
+
+    const date =
+        new Date();
+
+
+    const filename =
         "পরিবার-হিসাব-" +
-        new Date()
-            .toISOString()
-            .slice(0,10) +
+        date.getFullYear() +
+        "-" +
+        String(
+            date.getMonth()+1
+        ).padStart(2,"0") +
+        "-" +
+        String(
+            date.getDate()
+        ).padStart(2,"0") +
         ".json";
 
 
-    /*
-      iPhone / iOS-এ Share Sheet ব্যবহার করার চেষ্টা।
-    */
-
-    try{
-
-        const file =
-            new File(
-                [json],
-                fileName,
-                {
-                    type:
-                        "application/json"
-                }
-            );
-
-
-        if(
-            navigator.share &&
-            navigator.canShare &&
-            navigator.canShare({
-                files:[file]
-            })
-        ){
-
-            await navigator.share({
-
-                title:
-                    "পরিবার হিসাব Backup",
-
-                text:
-                    "পরিবার হিসাবের Backup",
-
-                files:[file]
-
-            });
-
-
-            return;
-
-        }
-
-    }catch(error){
-
-        /*
-          Share বন্ধ করলে এখানে আসতে পারে।
-          তখন নিচের download পদ্ধতি চলবে।
-        */
-
-        console.log(
-            "Share:",
-            error
-        );
-
-    }
-
-
-    /*
-      Fallback download
-    */
-
-    try{
-
-        const blob =
-            new Blob(
-                [json],
-                {
-                    type:
-                        "application/json"
-                }
-            );
-
-
-        const url =
-            URL.createObjectURL(
-                blob
-            );
-
-
-        const link =
-            document.createElement(
-                "a"
-            );
-
-
-        link.href =
-            url;
-
-        link.download =
-            fileName;
-
-        link.style.display =
-            "none";
-
-
-        document.body.appendChild(
-            link
+    const link =
+        document.createElement(
+            "a"
         );
 
 
-        link.click();
+    link.href =
+        url;
+
+    link.download =
+        filename;
+
+    link.style.display =
+        "none";
 
 
-        setTimeout(
-            function(){
-
-                link.remove();
-
-                URL.revokeObjectURL(
-                    url
-                );
-
-            },
-            1000
-        );
+    document.body.appendChild(
+        link
+    );
 
 
-    }catch(error){
+    link.click();
 
-        alert(
-            "Backup তৈরি করা যায়নি।"
-        );
 
-    }
+    link.remove();
+
+
+    setTimeout(
+        function(){
+
+            URL.revokeObjectURL(
+                url
+            );
+
+        },
+        1000
+    );
 
 }
 
 
 /* =====================================================
    RESTORE
-   ===================================================== */
+===================================================== */
 
 restoreBtn.addEventListener(
     "click",
@@ -1740,42 +2062,12 @@ restoreFile.addEventListener(
                         );
 
 
-                    let data = null;
-
-
                     if(
-                        backup &&
-                        Array.isArray(
+                        !backup ||
+                        !Array.isArray(
                             backup.families
                         )
                     ){
-
-                        data =
-                            backup.families;
-
-                    }
-
-
-                    /*
-                      Backup-এর অন্য format-ও
-                      গ্রহণ করার চেষ্টা।
-                    */
-
-                    if(
-                        !data &&
-                        backup &&
-                        Array.isArray(
-                            backup.data
-                        )
-                    ){
-
-                        data =
-                            backup.data;
-
-                    }
-
-
-                    if(!data){
 
                         throw new Error(
                             "Invalid backup"
@@ -1784,11 +2076,13 @@ restoreFile.addEventListener(
                     }
 
 
-                    if(
-                        !confirm(
+                    const ok =
+                        confirm(
                             "বর্তমান তালিকা পরিবর্তন করে এই Backup রিস্টোর করবেন?"
-                        )
-                    ){
+                        );
+
+
+                    if(!ok){
 
                         return;
 
@@ -1796,23 +2090,25 @@ restoreFile.addEventListener(
 
 
                     families =
-                        data
-                        .map(item => ({
+                        backup.families
+                        .map(
+                            item => ({
 
-                            name:
-                                String(
-                                    item.name || ""
-                                ).trim(),
+                                name:
+                                    String(
+                                        item.name || ""
+                                    ),
 
-                            members:
-                                toEnglishNumbers(
-                                    item.members || ""
-                                )
+                                members:
+                                    toEnglishNumbers(
+                                        item.members || ""
+                                    )
 
-                        }))
+                            })
+                        )
                         .filter(
                             item =>
-                                item.name !== ""
+                                item.name.trim() !== ""
                         );
 
 
@@ -1828,32 +2124,20 @@ restoreFile.addEventListener(
                     );
 
 
-                    focusNewFamily();
+                }
 
-
-                }catch(error){
+                catch(error){
 
                     console.log(
-                        "Restore error:",
                         error
                     );
 
 
                     alert(
-                        "এই ফাইলটি সঠিক পরিবার হিসাব Backup নয়।"
+                        "এই Backup ফাইলটি সঠিক নয়।"
                     );
 
                 }
-
-            };
-
-
-        reader.onerror =
-            function(){
-
-                alert(
-                    "Backup ফাইল পড়া যায়নি।"
-                );
 
             };
 
@@ -1866,7 +2150,7 @@ restoreFile.addEventListener(
 
 /* =====================================================
    CLEAR
-   ===================================================== */
+===================================================== */
 
 clearBtn.addEventListener(
     "click",
@@ -1896,21 +2180,33 @@ clearBtn.addEventListener(
 
         families = [];
 
+
         saveData();
 
         render();
 
         updateSummary();
 
-        focusNewFamily();
+
+        const input =
+            document.getElementById(
+                "newFamilyInput"
+            );
+
+
+        if(input){
+
+            input.focus();
+
+        }
 
     }
 );
 
 
 /* =====================================================
-   BUTTON
-   ===================================================== */
+   BUTTON EVENTS
+===================================================== */
 
 backupBtn.addEventListener(
     "click",
@@ -1919,8 +2215,8 @@ backupBtn.addEventListener(
 
 
 /* =====================================================
-   START
-   ===================================================== */
+   START APP
+===================================================== */
 
 loadData();
 
@@ -1928,12 +2224,10 @@ render();
 
 updateSummary();
 
-focusNewFamily();
-
 
 /* =====================================================
    SERVICE WORKER
-   ===================================================== */
+===================================================== */
 
 if(
     "serviceWorker" in navigator
@@ -1948,11 +2242,14 @@ if(
                     "./service-worker.js"
                 )
                 .catch(
-                    error =>
+                    function(error){
+
                         console.log(
-                            "SW:",
+                            "Service Worker:",
                             error
-                        )
+                        );
+
+                    }
                 );
 
         }
@@ -1961,6 +2258,7 @@ if(
 }
 
 </script>
+
 
 </body>
 </html>
