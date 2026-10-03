@@ -1,17 +1,16 @@
 {
-  "name": "পরিবার হিসাব",
-  "short_name": "পরিবার হিসাব",
-  "description": "পরিবার ও সদস্য সংখ্যা সংরক্ষণের সহজ অ্যাপ",
-
-  "start_url": "./",
-  "scope": "./",
-
+  "name": "Family Count",
+  "short_name": "Family Count",
+  "start_url": "./index.html",
   "display": "standalone",
-  "orientation": "portrait",
-
   "background_color": "#f3f6fb",
   "theme_color": "#2563eb",
-
-  "lang": "bn",
-  "dir": "ltr"
+  "icons": [
+    {
+      "src": "./icon-180.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
 }
