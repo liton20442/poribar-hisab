@@ -244,15 +244,19 @@ td{
 }
 
 th:nth-child(1){
-    width:48%;
+    width:38%;
 }
 
 th:nth-child(2){
-    width:25%;
+    width:20%;
 }
 
 th:nth-child(3){
-    width:27%;
+    width:20%;
+}
+
+th:nth-child(4){
+    width:22%;
 }
 
 
@@ -285,6 +289,55 @@ th:nth-child(3){
 .member-input{
     text-align:center;
     font-weight:700;
+}
+
+
+/* ACTION */
+
+.action-select{
+    display:block;
+    width:100%;
+    height:52px;
+    border:2px solid #d7deea;
+    border-radius:11px;
+    background:#fff;
+    padding:6px 5px;
+    font-size:22px;
+    font-weight:800;
+    text-align:center;
+    color:#111827;
+    outline:none;
+    -webkit-appearance:auto;
+    appearance:auto;
+}
+
+.action-select:focus{
+    border-color:#2563eb;
+    box-shadow:
+        0 0 0 3px
+        rgba(37,99,235,.12);
+}
+
+
+/* ACTION COUNT */
+
+.action-count{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:8px;
+    margin-top:4px;
+    font-size:15px;
+    font-weight:800;
+    white-space:nowrap;
+}
+
+.action-tick{
+    color:#166534;
+}
+
+.action-cross{
+    color:#b91c1c;
 }
 
 
@@ -496,6 +549,25 @@ th:nth-child(3){
                         </th>
 
                         <th>
+                            অ্যাকশন
+
+                            <div
+                                id="actionCount"
+                                class="action-count">
+
+                                <span class="action-tick">
+                                    ✓ ০
+                                </span>
+
+                                <span class="action-cross">
+                                    ✗ ০
+                                </span>
+
+                            </div>
+
+                        </th>
+
+                        <th>
                             কাজ
                         </th>
 
@@ -557,6 +629,11 @@ const totalFamilies =
 const totalMembers =
     document.getElementById(
         "totalMembers"
+    );
+
+const actionCount =
+    document.getElementById(
+        "actionCount"
     );
 
 const backupBtn =
@@ -732,7 +809,13 @@ function loadData(){
                     members:
                         toEnglishNumbers(
                             item.members || ""
-                        )
+                        ),
+
+                    action:
+                        item.action === "✓" ||
+                        item.action === "✗"
+                            ? item.action
+                            : ""
 
                 };
 
@@ -768,6 +851,10 @@ function updateSummary(){
 
     let memberTotal = 0;
 
+    let tickCount = 0;
+
+    let crossCount = 0;
+
 
     families.forEach(
         function(item){
@@ -787,6 +874,20 @@ function updateSummary(){
 
             }
 
+
+            if(item.action === "✓"){
+
+                tickCount++;
+
+            }
+
+
+            if(item.action === "✗"){
+
+                crossCount++;
+
+            }
+
         }
     );
 
@@ -801,6 +902,16 @@ function updateSummary(){
         memberTotal.toLocaleString(
             "bn-BD"
         );
+
+
+    actionCount.innerHTML =
+        '<span class="action-tick">✓ ' +
+        tickCount.toLocaleString("bn-BD") +
+        '</span>' +
+
+        '<span class="action-cross">✗ ' +
+        crossCount.toLocaleString("bn-BD") +
+        '</span>';
 
 }
 
@@ -1042,9 +1153,100 @@ function render(){
             );
 
 
-            /* DELETE */
+            /* ACTION */
 
             const actionTd =
+                document.createElement(
+                    "td"
+                );
+
+
+            const actionSelect =
+                document.createElement(
+                    "select"
+                );
+
+
+            actionSelect.className =
+                "action-select";
+
+
+            const blankOption =
+                document.createElement(
+                    "option"
+                );
+
+
+            blankOption.value = "";
+
+            blankOption.textContent =
+                "";
+
+
+            const tickOption =
+                document.createElement(
+                    "option"
+                );
+
+
+            tickOption.value = "✓";
+
+            tickOption.textContent =
+                "✓";
+
+
+            const crossOption =
+                document.createElement(
+                    "option"
+                );
+
+
+            crossOption.value = "✗";
+
+            crossOption.textContent =
+                "✗";
+
+
+            actionSelect.appendChild(
+                blankOption
+            );
+
+            actionSelect.appendChild(
+                tickOption
+            );
+
+            actionSelect.appendChild(
+                crossOption
+            );
+
+
+            actionSelect.value =
+                family.action || "";
+
+
+            actionSelect.addEventListener(
+                "change",
+                function(){
+
+                    families[index].action =
+                        this.value;
+
+                    saveData();
+
+                    updateSummary();
+
+                }
+            );
+
+
+            actionTd.appendChild(
+                actionSelect
+            );
+
+
+            /* DELETE */
+
+            const actionTd2 =
                 document.createElement(
                     "td"
                 );
@@ -1084,7 +1286,7 @@ function render(){
             );
 
 
-            actionTd.appendChild(
+            actionTd2.appendChild(
                 deleteBtn
             );
 
@@ -1099,6 +1301,10 @@ function render(){
 
             tr.appendChild(
                 actionTd
+            );
+
+            tr.appendChild(
+                actionTd2
             );
 
 
@@ -1234,9 +1440,81 @@ function createBlankRow(){
     );
 
 
-    /* FINISH */
+    /* ACTION BLANK */
 
     const actionTd =
+        document.createElement(
+            "td"
+        );
+
+
+    const actionSelect =
+        document.createElement(
+            "select"
+        );
+
+
+    actionSelect.className =
+        "action-select";
+
+
+    const blankOption =
+        document.createElement(
+            "option"
+        );
+
+
+    blankOption.value = "";
+
+    blankOption.textContent =
+        "";
+
+
+    const tickOption =
+        document.createElement(
+            "option"
+        );
+
+
+    tickOption.value = "✓";
+
+    tickOption.textContent =
+        "✓";
+
+
+    const crossOption =
+        document.createElement(
+            "option"
+        );
+
+
+    crossOption.value = "✗";
+
+    crossOption.textContent =
+        "✗";
+
+
+    actionSelect.appendChild(
+        blankOption
+    );
+
+    actionSelect.appendChild(
+        tickOption
+    );
+
+    actionSelect.appendChild(
+        crossOption
+    );
+
+
+    actionTd.appendChild(
+        actionSelect
+    );
+
+
+    /* FINISH */
+
+    const actionTd2 =
         document.createElement(
             "td"
         );
@@ -1268,7 +1546,7 @@ function createBlankRow(){
     );
 
 
-    actionTd.appendChild(
+    actionTd2.appendChild(
         finishBtn
     );
 
@@ -1283,6 +1561,10 @@ function createBlankRow(){
 
     tr.appendChild(
         actionTd
+    );
+
+    tr.appendChild(
+        actionTd2
     );
 
 
@@ -1346,7 +1628,9 @@ function saveNewFamily(){
 
         name:name,
 
-        members:members
+        members:members,
+
+        action:""
 
     });
 
@@ -1436,7 +1720,9 @@ function createNextFamily(){
 
         name:name,
 
-        members:members
+        members:members,
+
+        action:""
 
     });
 
@@ -1738,7 +2024,13 @@ restoreFile.addEventListener(
                                         toEnglishNumbers(
                                             item.members ||
                                             ""
-                                        )
+                                        ),
+
+                                    action:
+                                        item.action === "✓" ||
+                                        item.action === "✗"
+                                            ? item.action
+                                            : ""
 
                                 };
 
